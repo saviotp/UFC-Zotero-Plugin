@@ -459,7 +459,8 @@ export function toSentenceCase(text: string): string {
       if (ALL_ACRONYMS.has(unmasked.toLocaleUpperCase(locale))) {
         // Restaurar a forma canônica da sigla (ex: "cnpq" → "CNPq")
         const canonical = [...ALL_ACRONYMS].find(
-          (a) => a.toLocaleUpperCase(locale) === unmasked.toLocaleUpperCase(locale),
+          (a) =>
+            a.toLocaleUpperCase(locale) === unmasked.toLocaleUpperCase(locale),
         );
         if (canonical) {
           // Substituir apenas a parte não-mascarada, mantendo \uFFFD
@@ -843,7 +844,9 @@ export function registerTitleFormatterNotifier(): void {
       // Verificar se a formatação automática está habilitada
       const enabled = getPref("enable");
       if (!enabled) {
-        ztoolkit.log(`[UFC] Notifier: ignorando (formatação automática desabilitada)`);
+        ztoolkit.log(
+          `[UFC] Notifier: ignorando (formatação automática desabilitada)`,
+        );
         return;
       }
 
