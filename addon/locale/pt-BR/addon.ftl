@@ -1,0 +1,10 @@
+startup-begin = UFC Title Formatter está carregando
+startup-finish = UFC Title Formatter está pronto
+menuitem-format-title = Formatar título (ABNT/UFC)
+prefs-title = UFC Title Formatter
+format-no-items = Nenhum item selecionado.
+format-success = {$count} título(s) formatado(s).
+format-success-title = {$count} título(s) com negrito.
+format-success-container = {$count} periódico(s)/livro(s) com negrito.
+format-skipped-no-author = {$count} item(ns) sem autor ignorado(s).
+format-no-changes = Nenhuma alteração necessária.

@@ -1,24 +1,24 @@
 {
-  "name": "zotero-plugin-template",
+  "name": "ufc-title-formatter",
   "type": "module",
-  "version": "3.1.0",
-  "description": "Zotero Plugin Template",
+  "version": "1.0.0",
+  "description": "Formata títulos ABNT conforme normas da UFC (NBR 6023:2018)",
   "config": {
-    "addonName": "Zotero Plugin Template",
-    "addonID": "addontemplate@euclpts.com",
-    "addonRef": "addontemplate",
-    "addonInstance": "AddonTemplate",
-    "prefsPrefix": "extensions.zotero.addontemplate"
+    "addonName": "UFC Title Formatter",
+    "addonID": "ufc-title-formatter@biblioteca.ufc.br",
+    "addonRef": "ufc-title-formatter",
+    "addonInstance": "UFCTitleFormatter",
+    "prefsPrefix": "extensions.zotero.ufc-title-formatter"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/windingwind/zotero-plugin-template.git"
+    "url": "git+https://github.com/saviotp/UFC-Zotero-Plugin.git"
   },
-  "author": "windingwind",
+  "author": "Biblioteca Universitária — UFC",
   "bugs": {
-    "url": "https://github.com/windingwind/zotero-plugin-template/issues"
+    "url": "https://github.com/saviotp/UFC-Zotero-Plugin/issues"
   },
-  "homepage": "https://github.com/windingwind/zotero-plugin-template#readme",
+  "homepage": "https://github.com/saviotp/UFC-Zotero-Plugin#readme",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "start": "zotero-plugin serve",
@@ -42,7 +42,7 @@
     "mocha": "^11.7.5",
     "prettier": "^3.7.4",
     "typescript": "^5.9.3",
-    "zotero-plugin-scaffold": "^0.8.2",
+    "zotero-plugin-scaffold": "^0.8.3",
     "zotero-types": "^4.1.0-beta.4"
   },
   "prettier": {

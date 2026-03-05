@@ -1,10 +1,8 @@
 import {
-  BasicExampleFactory,
-  HelperExampleFactory,
-  KeyExampleFactory,
-  PromptExampleFactory,
-  UIExampleFactory,
-} from "./modules/examples";
+  registerTitleFormatterNotifier,
+  unregisterTitleFormatterNotifier,
+  registerContextMenu,
+} from "./modules/titleFormatter";
 import { getString, initLocale } from "./utils/locale";
 import { registerPrefsScripts } from "./modules/preferenceScript";
 import { createZToolkit } from "./utils/ztoolkit";
@@ -18,21 +16,16 @@ async function onStartup() {
 
   initLocale();
 
-  BasicExampleFactory.registerPrefs();
+  // Registrar painel de preferências
+  Zotero.PreferencePanes.register({
+    pluginID: addon.data.config.addonID,
+    src: rootURI + "content/preferences.xhtml",
+    label: getString("prefs-title"),
+    image: `chrome://${addon.data.config.addonRef}/content/icons/favicon.png`,
+  });
 
-  BasicExampleFactory.registerNotifier();
-
-  KeyExampleFactory.registerShortcuts();
-
-  await UIExampleFactory.registerExtraColumn();
-
-  await UIExampleFactory.registerExtraColumnWithCustomCell();
-
-  UIExampleFactory.registerItemPaneCustomInfoRow();
-
-  UIExampleFactory.registerItemPaneSection();
-
-  UIExampleFactory.registerReaderItemPaneSection();
+  // Registrar observer de itens (add/modify)
+  registerTitleFormatterNotifier();
 
   await Promise.all(
     Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
@@ -62,45 +55,32 @@ async function onMainWindowLoad(win: _ZoteroTypes.MainWindow): Promise<void> {
     })
     .show();
 
-  await Zotero.Promise.delay(1000);
+  await Zotero.Promise.delay(500);
   popupWin.changeLine({
-    progress: 30,
-    text: `[30%] ${getString("startup-begin")}`,
+    progress: 50,
+    text: `[50%] ${getString("startup-begin")}`,
   });
 
-  UIExampleFactory.registerStyleSheet(win);
+  // Registrar menu de contexto (botão direito → "Formatar título")
+  registerContextMenu();
 
-  UIExampleFactory.registerRightClickMenuItem();
-
-  UIExampleFactory.registerRightClickMenuPopup(win);
-
-  UIExampleFactory.registerWindowMenuWithSeparator();
-
-  PromptExampleFactory.registerNormalCommandExample();
-
-  PromptExampleFactory.registerAnonymousCommandExample(win);
-
-  PromptExampleFactory.registerConditionalCommandExample();
-
-  await Zotero.Promise.delay(1000);
+  await Zotero.Promise.delay(500);
 
   popupWin.changeLine({
     progress: 100,
     text: `[100%] ${getString("startup-finish")}`,
   });
-  popupWin.startCloseTimer(5000);
-
-  addon.hooks.onDialogEvents("dialogExample");
+  popupWin.startCloseTimer(3000);
 }
 
-async function onMainWindowUnload(win: Window): Promise<void> {
+async function onMainWindowUnload(_win: Window): Promise<void> {
   ztoolkit.unregisterAll();
-  addon.data.dialog?.window?.close();
 }
 
 function onShutdown(): void {
   ztoolkit.unregisterAll();
-  addon.data.dialog?.window?.close();
+  // Desregistrar o observer de títulos
+  unregisterTitleFormatterNotifier();
   // Remove addon object
   addon.data.alive = false;
   // @ts-expect-error - Plugin instance is not typed
@@ -108,8 +88,7 @@ function onShutdown(): void {
 }
 
 /**
- * This function is just an example of dispatcher for Notify events.
- * Any operations should be placed in a function to keep this funcion clear.
+ * Dispatcher para eventos do Notifier.
  */
 async function onNotify(
   event: string,
@@ -117,24 +96,13 @@ async function onNotify(
   ids: Array<string | number>,
   extraData: { [key: string]: any },
 ) {
-  // You can add your code to the corresponding notify type
   ztoolkit.log("notify", event, type, ids, extraData);
-  if (
-    event == "select" &&
-    type == "tab" &&
-    extraData[ids[0]].type == "reader"
-  ) {
-    BasicExampleFactory.exampleNotifierCallback();
-  } else {
-    return;
-  }
+  // O processamento de títulos é feito diretamente no notifier
+  // registrado em titleFormatter.ts
 }
 
 /**
- * This function is just an example of dispatcher for Preference UI events.
- * Any operations should be placed in a function to keep this funcion clear.
- * @param type event type
- * @param data event data
+ * Dispatcher para eventos da tela de Preferências.
  */
 async function onPrefsEvent(type: string, data: { [key: string]: any }) {
   switch (type) {
@@ -143,41 +111,6 @@ async function onPrefsEvent(type: string, data: { [key: string]: any }) {
       break;
     default:
       return;
-  }
-}
-
-function onShortcuts(type: string) {
-  switch (type) {
-    case "larger":
-      KeyExampleFactory.exampleShortcutLargerCallback();
-      break;
-    case "smaller":
-      KeyExampleFactory.exampleShortcutSmallerCallback();
-      break;
-    default:
-      break;
-  }
-}
-
-function onDialogEvents(type: string) {
-  switch (type) {
-    case "dialogExample":
-      HelperExampleFactory.dialogExample();
-      break;
-    case "clipboardExample":
-      HelperExampleFactory.clipboardExample();
-      break;
-    case "filePickerExample":
-      HelperExampleFactory.filePickerExample();
-      break;
-    case "progressWindowExample":
-      HelperExampleFactory.progressWindowExample();
-      break;
-    case "vtableExample":
-      HelperExampleFactory.vtableExample();
-      break;
-    default:
-      break;
   }
 }
 
@@ -192,6 +125,4 @@ export default {
   onMainWindowUnload,
   onNotify,
   onPrefsEvent,
-  onShortcuts,
-  onDialogEvents,
 };

@@ -1,5 +1,4 @@
-pref-title = Addon Template Example
+pref-title = UFC Title Formatter
 pref-enable =
-    .label = Enable
-pref-input = Input
+    .label = Enable automatic formatting
 pref-help = { $name } Build { $version } { $time }

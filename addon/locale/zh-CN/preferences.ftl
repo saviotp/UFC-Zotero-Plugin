@@ -1,5 +1,4 @@
-pref-title = 插件模板设置示例
+pref-title = UFC Title Formatter
 pref-enable =
-    .label = 开启
-pref-input = 输入
+    .label = 启用自动格式化
 pref-help = { $name } Build { $version } { $time }

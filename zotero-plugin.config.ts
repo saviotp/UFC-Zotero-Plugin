@@ -3,15 +3,14 @@ import pkg from "./package.json";
 
 export default defineConfig({
   source: ["src", "addon"],
-  dist: ".scaffold/build",
+  dist: "build",
   name: pkg.config.addonName,
   id: pkg.config.addonID,
   namespace: pkg.config.addonRef,
-  updateURL: `https://github.com/{{owner}}/{{repo}}/releases/download/release/${
-    pkg.version.includes("-") ? "update-beta.json" : "update.json"
-  }`,
+  updateURL:
+    "https://github.com/saviotp/UFC-Zotero-Plugin/releases/download/release/update.json",
   xpiDownloadLink:
-    "https://github.com/{{owner}}/{{repo}}/releases/download/v{{version}}/{{xpiName}}.xpi",
+    "https://github.com/saviotp/UFC-Zotero-Plugin/releases/download/release/ufc-title-formatter.xpi",
 
   build: {
     assets: ["addon/**/*.*"],
@@ -33,8 +32,8 @@ export default defineConfig({
           __env__: `"${process.env.NODE_ENV}"`,
         },
         bundle: true,
-        target: "firefox115",
-        outfile: `.scaffold/build/addon/content/scripts/${pkg.config.addonRef}.js`,
+        target: "firefox128",
+        outfile: `build/addon/content/scripts/${pkg.config.addonRef}.js`,
       },
     ],
   },
