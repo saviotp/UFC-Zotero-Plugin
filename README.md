@@ -1,412 +1,465 @@
-# Zotero Plugin Template
+# UFC Title Formatter — Plugin para Zotero 8+
 
-[![zotero target version](https://img.shields.io/badge/Zotero-7-green?style=flat-square&logo=zotero&logoColor=CC2936)](https://www.zotero.org)
-[![Using Zotero Plugin Template](https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&logo=github)](https://github.com/windingwind/zotero-plugin-template)
+[![Zotero 8+](https://img.shields.io/badge/Zotero-8+-green?style=flat-square&logo=zotero&logoColor=CC2936)](https://www.zotero.org)
+[![GitHub release](https://img.shields.io/github/v/release/saviotp/UFC-Zotero-Plugin?style=flat-square)](https://github.com/saviotp/UFC-Zotero-Plugin/releases/latest)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue?style=flat-square)](LICENSE)
 
-This is a plugin template for [Zotero](https://www.zotero.org/).
+Plugin + estilo CSL para formatar referências e citações no **Zotero 8** conforme as normas **ABNT (NBR 6023:2018 / NBR 10520:2023)** interpretadas pelos **Guias de Normalização da UFC** (2022–2025).
 
-[English](README.md) | [简体中文](doc/README-zhCN.md) | [Français](doc/README-frFR.md)
+---
 
-- Documentation for plugins development
-  - [📖 Plugin Development Documentation](https://zotero-chinese.com/plugin-dev-guide/) (Chinese, not yet complete)
-  - [📖 Plugin Development Documentation for Zotero 7](https://www.zotero.org/support/dev/zotero_7_for_developers)
-- Tools for plugins development
-  - [🛠️ Zotero Plugin Toolkit](https://github.com/windingwind/zotero-plugin-toolkit) | [API Documentation](https://github.com/windingwind/zotero-plugin-toolkit/blob/master/docs/zotero-plugin-toolkit.md)
-  - [🛠️ Zotero Plugin Scaffold](https://github.com/northword/zotero-plugin-scaffold)
-  - [ℹ️ Zotero Type Definitions](https://github.com/windingwind/zotero-types)
-  - [📜 Zotero Source Code](https://github.com/zotero/zotero)
-  - [📌 Zotero Plugin Template](https://github.com/windingwind/zotero-plugin-template) (This repo)
+## Índice
 
-> [!tip]
-> 👁 Watch this repo so that you can be notified whenever there are fixes & updates.
+- [O que faz](#o-que-faz)
+- [Instalação](#instalação)
+- [Preenchimento manual dos campos](#preenchimento-manual-dos-campos)
+  - [Livro](#livro)
+  - [Capítulo de livro](#capítulo-de-livro)
+  - [Tese / Dissertação / TCC](#tese--dissertação--tcc)
+  - [Artigo de periódico](#artigo-de-periódico)
+  - [Artigo de jornal](#artigo-de-jornal)
+  - [Trabalho em evento (anais)](#trabalho-em-evento-anais)
+  - [Legislação](#legislação)
+  - [Página web / Rede social](#página-web--rede-social)
+  - [Filme / Vídeo](#filme--vídeo)
+  - [Documento sonoro (CD, faixa)](#documento-sonoro-cd-faixa)
+  - [Patente](#patente)
+  - [Norma técnica](#norma-técnica)
+  - [Mapa / Atlas](#mapa--atlas)
+  - [Documento iconográfico](#documento-iconográfico)
+  - [Correspondência](#correspondência)
+- [Preferências do plugin](#preferências-do-plugin)
+- [Referências normativas](#referências-normativas)
 
-## Plugins built with this template
+---
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/windingwind/zotero-better-notes?label=zotero-better-notes&style=flat-square)](https://github.com/windingwind/zotero-better-notes)
-[![GitHub Repo stars](https://img.shields.io/github/stars/windingwind/zotero-pdf-preview?label=zotero-pdf-preview&style=flat-square)](https://github.com/windingwind/zotero-pdf-preview)
-[![GitHub Repo stars](https://img.shields.io/github/stars/windingwind/zotero-pdf-translate?label=zotero-pdf-translate&style=flat-square)](https://github.com/windingwind/zotero-pdf-translate)
-[![GitHub Repo stars](https://img.shields.io/github/stars/windingwind/zotero-tag?label=zotero-tag&style=flat-square)](https://github.com/windingwind/zotero-tag)
-[![GitHub Repo stars](https://img.shields.io/github/stars/iShareStuff/ZoteroTheme?label=zotero-theme&style=flat-square)](https://github.com/iShareStuff/ZoteroTheme)
-[![GitHub Repo stars](https://img.shields.io/github/stars/MuiseDestiny/zotero-reference?label=zotero-reference&style=flat-square)](https://github.com/MuiseDestiny/zotero-reference)
-[![GitHub Repo stars](https://img.shields.io/github/stars/MuiseDestiny/zotero-citation?label=zotero-citation&style=flat-square)](https://github.com/MuiseDestiny/zotero-citation)
-[![GitHub Repo stars](https://img.shields.io/github/stars/MuiseDestiny/ZoteroStyle?label=zotero-style&style=flat-square)](https://github.com/MuiseDestiny/ZoteroStyle)
-[![GitHub Repo stars](https://img.shields.io/github/stars/volatile-static/Chartero?label=Chartero&style=flat-square)](https://github.com/volatile-static/Chartero)
-[![GitHub Repo stars](https://img.shields.io/github/stars/l0o0/tara?label=tara&style=flat-square)](https://github.com/l0o0/tara)
-[![GitHub Repo stars](https://img.shields.io/github/stars/redleafnew/delitemwithatt?label=delitemwithatt&style=flat-square)](https://github.com/redleafnew/delitemwithatt)
-[![GitHub Repo stars](https://img.shields.io/github/stars/redleafnew/zotero-updateifsE?label=zotero-updateifsE&style=flat-square)](https://github.com/redleafnew/zotero-updateifsE)
-[![GitHub Repo stars](https://img.shields.io/github/stars/northword/zotero-format-metadata?label=zotero-format-metadata&style=flat-square)](https://github.com/northword/zotero-format-metadata)
-[![GitHub Repo stars](https://img.shields.io/github/stars/inciteful-xyz/inciteful-zotero-plugin?label=inciteful-zotero-plugin&style=flat-square)](https://github.com/inciteful-xyz/inciteful-zotero-plugin)
-[![GitHub Repo stars](https://img.shields.io/github/stars/MuiseDestiny/zotero-gpt?label=zotero-gpt&style=flat-square)](https://github.com/MuiseDestiny/zotero-gpt)
-[![GitHub Repo stars](https://img.shields.io/github/stars/zoushucai/zotero-journalabbr?label=zotero-journalabbr&style=flat-square)](https://github.com/zoushucai/zotero-journalabbr)
-[![GitHub Repo stars](https://img.shields.io/github/stars/MuiseDestiny/zotero-figure?label=zotero-figure&style=flat-square)](https://github.com/MuiseDestiny/zotero-figure)
-[![GitHub Repo stars](https://img.shields.io/github/stars/l0o0/jasminum?label=jasminum&style=flat-square)](https://github.com/l0o0/jasminum)
-[![GitHub Repo stars](https://img.shields.io/github/stars/lifan0127/ai-research-assistant?label=ai-research-assistant&style=flat-square)](https://github.com/lifan0127/ai-research-assistant)
-[![GitHub Repo stars](https://img.shields.io/github/stars/daeh/zotero-markdb-connect?label=zotero-markdb-connect&style=flat-square)](https://github.com/daeh/zotero-markdb-connect)
-[![GitHub Repo stars](https://img.shields.io/github/stars/daeh/zotero-citation-tally?label=citation-tally&style=flat-square)](https://github.com/daeh/zotero-citation-tally)
+## O que faz
 
-If you are using this repo, I recommended that you put the following badge on your README:
+### Plugin (UFC Title Formatter)
 
-[![Using Zotero Plugin Template](https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&logo=github)](https://github.com/windingwind/zotero-plugin-template)
+| Funcionalidade | Descrição |
+|---|---|
+| **Negrito automático no título** | Ao salvar ou importar um item, aplica `<b>` no campo correto conforme ABNT. Obras autônomas (livros, teses, etc.) → negrito no `title`. Partes de obra (artigos, capítulos) → negrito no `publicationTitle`. |
+| **Sentence case** | Corrige títulos importados em MAIÚSCULAS para minúsculas (sentence case), preservando siglas (UFC, ABNT, CNPq, etc.). |
+| **Menu de contexto** | Botão direito → *"Formatar título (ABNT/UFC)"* para formatar manualmente itens selecionados. |
 
-```md
-[![Using Zotero Plugin Template](https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&logo=github)](https://github.com/windingwind/zotero-plugin-template)
+### Estilo CSL (ABNT UFC)
+
+Formata referências e citações seguindo rigorosamente os Guias de Normalização da UFC para todos os tipos documentais: livros, artigos, teses, legislação, filmes, patentes, mapas, etc.
+
+---
+
+## Instalação
+
+### Plugin
+
+1. Baixe o arquivo `.xpi` da [última release](https://github.com/saviotp/UFC-Zotero-Plugin/releases/latest).
+2. No Zotero: **Ferramentas → Complementos → ⚙ → Instalar complemento a partir de arquivo…**
+3. Selecione o `.xpi` baixado e reinicie o Zotero.
+
+### Estilo CSL
+
+1. Baixe o arquivo [`abnt-ufc.csl`](abnt-ufc.csl) deste repositório.
+2. No Zotero: **Editar → Preferências → Citar → + (adicionar estilo)**
+3. Selecione o `.csl` baixado.
+
+---
+
+## Preenchimento manual dos campos
+
+Quando a extração automática de metadados (via DOI, ISBN ou conector web) não preenche os campos corretamente, siga as tabelas abaixo para cada tipo de documento.
+
+> **Dica:** O campo **Extra** do Zotero pode ser usado para informações adicionais que não têm campo dedicado. O campo **Notas** (`note`) aparece literalmente na referência em alguns tipos.
+
+---
+
+### Livro
+
+**Saída esperada:**
+
+```
+MARCONI, Marina de Andrade; LAKATOS, Eva Maria. Metodologia científica.
+4. ed. São Paulo: Atlas, 2004.
 ```
 
-## Features
-
-- Event-driven, functional programming, under extensive skeleton;
-- Simple and user-friendly, works out-of-the-box.
-- Abundant examples in `src/modules/examples.ts`, covering most of the commonly used APIs in plugins (using [zotero-plugin-toolkit](https://github.com/windingwind/zotero-plugin-toolkit));
-- TypeScript support:
-  - Full type definition support for the whole Zotero project, which is written in JavaScript (using [zotero-types](https://github.com/windingwind/zotero-types));
-  - Global variables and environment setup;
-- Plugin develop/build/release workflow:
-  - ⭐ [New!] Auto hot reload! Whenever the source code is modified, automatically compile and reload. [See here→](#auto-hot-reload)
-  - Automatically generate/update plugin id/version, update configrations, and set environment variables (`development` / `production`);
-  - Automatically release to GitHub;
-- Prettier and ES Lint integration.
-
-## Examples
-
-This repo provides examples for [zotero-plugin-toolkit](https://github.com/windingwind/zotero-plugin-toolkit) APIs.
-
-Search `@example` in `src/examples.ts`. The examples are called in `src/hooks.ts`.
-
-### Basic Examples
-
-- registerNotifier
-- registerPrefs, unregisterPrefs
-
-### Shortcut Keys Examples
-
-- registerShortcuts
-- exampleShortcutLargerCallback
-- exampleShortcutSmallerCallback
-- exampleShortcutConflictionCallback
-
-### UI Examples
-
-![image](https://user-images.githubusercontent.com/33902321/211739774-cc5c2df8-5fd9-42f0-9cdf-0f2e5946d427.png)
-
-- registerStyleSheet(the official make-it-red example)
-- registerRightClickMenuItem
-- registerRightClickMenuPopup
-- registerWindowMenuWithSeprator
-- registerExtraColumn
-- registerExtraColumnWithCustomCell
-- registerCustomItemBoxRow
-- registerLibraryTabPanel
-- registerReaderTabPanel
-
-### Preference Pane Examples
-
-![image](https://user-images.githubusercontent.com/33902321/211737987-cd7c5c87-9177-4159-b975-dc67690d0490.png)
-
-- Preferences bindings
-- UI Events
-- Table
-- Locale
-
-See [`src/modules/preferenceScript.ts`](./src/modules/preferenceScript.ts)
-
-### HelperExamples
-
-![image](https://user-images.githubusercontent.com/33902321/215119473-e7d0d0ef-6d96-437e-b989-4805ffcde6cf.png)
-
-- dialogExample
-- clipboardExample
-- filePickerExample
-- progressWindowExample
-- vtableExample(See Preference Pane Examples)
-
-### PromptExamples
-
-An Obsidian-style prompt(popup command input) module. It accepts text command to run callback, with optional display in the popup.
-
-Activate with `Shift+P`.
-
-![image](https://user-images.githubusercontent.com/33902321/215120009-e7c7ed27-33a0-44fe-b021-06c272481a92.png)
-
-- registerAlertPromptExample
-
-## Quick Start Guide
-
-### 0 Requirement
-
-1. Install a beta version of Zotero: <https://www.zotero.org/support/beta_builds>
-2. Install [Node.js latest LTS version](https://nodejs.org/en/) and [Git](https://git-scm.com/)
-
-> [!note]
-> This guide assumes that you have an initial understanding of the basic structure and workings of the Zotero plugin. If you don't, please refer to the [documentation](https://www.zotero.org/support/dev/zotero_7_for_developers) and official plugin examples [Make It Red](https://github.com/zotero/make-it-red) first.
-
-### 1 Creat Your Repo
-
-1. Click `Use this template`
-2. Git clone your new repo
-   <details >
-   <summary>💡 Start with GitHub Codespace</summary>
-
-   _GitHub CodeSpace_ enables you getting started without the need to download code/IDE/dependencies locally.
-
-   Replace the steps above and build you first plugin in 30 seconds!
-   - Goto top of the [homepage](https://github.com/windingwind/zotero-plugin-template), click the green button `Use this template`, click `Open in codespace`. You may need to login to your GitHub account.
-   - Wait for codespace to load.
-
-   </details>
-
-3. Enter the repo folder
-
-### 2 Config Template Settings and Environment
-
-1. Modify the settings in `./package.json`, including:
-
-   ```jsonc
-   {
-     "version": "0.0.0",
-     "description": "",
-     "config": {
-       "addonName": "", // name to be displayed in the plugin manager
-       "addonID": "", // ID to avoid conflict. IMPORTANT!
-       "addonRef": "", // e.g. Element ID prefix
-       "addonInstance": "", // the plugin's root instance: Zotero.${addonInstance}
-       "prefsPrefix": "extensions.zotero.${addonRef}", // the prefix of prefs
-     },
-     "repository": {
-       "type": "git",
-       "url": "git+https://github.com/your-github-name/repo-name.git",
-     },
-     "author": "Your Name",
-     "bugs": {
-       "url": "https://github.com/your-github-name/repo-name/issues",
-     },
-     "homepage": "https://github.com/your-github-name/repo-name#readme",
-   }
-   ```
-
-   > [!warning]
-   > Be careful to set the addonID and addonRef to avoid conflict.
-
-   If you need to host your XPI packages outside of GitHub, modify `updateURL` and add `xpiDownloadLink` in `zotero-plugin.config.ts`.
-
-2. Copy the environment variable file. Modify the commands that starts your installation of the beta Zotero.
-
-   > Create a development profile (Optional)  
-   > Start the beta Zotero with `/path/to/zotero -p`. Create a new profile and use it as your development profile. Do this only once
-
-   ```sh
-   cp .env.example .env
-   vim .env
-   ```
-
-   If you are developing more than one plugin, you can store the bin path and profile path in the system environment variables, which can be omitted here.
-
-3. Install dependencies with `npm install`
-
-   > If you are using `pnpm` as the package manager for your project, you need to add `public-hoist-pattern[]=*@types/bluebird*` to `.npmrc`, see <https://github.com/windingwind/zotero-types?tab=readme-ov-file#usage>.
-
-   If you get `npm ERR! ERESOLVE unable to resolve dependency tree` with `npm install`, which is an upstream dependency bug of typescript-eslint, use the `npm i -f` command to install it.
-
-### 3 Coding
-
-Start development server with `npm start`, it will:
-
-- Prebuild the plugin in development mode
-- Start Zotero with plugin loaded from `build/`
-- Watch `src/**` and `addon/**`, rebuild and reload plugin in Zotero when source code changed.
-
-#### Auto Hot Reload
-
-Tired of endless restarting? Forget about it!
-
-1. Run `npm start`.
-2. Coding. (Yes, that's all)
-
-When file changes are detected in `src` or `addon`, the plugin will be automatically compiled and reloaded.
-
-<details style="text-indent: 2em">
-<summary>💡 Steps to add this feature to an existing plugin</summary>
-
-Please see [zotero-plugin-scaffold](https://github.com/northword/zotero-plugin-scaffold).
-
-</details>
-
-#### Debug in Zotero
-
-You can also:
-
-- Test code snippets in Tools -> Developer -> Run Javascript;
-- Debug output with `Zotero.debug()`. Find the outputs in Help->Debug Output Logging->View Output;
-- Debug UI. Zotero is built on the Firefox XUL framework. Debug XUL UI with software like [XUL Explorer](https://udn.realityripple.com/docs/Archive/Mozilla/XUL_Explorer).
-  > XUL Documentation: <http://www.devdoc.net/web/developer.mozilla.org/en-US/docs/XUL.html>
-
-### 4 Build
-
-Run `npm run build` to build the plugin in production mode. The build output will be located in the `.scaffold/build/` directory.
-
-For detailed build steps, refer to the [zotero-plugin-scaffold documentation](https://northword.github.io/zotero-plugin-scaffold/build.html). In short, the process can be divided into the following steps:
-
-- Create or clear the `build/` directory
-- Copy `addon/**` to `.scaffold/build/addon/**`
-- Replace placeholders: substitute keywords and configurations defined in `package.json`
-- Prepare localization files to avoid conflicts (see the [zotero_7_for_developers](https://www.zotero.org/support/dev/zotero_7_for_developers#avoiding_localization_conflicts) for more information):
-  - Rename `**/*.flt` to `**/${addonRef}-*.flt`
-  - Prefix each message with `addonRef-`
-  - Generate type declaration files for FTL messages
-- Prepare preferences files: prefix preference keys with `package.json#prefsPrefix` and generate type declaration files for preferences
-- Use ESBuild to compile `.ts` source code to `.js`, building from `src/index.ts` to `.scaffold/build/addon/content/scripts`
-- _(Production mode only)_ Compress the `.scaffold/build/addon` directory into `.scaffold/build/*.xpi`
-- _(Production mode only)_ Prepare `update.json` or `update-beta.json`
-
-> [!note]
->
-> **What's the difference between dev & prod?**
->
-> - This environment variable is stored in `Zotero.${addonInstance}.data.env`. The outputs to console is disabled in prod mode.
-> - You can decide what users cannot see/use based on this variable.
-> - In production mode, the build script will pack the plugin and update the `update.json`.
-
-### 5 Release
-
-To build and release, use
-
-```shell
-# version increase, git add, commit and push
-# then on ci, npm run build, and release to GitHub
-npm run release
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Book` | |
+| **Author** | `Marconi, Marina de Andrade` | Sobrenome, Nome. Adicione cada autor separadamente. |
+| **Title** | `Metodologia científica` | O plugin aplica `<b>` automaticamente. |
+| **Edition** | `4` | Apenas o número. O CSL gera "4. ed." |
+| **Place** | `São Paulo` | |
+| **Publisher** | `Atlas` | |
+| **Date** | `2004` | |
+| **# of Pages** | `305` | (Opcional) Gera "305 p." |
+
+---
+
+### Capítulo de livro
+
+**Saída esperada:**
+
+```
+MULLER, Geraldo. O macroeixo São Paulo-Buenos Aires... In: CASTRO, Iná Elias de;
+MIRANDA, Mariana; EGLER, Claudio (org.). Redescobrindo o Brasil: 500 anos depois.
+Rio de Janeiro: Bertrand Brasil: FAPERJ, 1999. p. 41-55.
 ```
 
-> [!note]
-> This will use [Bumpp](https://github.com/antfu-collective/bumpp) to prompt for the new version number, locally bump the version, run any (pre/post)version scripts defined in `package.json`, commit, build (optional), tag the commit with the version number and push commits and git tags. Bumpp can be configured in `zotero-plugin-config.ts`; for example, add `release: { bumpp: { execute: "npm run build" } }` to also build before committing.
->
-> Subsequently GitHub Action will rebuild the plugin and use `zotero-plugin-scaffold`'s `release` script to publish the XPI to GitHub Release. In addition, a separate release (tag: `release`) will be created or updated that includes update manifests `update.json` and `update-beta.json` as assets. These will be available at `https://github.com/{{owner}}/{{repo}}/releases/download/release/update*.json`.
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Book Section` | |
+| **Author** | `Muller, Geraldo` | Autor do capítulo. |
+| **Title** | `O macroeixo São Paulo-Buenos Aires...` | Título do capítulo (sem negrito). |
+| **Editor** | `Castro, Iná Elias de` | Organizador(es) do livro. Adicione cada um. |
+| **Book Title** | `Redescobrindo o Brasil: 500 anos depois` | Título do livro (recebe `<b>` via plugin). |
+| **Place** | `Rio de Janeiro` | |
+| **Publisher** | `Bertrand Brasil: FAPERJ` | Duas editoras separadas por `: `. |
+| **Date** | `1999` | |
+| **Pages** | `41-55` | |
 
-#### About Prerelease
+---
 
-The template defines `prerelease` as the beta version of the plugin, when you select a `prerelease` version in Bumpp (with `-` in the version number). The build script will create a new `update-beta.json` for prerelease use, which ensures that users of the regular version won't be able to update to the beta. Only users who have manually downloaded and installed the beta will be able to update to the next beta automatically.
+### Tese / Dissertação / TCC
 
-When the next regular release is updated, both `update.json` and `update-beta.json` will be updated (on the special `release` release, see above) so that both regular and beta users can update to the new regular release.
+**Saída esperada:**
 
-> [!warning]
-> Strictly, distinguishing between Zotero 6 and Zotero 7 compatible plugin versions should be done by configuring `applications.zotero.strict_min_version` in `addons.__addonID__.updates[]` of `update.json` respectively, so that Zotero recognizes it properly, see <https://www.zotero.org/support/dev/zotero_7_for_developers#updaterdf_updatesjson>.
-
-## Details
-
-### About Hooks
-
-> See also [`src/hooks.ts`](https://github.com/windingwind/zotero-plugin-template/blob/main/src/hooks.ts)
-
-1. When install/enable/startup triggered from Zotero, `bootstrap.js` > `startup` is called
-   - Wait for Zotero ready
-   - Load `index.js` (the main entrance of plugin code, built from `index.ts`)
-   - Register resources if Zotero 7+
-2. In the main entrance `index.js`, the plugin object is injected under `Zotero` and `hooks.ts` > `onStartup` is called.
-   - Initialize anything you want, including notify listeners, preference panes, and UI elements.
-3. When uninstall/disabled triggered from Zotero, `bootstrap.js` > `shutdown` is called.
-   - `events.ts` > `onShutdown` is called. Remove UI elements, preference panes, or anything created by the plugin.
-   - Remove scripts and release resources.
-
-### About Global Variables
-
-> See also [`src/index.ts`](https://github.com/windingwind/zotero-plugin-template/blob/main/src/index.ts)
-
-The bootstrapped plugin runs in a sandbox, which does not have default global variables like `Zotero` or `window`, which we used to have in the overlay plugins' window environment.
-
-This template registers the following variables to the global scope:
-
-```plain
-Zotero, ZoteroPane, Zotero_Tabs, window, document, rootURI, ztoolkit, addon;
+```
+LOURENÇO, Ronaldo Mendes. Proposta de modelo físico-socioambiental para o estudo
+de bacias hidrográficas semiáridas do nordeste setentrional (Brasil). 2018.
+Tese (Doutorado em Geografia) – Centro de Ciências, Universidade Federal do Ceará,
+Fortaleza, 2018. Disponível em: http://www.repositorio.ufc.br/handle/riufc/39044.
+Acesso em: 13 fev. 2019.
 ```
 
-### Create Elements API
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Thesis` | |
+| **Author** | `Lourenço, Ronaldo Mendes` | |
+| **Title** | `Proposta de modelo físico-socioambiental...` | O plugin aplica `<b>`. |
+| **Type** | `Tese (Doutorado em Geografia)` | ⚠️ Preencha exatamente como na referência. |
+| **University** | `Universidade Federal do Ceará` | Apenas a universidade. |
+| **Place** | `Fortaleza` | |
+| **Date** | `2018` | |
+| **Archive** | `Centro de Ciências` | ⚠️ **Faculdade ou Centro.** Se vazio, é omitido. |
+| **# of Pages** | `47` | (Opcional) Gera "47 p." |
+| **URL** | `http://www.repositorio.ufc.br/handle/riufc/39044` | |
+| **Accessed** | `2019-02-13` | Data de acesso. |
 
-The plugin template provides new APIs for bootstrap plugins. We have two reasons to use these APIs, instead of the `createElement/createElementNS`:
+> **⚠️ Importante:** O campo **Archive** é usado para a faculdade/centro (antes da vírgula que separa da universidade). Se a extração automática colocar tudo junto no campo **University** (ex: "Faculdade X – Universidade Y"), separe manualmente:
+> - **Archive** → `Faculdade X`
+> - **University** → `Universidade Y`
 
-- In bootstrap mode, plugins have to clean up all UI elements on exit (disable or uninstall), which is very annoying. Using the `createElement`, the plugin template will maintain these elements. Just `unregisterAll` at the exit.
-- Zotero 7 requires createElement()/createElementNS() → createXULElement() for remaining XUL elements, while Zotero 6 doesn't support `createXULElement`. The React.createElement-like API `createElement` detects namespace(xul/html/svg) and creates elements automatically, with the return element in the corresponding TS element type.
+---
 
-```ts
-createElement(document, "div"); // returns HTMLDivElement
-createElement(document, "hbox"); // returns XUL.Box
-createElement(document, "button", { namespace: "xul" }); // manually set namespace. returns XUL.Button
+### Artigo de periódico
+
+**Saída esperada:**
+
+```
+HOFFMANN, C. A autoridade e a questão do pai. Ágora: estudos em teoria
+psicanalítica, Rio de Janeiro, v. 9, n. 2, p. 169-176, jul. 2006.
 ```
 
-### About Zotero API
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Journal Article` | |
+| **Author** | `Hoffmann, C.` | |
+| **Title** | `A autoridade e a questão do pai` | Sem negrito (o plugin aplica no periódico). |
+| **Publication** | `Ágora: estudos em teoria psicanalítica` | Nome do periódico (recebe `<b>` via plugin). |
+| **Place** | `Rio de Janeiro` | |
+| **Volume** | `9` | |
+| **Issue** | `2` | |
+| **Pages** | `169-176` | |
+| **Date** | `2006-07` | Ano-mês. O CSL gera "jul. 2006". |
+| **DOI** | `10.1590/...` | (Se disponível) |
+| **URL** | `https://...` | |
+| **Accessed** | `2019-02-14` | |
 
-Zotero docs are outdated and incomplete. Clone <https://github.com/zotero/zotero> and search the keyword globally.
+---
 
-> ⭐The [zotero-types](https://github.com/windingwind/zotero-types) provides most frequently used Zotero APIs. It's included in this template by default. Your IDE would provide hint for most of the APIs.
+### Artigo de jornal
 
-A trick for finding the API you want:
+**Saída esperada:**
 
-Search the UI label in `.xhtml`/`.flt` files, find the corresponding key in locale file. Then search this keys in `.js`/`.jsx` files.
-
-### Directory Structure
-
-This section shows the directory structure of a template.
-
-- All `.js/.ts` code files are in `./src`;
-- Addon config files: `./addon/manifest.json`;
-- UI files: `./addon/content/*.xhtml`.
-- Locale files: `./addon/locale/**/*.flt`;
-- Preferences file: `./addon/prefs.js`;
-
-```shell
-.
-|-- .github/                  # github conf
-|-- .vscode/                  # vscode conf
-|-- addon                     # static files
-|   |-- bootstrap.js
-|   |-- content
-|   |   |-- icons
-|   |   |   |-- favicon.png
-|   |   |   `-- favicon@0.5x.png
-|   |   |-- preferences.xhtml
-|   |   `-- zoteroPane.css
-|   |-- locale
-|   |   |-- en-US
-|   |   |   |-- addon.ftl
-|   |   |   |-- mainWindow.ftl
-|   |   |   `-- preferences.ftl
-|   |   `-- zh-CN
-|   |       |-- addon.ftl
-|   |       |-- mainWindow.ftl
-|   |       `-- preferences.ftl
-|   |-- manifest.json
-|   `-- prefs.js
-|-- build                         # build dir
-|-- node_modules
-|-- src                           # source code of scripts
-|   |-- addon.ts                  # base class
-|   |-- hooks.ts                  # lifecycle hooks
-|   |-- index.ts                  # main entry
-|   |-- modules                   # sub modules
-|   |   |-- examples.ts
-|   |   `-- preferenceScript.ts
-|   `-- utils                 # utilities
-|       |-- locale.ts
-|       |-- prefs.ts
-|       |-- wait.ts
-|       |-- window.ts
-|       `-- ztoolkit.ts
-|-- typings                   # ts typings
-|   `-- global.d.ts
-
-|-- .env                      # enviroment config (do not check into repo)
-|-- .env.example              # template of enviroment config, https://github.com/northword/zotero-plugin-scaffold
-|-- .gitignore                # git conf
-|-- .gitattributes            # git conf
-|-- .prettierrc               # prettier conf, https://prettier.io/
-|-- eslint.config.mjs         # eslint conf, https://eslint.org/
-|-- LICENSE
-|-- package-lock.json
-|-- package.json
-|-- tsconfig.json             # typescript conf, https://code.visualstudio.com/docs/languages/jsconfig
-|-- README.md
-`-- zotero-plugin.config.ts   # scaffold conf, https://github.com/northword/zotero-plugin-scaffold
+```
+BARROS, Luana. STF deve concluir hoje julgamento sobre criminalização da
+homofobia. O Povo, Fortaleza, ano 43, n. 30.547, 14 fev. 2019.
+Caderno política, p. 11.
 ```
 
-## Disclaimer
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Newspaper Article` | |
+| **Author** | `Barros, Luana` | |
+| **Title** | `STF deve concluir hoje julgamento...` | |
+| **Publication** | `O Povo` | Nome do jornal (recebe `<b>`). |
+| **Place** | `Fortaleza` | |
+| **Edition** | `ano 43` | Coloque "ano X" como texto. |
+| **Issue** | `30.547` | Número da edição do jornal. |
+| **Date** | `2019-02-14` | Data completa. |
+| **Section** | `Caderno política` | |
+| **Pages** | `11` | |
 
-Use this code under AGPL. No warranties are provided. Keep the laws of your locality in mind!
+---
 
-If you want to change the license, please contact me at <wyzlshx@foxmail.com>
+### Trabalho em evento (anais)
+
+**Saída esperada:**
+
+```
+DIAS, R. L. Parque Nacional do Pico da Neblina... In: CONGRESSO BRASILEIRO
+DE UNIDADES DE CONSERVAÇÃO, 4., 2004, Curitiba. Anais [...]. Curitiba:
+Fundação Boticário de Proteção à Natureza, 2004. p. 45-54.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Conference Paper` | |
+| **Author** | `Dias, R. L.` | |
+| **Title** | `Parque Nacional do Pico da Neblina...` | |
+| **Conference Name** | `CONGRESSO BRASILEIRO DE UNIDADES DE CONSERVAÇÃO, 4., 2004, Curitiba` | ⚠️ Inclua número, ano e local do evento. |
+| **Proceedings Title** | `Anais [...]` | |
+| **Place** | `Curitiba` | |
+| **Publisher** | `Fundação Boticário de Proteção à Natureza` | |
+| **Date** | `2004` | |
+| **Pages** | `45-54` | |
+
+---
+
+### Legislação
+
+**Saída esperada:**
+
+```
+BRASIL. Lei nº 12.305, de 2 de agosto de 2010. Institui a Política Nacional
+de Resíduos Sólidos. Brasília, DF: Casa Civil, 2010. Disponível em: http://...
+Acesso em: 13 fev. 2019.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Statute` | |
+| **Author** | `Brasil` | Jurisdição como autor (entidade). |
+| **Title** | `Lei nº 12.305, de 2 de agosto de 2010. Institui a Política Nacional de Resíduos Sólidos` | ⚠️ Inclua epígrafe + ementa no título. |
+| **Place** | `Brasília, DF` | |
+| **Publisher** | `Casa Civil` | Órgão publicador. |
+| **Date** | `2010` | |
+| **URL** | `http://www.planalto.gov.br/...` | |
+| **Accessed** | `2019-02-13` | |
+
+---
+
+### Página web / Rede social
+
+**Saída esperada:**
+
+```
+UNIVERSIDADE FEDERAL DO CEARÁ. Biblioteca Universitária. Biblioteca Universitária.
+Fortaleza: UFC, 2019. Disponível em: http://www.biblioteca.ufc.br.
+Acesso em: 18 maio 2019.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Web Page` | |
+| **Author** | `Universidade Federal do Ceará. Biblioteca Universitária` | Entidade como autor. |
+| **Title** | `Biblioteca Universitária` | |
+| **Place** | `Fortaleza` | |
+| **Website Title** | `UFC` | Aparece como editora/portal. |
+| **Date** | `2019` | |
+| **URL** | `http://www.biblioteca.ufc.br` | |
+| **Accessed** | `2019-05-18` | |
+
+Para **redes sociais**, adicione a rede no campo **Notes**:
+
+| Campo Zotero | Exemplo |
+|---|---|
+| **Author** | `Couto, Mia` |
+| **Title** | `A saudade` |
+| **Place** | `Cidade da Beira` |
+| **Date** | `2019-08-17` |
+| **Notes** | `Facebook: @miacoutooficial` |
+
+---
+
+### Filme / Vídeo
+
+**Saída esperada:**
+
+```
+ALZHEIMER: mudanças na comunicação e no comportamento. Direção: Thereza
+Jessouroun. [Rio de Janeiro]: Kino Filmes, 2011. 1 DVD (26 min).
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Film` | |
+| **Title** | `Alzheimer: mudanças na comunicação e no comportamento` | Sem autor → CSL coloca em MAIÚSCULAS. |
+| **Director** | `Jessouroun, Thereza` | |
+| **Place** | `[Rio de Janeiro]` | ⚠️ Local inferido entre colchetes. |
+| **Studio** | `Kino Filmes` | |
+| **Date** | `2011` | |
+| **Format** | `1 DVD (26 min)` | Suporte + duração. |
+
+---
+
+### Documento sonoro (CD, faixa)
+
+**Saída esperada (álbum):**
+
+```
+BRASILIZAÇÃO. Fortaleza: Estúdio Santa Música, 2006. 1 CD.
+```
+
+**Saída esperada (faixa):**
+
+```
+ANGÉLICA, Joana. Flor da paisagem. In: ANGÉLICA, Joana. Cantando coisas
+de cá. Fortaleza: Radiadora Cultural, 2007. 1 CD, faixa 8.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Audio Recording` | |
+| **Performer** | `Angélica, Joana` | (ou vazio para álbum sem intérprete) |
+| **Title** | `Flor da paisagem` | Título da faixa. |
+| **Album** | `Cantando coisas de cá` | Título do álbum (container). |
+| **Place** | `Fortaleza` | |
+| **Label** | `Radiadora Cultural` | Gravadora. |
+| **Date** | `2007` | |
+| **Format** | `1 CD, faixa 8` | Suporte + detalhes. |
+
+---
+
+### Patente
+
+**Saída esperada:**
+
+```
+ARAÚJO, Francisco José Freire de. Processo para o preparo do adubo de caranguejo.
+Depositante: Universidade Federal do Ceará. PI0704286-8 A2.
+Depósito: 9 nov. 2007. Concessão: 7 jul. 2009. Disponível em: https://...
+Acesso em: 27 nov. 2023.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Patent` | |
+| **Inventor** | `Araújo, Francisco José Freire de` | |
+| **Title** | `Processo para o preparo do adubo de caranguejo` | |
+| **Assignee** | `Universidade Federal do Ceará` | Depositante. |
+| **Patent Number** | `PI0704286-8 A2` | |
+| **Filing Date** | `2007-11-09` | Data de depósito. |
+| **Issue Date** | `2009-07-07` | Data de concessão. |
+| **URL** | `https://busca.inpi.gov.br/...` | |
+| **Accessed** | `2023-11-27` | |
+
+---
+
+### Norma técnica
+
+**Saída esperada:**
+
+```
+ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. ABNT NBR 6023: informação e
+documentação: referências: elaboração. Rio de Janeiro: ABNT, 2018.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Report` | |
+| **Author** | `Associação Brasileira de Normas Técnicas` | Entidade como autor. |
+| **Title** | `ABNT NBR 6023: informação e documentação: referências: elaboração` | |
+| **Place** | `Rio de Janeiro` | |
+| **Institution** | `ABNT` | |
+| **Date** | `2018` | |
+
+---
+
+### Mapa / Atlas
+
+**Saída esperada:**
+
+```
+IBGE. Diretoria de Geodesia e Cartografia. Desigualdade econômica: infância.
+Rio de Janeiro, 2010. 1 mapa. Escala 1:30.000.000. Disponível em: https://...
+Acesso em: 25 maio 2019.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Map` | |
+| **Author** | `IBGE. Diretoria de Geodesia e Cartografia` | |
+| **Title** | `Desigualdade econômica: infância` | |
+| **Place** | `Rio de Janeiro` | |
+| **Date** | `2010` | |
+| **Extra / Notes** | `1 mapa. Escala 1:30.000.000` | Coloque no campo Notes. |
+| **URL** | `https://atlasescolar.ibge.gov.br/...` | |
+| **Accessed** | `2019-05-25` | |
+
+---
+
+### Documento iconográfico
+
+**Saída esperada:**
+
+```
+PORTINARI, C. Café. 1935. 1 reprodução, óleo sobre tela, 130 x 195 cm.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Artwork` | |
+| **Artist** | `Portinari, C.` | |
+| **Title** | `Café` | |
+| **Date** | `1935` | |
+| **Format** | `1 reprodução, óleo sobre tela, 130 x 195 cm` | Tipo e dimensões. |
+
+---
+
+### Correspondência
+
+**Saída esperada:**
+
+```
+SANTOS, Heitor. [Carta para o filho]. Destinatário: Jefferson Amorim da Silva.
+Caucaia, 2019. 1 carta.
+```
+
+| Campo Zotero | Exemplo | Observação |
+|---|---|---|
+| **Item Type** | `Letter` | |
+| **Author** | `Santos, Heitor` | |
+| **Title** | `[Carta para o filho]` | Entre colchetes quando atribuído. |
+| **Recipient** | `Jefferson Amorim da Silva` | |
+| **Place** | `Caucaia` | |
+| **Date** | `2019` | |
+| **Type** | `1 carta` | |
+
+---
+
+## Preferências do plugin
+
+Acesse em **Zotero → Editar → Preferências → UFC Title Formatter**:
+
+| Preferência | Descrição |
+|---|---|
+| **Habilitar formatação automática** | Liga/desliga a aplicação de `<b>` ao salvar/importar itens. |
+| **Corrigir títulos em MAIÚSCULAS** | Converte títulos all-caps para sentence case, preservando siglas. |
+
+---
+
+## Referências normativas
+
+- [Guia de Normalização de Trabalhos Acadêmicos — UFC 2022](https://biblioteca.ufc.br/wp-content/uploads/2022/05/guianormalizacaotrabalhosacademicos-17.05.2022.pdf)
+- [Guia de Normalização para Elaboração de Referências — UFC 2023](https://biblioteca.ufc.br/wp-content/uploads/2023/12/guianormalizacaoreferencias.pdf)
+- [Guia de Normalização de Citações — UFC 2025](https://biblioteca.ufc.br/wp-content/uploads/2025/06/guianormalizacaocitacoes2025.pdf)
+- [ABNT NBR 6023:2018 — Referências](https://www.abnt.org.br/)
+- [ABNT NBR 10520:2023 — Citações](https://www.abnt.org.br/)
+- [Zotero Rich Text Bibliography](https://www.zotero.org/support/kb/rich_text_bibliography)
+
+---
+
+## Licença
+
+[AGPL-3.0](LICENSE)
