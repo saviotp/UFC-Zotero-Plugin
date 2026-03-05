@@ -34,6 +34,7 @@
  */
 
 import { getString } from "../utils/locale";
+import { getPref } from "../utils/prefs";
 
 // ---------------------------------------------------------------------------
 // Flag anti-loop: impede que o observer dispare novamente ao salvar
@@ -109,6 +110,259 @@ const NO_BOLD_WHEN_NO_AUTHOR_TYPES: ReadonlySet<string> = new Set([
 // ---------------------------------------------------------------------------
 // Lógica de formatação pura (sem efeitos colaterais)
 // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Conversão de MAIÚSCULAS para sentence case (ABNT)
+//
+// Abordagem inspirada em zotero-format-metadata (northword) e na API
+// nativa Zotero.Utilities.sentenceCase, adaptada para títulos em
+// português e normas ABNT/UFC.
+//
+// Estratégia:
+//  1. Identificar posições do texto que devem ser preservadas (tags HTML,
+//     siglas entre parênteses, siglas isoladas conhecidas, nocase spans)
+//  2. Converter tudo para minúsculas
+//  3. Re-capitalizar: primeira letra do texto e início de sub-frases
+//  4. Restaurar posições preservadas
+//
+// Referência: https://github.com/northword/zotero-format-metadata
+//             src/modules/rules/correct-title-sentence-case.ts
+// ---------------------------------------------------------------------------
+
+/**
+ * Detecta se um título está predominantemente em MAIÚSCULAS.
+ * Retorna true se mais de 70% das letras são maiúsculas.
+ *
+ * Remove tags HTML antes da análise para não contar markup.
+ */
+export function isUpperCase(text: string): boolean {
+  const cleaned = text
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (cleaned.length === 0) return false;
+
+  const letters = cleaned.replace(
+    /[^a-zA-ZáàâãéèêíïóôõöúüçÁÀÂÃÉÈÊÍÏÓÔÕÖÚÜÇ]/g,
+    "",
+  );
+  if (letters.length === 0) return false;
+
+  const upperLetters = letters.replace(
+    /[^A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÜÇ]/g,
+    "",
+  );
+  return upperLetters.length / letters.length > 0.7;
+}
+
+// ---------------------------------------------------------------------------
+// Siglas e termos brasileiros que devem ser preservados em MAIÚSCULAS
+// ---------------------------------------------------------------------------
+
+/** Siglas de estados brasileiros (UF) */
+const BRAZILIAN_STATES = [
+  "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO",
+  "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI",
+  "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO",
+];
+
+/** Siglas institucionais, acadêmicas e normativas comuns */
+const INSTITUTIONAL_ACRONYMS = [
+  // Universidades
+  "UFC", "UFAM", "USP", "UNICAMP", "UFRJ", "UFMG", "UFPE", "UFRGS",
+  "UFBA", "UFSC", "UFPR", "UFF", "UFPA", "UFSM", "UFG", "UFES",
+  "UFJF", "UFAL", "UFMA", "UFPI", "UFRN", "UFPB", "UFS", "UFMS",
+  "UFMT", "UFT", "UFAC", "UFRR", "UFAP", "UNIR", "UNIFAP",
+  "UNIFESP", "UNESP", "UERJ", "UEL", "UEM", "UNEB",
+  "PUC", "PUCRS", "PUCSP", "PUCMG", "PUCPR", "PUCCAMP",
+  // Órgãos e organismos
+  "ABNT", "NBR", "ISO", "IBGE", "CNPq", "CAPES", "INEP", "INPA",
+  "MEC", "SUS", "OMS", "ONU", "UNESCO", "OPAS", "OIT",
+  "IPEA", "EMBRAPA", "FIOCRUZ", "INPE", "INPI",
+  // Outros
+  "TCC", "EAD", "ENEM", "SINAES", "BDTD", "DOI", "ISBN", "ISSN",
+  "LGPD", "CLT", "STF", "STJ", "TSE", "TST", "TRF", "TRT",
+  "IBAMA", "FUNAI", "ICMBio", "INCRA", "ANVISA",
+  "PDF", "HTML", "URL", "HTTP", "HTTPS", "XML", "CSV",
+];
+
+/** Todas as siglas combinadas, para lookup rápido */
+const ALL_ACRONYMS: ReadonlySet<string> = new Set([
+  ...BRAZILIAN_STATES,
+  ...INSTITUTIONAL_ACRONYMS,
+]);
+
+// ---------------------------------------------------------------------------
+// Representação de posições protegidas (preserve ranges)
+// ---------------------------------------------------------------------------
+
+interface PreserveRange {
+  start: number;
+  end: number;
+}
+
+// ---------------------------------------------------------------------------
+// Função principal de conversão
+// ---------------------------------------------------------------------------
+
+/**
+ * Converte um título para sentence case, seguindo a estratégia:
+ *
+ *  1. Coleta posições a preservar (tags HTML, siglas entre parênteses,
+ *     palavras que são siglas conhecidas)
+ *  2. Se o texto está todo em maiúsculas (allcaps), converte tudo
+ *     para minúsculas e depois re-capitaliza o início de cada (sub)frase
+ *  3. Se o texto está em Title Case ou misto, aplica a mesma lógica
+ *     mas preserva palavras com maiúsculas internas (ex: "iPhone")
+ *  4. Restaura as posições preservadas com os valores originais
+ *
+ * Inspirado em Zotero.Utilities.sentenceCase e northword/zotero-format-metadata.
+ *
+ * @example
+ *   toSentenceCase(
+ *     "CONEXÕES ECOSSISTÊMICAS-AMAZÔNICAS: AS TECNOLOGIAS DA COMUNICAÇÃO NA VIDA DOS INDÍGENAS DO ALTO RIO NEGRO (AM)"
+ *   )
+ *   // → "Conexões ecossistêmicas-amazônicas: as tecnologias da comunicação na vida dos indígenas do alto rio negro (AM)"
+ */
+export function toSentenceCase(text: string): string {
+  if (!text || text.trim().length === 0) return text;
+
+  const preserve: PreserveRange[] = [];
+  const locale = "pt-BR";
+  const allcaps = text === text.toLocaleUpperCase(locale);
+
+  // --- Passo 1: Coletar posições a preservar ---
+
+  // 1a. Proteger início de sub-frases (após . ? !)
+  text.replace(
+    /([.?!]\s+)(<[^>]+>)?(\p{Lu})/gu,
+    (match, end, markup, char, i) => {
+      markup = markup || "";
+      // Evitar falso positivo com abreviações (ex: "U.S. Taxes")
+      if (!text.substring(0, i + 1).match(/(\p{Lu}\.){2,}$/u)) {
+        preserve.push({
+          start: i + end.length + markup.length,
+          end: i + end.length + markup.length + char.length,
+        });
+      }
+      return match;
+    },
+  );
+
+  // 1b. Proteger primeira letra do texto (pode ter aspas antes)
+  text.replace(
+    /^([""''«»]?)(<[^>]+>)?(\p{Lu})/gu,
+    (match, prefix, markup, char, offset) => {
+      markup = markup || "";
+      preserve.push({
+        start: offset + prefix.length + markup.length,
+        end: offset + prefix.length + markup.length + char.length,
+      });
+      return match;
+    },
+  );
+
+  // 1c. Proteger <span class="nocase"> (Zotero rich text)
+  text.replace(
+    /<span class="nocase">.*?<\/span>|<nc>.*?<\/nc>/gi,
+    (match, i) => {
+      preserve.push({ start: i, end: i + match.length });
+      return match;
+    },
+  );
+
+  // 1d. Proteger conteúdo dentro de tags de formatação (<i>, <b>, <sup>, <sub>)
+  text.replace(
+    /<(i|b|em|strong|sup|sub)(?:\s[^>]*)?>.*?<\/\1>/gi,
+    (match, _tagName, offset) => {
+      preserve.push({ start: offset, end: offset + match.length });
+      return match;
+    },
+  );
+
+  // 1e. Proteger siglas entre parênteses: (AM), (DF), (UFC), etc.
+  text.replace(
+    /\([A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÜÇ][A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÜÇ0-9]{1,}\)/g,
+    (match, offset) => {
+      preserve.push({ start: offset, end: offset + match.length });
+      return match;
+    },
+  );
+
+  // --- Passo 2: Mascarar tags HTML com \uFFFD ---
+
+  let masked = text.replace(/<[^>]+>/g, (match, i) => {
+    preserve.push({ start: i, end: i + match.length });
+    return "\uFFFD".repeat(match.length);
+  });
+
+  // --- Passo 3: Converter palavras para minúsculas ---
+
+  // Tratar "A" isolado após ; ou : (ex: "Subtítulo: A partir de...")
+  masked = masked
+    .replace(
+      /[;:]\uFFFD*\s+\uFFFD*A\s/g,
+      (match) => match.toLocaleLowerCase(locale),
+    )
+    .replace(
+      /[–—]\uFFFD*(?:\s+\uFFFD*)?A\s/g,
+      (match) => match.toLocaleLowerCase(locale),
+    );
+
+  // Processar cada "palavra" (incluindo palavras compostas com hífen)
+  masked = masked.replace(
+    /([\u{FFFD}\p{L}\p{N}]+([\u{FFFD}\p{L}\p{N}\p{Pc}]*))|(\s(\p{Lu}+\.){2,})?/gu,
+    (word) => {
+      if (allcaps) {
+        return word.toLocaleLowerCase(locale);
+      }
+
+      const unmasked = word.replace(/\uFFFD/g, "");
+
+      // Letra isolada: só converter "A" → "a"
+      if (unmasked.length === 1) {
+        return unmasked === "A" ? word.toLocaleLowerCase(locale) : word;
+      }
+
+      // Maiúscula interna (ex: "iPhone", "McCartney") → preservar
+      if (unmasked.match(/.\p{Lu}/u)) {
+        return word;
+      }
+
+      // Identificadores alfanuméricos (ex: "H2O") ou siglas (ex: "UNESCO")
+      if (
+        unmasked.match(/^\p{L}+\p{N}[\p{L}\p{N}]*$/u) ||
+        unmasked.match(/^[\p{Lu}\p{N}]+$/u)
+      ) {
+        return word;
+      }
+
+      // Sigla conhecida → preservar
+      if (ALL_ACRONYMS.has(unmasked)) {
+        return word;
+      }
+
+      return word.toLocaleLowerCase(locale);
+    },
+  );
+
+  // --- Passo 4: Restaurar posições preservadas ---
+
+  // Ordenar de trás para frente para não invalidar offsets
+  preserve.sort((a, b) => b.start - a.start);
+
+  for (const { start, end } of preserve) {
+    if (start < text.length && end <= text.length) {
+      masked =
+        masked.substring(0, start) +
+        text.substring(start, end) +
+        masked.substring(end);
+    }
+  }
+
+  return masked;
+}
 
 /**
  * Dado um título, retorna a versão formatada conforme ABNT/UFC.
@@ -237,7 +491,15 @@ export async function formatItemTitle(
 }
 
 /**
+ * Alias para formatItemTitle — nome usado pelo observer de integração.
+ * Processa um item individual, aplicando negrito conforme regras ABNT/UFC.
+ */
+export const processarItem = formatItemTitle;
+
+/**
  * Aplica <b> em um campo específico do item e salva.
+ * Se a preferência `fixUppercase` estiver habilitada e o texto estiver
+ * predominantemente em MAIÚSCULAS, converte para sentence case antes.
  */
 async function applyBoldToField(
   item: Zotero.Item,
@@ -250,20 +512,29 @@ async function applyBoldToField(
     return { changed: false, reason: `no-field-${field}` };
   }
 
+  let changed = false;
+
+  // Etapa 1: Corrigir caixa alta se habilitado
+  const fixUppercase = getPref("fixUppercase");
+  if (fixUppercase && isUpperCase(value)) {
+    value = toSentenceCase(value);
+    item.setField(field, value);
+    changed = true;
+  }
+
+  // Etapa 2: Aplicar negrito
   const newValue = computeFormattedTitle(value);
-  if (newValue === null) {
-    return { changed: false, reason: "already-formatted" };
-  }
-
-  _isFormatting = true;
-  try {
+  if (newValue !== null) {
     item.setField(field, newValue);
-    await item.saveTx();
-  } finally {
-    _isFormatting = false;
+    changed = true;
   }
 
-  return { changed: true, field };
+  if (changed) {
+    await item.saveTx();
+    return { changed: true, field };
+  }
+
+  return { changed: false, reason: "already-formatted" };
 }
 
 // ---------------------------------------------------------------------------
@@ -359,6 +630,9 @@ export async function formatSelectedItems(): Promise<void> {
 /**
  * Registra o observer no Zotero.Notifier para escutar eventos
  * `add` e `modify` em itens. Deve ser chamado durante o startup.
+ *
+ * Usa padrão try/finally no batch inteiro para garantir que a flag
+ * anti-loop é resetada mesmo se ocorrer erro em um item.
  */
 export function registerTitleFormatterNotifier(): void {
   const callback = {
@@ -373,18 +647,23 @@ export function registerTitleFormatterNotifier(): void {
       if (type !== "item") return;
       if (event !== "add" && event !== "modify") return;
 
-      for (const id of ids) {
-        try {
-          const item = await Zotero.Items.getAsync(id as number);
-          if (item) {
-            await formatItemTitle(item);
+      _isFormatting = true;
+      try {
+        for (const id of ids) {
+          try {
+            const item = await Zotero.Items.getAsync(id as number);
+            if (item) {
+              await processarItem(item);
+            }
+          } catch (e) {
+            ztoolkit.log(
+              `[UFC Title Formatter] Erro ao formatar item ${id}:`,
+              e,
+            );
           }
-        } catch (e) {
-          ztoolkit.log(
-            `[UFC Title Formatter] Erro ao formatar item ${id}:`,
-            e,
-          );
         }
+      } finally {
+        _isFormatting = false;
       }
     },
   };

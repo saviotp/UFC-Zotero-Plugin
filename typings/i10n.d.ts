@@ -11,6 +11,7 @@ export type FluentMessageId =
   | 'format-success-title'
   | 'menuitem-format-title'
   | 'pref-enable'
+  | 'pref-fix-uppercase'
   | 'pref-help'
   | 'pref-title'
   | 'prefs-title'
