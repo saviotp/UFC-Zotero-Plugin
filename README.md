@@ -83,16 +83,16 @@ MARCONI, Marina de Andrade; LAKATOS, Eva Maria. Metodologia científica.
 4. ed. São Paulo: Atlas, 2004.
 ```
 
-| Campo Zotero   | Exemplo                      | Observação                                          |
-| -------------- | ---------------------------- | --------------------------------------------------- |
-| **Item Type**  | `Book`                       |                                                     |
-| **Author**     | `Marconi, Marina de Andrade` | Sobrenome, Nome. Adicione cada autor separadamente. |
-| **Title**      | `Metodologia científica`     | O plugin aplica `<b>` automaticamente.              |
+| Campo Zotero   | Exemplo                      | Observação                                                                                       |
+| -------------- | ---------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Item Type**  | `Book`                       |                                                                                                  |
+| **Author**     | `Marconi, Marina de Andrade` | Sobrenome, Nome. Adicione cada autor separadamente.                                              |
+| **Title**      | `Metodologia científica`     | O plugin aplica `<b>` automaticamente.                                                           |
 | **Edition**    | `4`                          | Apenas o número. O plugin normaliza automaticamente (ex: `2a edição` → `2`). O CSL gera "4. ed." |
-| **Place**      | `São Paulo`                  |                                                     |
-| **Publisher**  | `Atlas`                      |                                                     |
-| **Date**       | `2004`                       |                                                     |
-| **# of Pages** | `305`                        | (Opcional) Gera "305 p."                            |
+| **Place**      | `São Paulo`                  |                                                                                                  |
+| **Publisher**  | `Atlas`                      |                                                                                                  |
+| **Date**       | `2004`                       |                                                                                                  |
+| **# of Pages** | `305`                        | (Opcional) Gera "305 p."                                                                         |
 
 ---
 
@@ -106,17 +106,17 @@ MIRANDA, Mariana; EGLER, Claudio (org.). Redescobrindo o Brasil: 500 anos depois
 Rio de Janeiro: Bertrand Brasil: FAPERJ, 1999. p. 41-55.
 ```
 
-| Campo Zotero   | Exemplo                                   | Observação                                  |
-| -------------- | ----------------------------------------- | ------------------------------------------- |
-| **Item Type**  | `Book Section`                            |                                             |
-| **Author**     | `Muller, Geraldo`                         | Autor do capítulo.                          |
-| **Title**      | `O macroeixo São Paulo-Buenos Aires...`   | Título do capítulo (sem negrito).           |
+| Campo Zotero   | Exemplo                                   | Observação                                                                                                                 |
+| -------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Item Type**  | `Book Section`                            |                                                                                                                            |
+| **Author**     | `Muller, Geraldo`                         | Autor do capítulo.                                                                                                         |
+| **Title**      | `O macroeixo São Paulo-Buenos Aires...`   | Título do capítulo (sem negrito).                                                                                          |
 | **Editor**     | `Castro, Iná Elias de`                    | ⚠️ Organizador(es) do livro. **Adicione cada um separadamente** (clique em "+" no Zotero). Todos aparecerão na referência. |
-| **Book Title** | `Redescobrindo o Brasil: 500 anos depois` | Título do livro (recebe `<b>` via plugin).  |
-| **Place**      | `Rio de Janeiro`                          |                                             |
-| **Publisher**  | `Bertrand Brasil: FAPERJ`                 | Duas editoras separadas por `: `.           |
-| **Date**       | `1999`                                    |                                             |
-| **Pages**      | `41-55`                                   |                                             |
+| **Book Title** | `Redescobrindo o Brasil: 500 anos depois` | Título do livro (recebe `<b>` via plugin).                                                                                 |
+| **Place**      | `Rio de Janeiro`                          |                                                                                                                            |
+| **Publisher**  | `Bertrand Brasil: FAPERJ`                 | Duas editoras separadas por `: `.                                                                                          |
+| **Date**       | `1999`                                    |                                                                                                                            |
+| **Pages**      | `41-55`                                   |                                                                                                                            |
 
 > **⚠️ Importante:** Se a referência ABNT mostra vários organizadores (ex: `CASTRO; MIRANDA; EGLER (org.)`), **todos** devem ser cadastrados como "Editor" no Zotero, um por linha. Se apenas um editor for cadastrado, apenas ele aparecerá na referência.
 

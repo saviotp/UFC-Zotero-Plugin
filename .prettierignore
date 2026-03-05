@@ -1,4 +1,5 @@
 .vscode
+.venv
 build
 logs
 node_modules

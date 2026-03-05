@@ -1,0 +1,2336 @@
+{
+  "items": [
+    {
+      "itemType": "book",
+      "title": "Cadê os operários?",
+      "creators": [
+        { "creatorType": "author", "lastName": "Lessa", "firstName": "Sérgio" }
+      ],
+      "date": "2014",
+      "place": "São Paulo",
+      "publisher": "Instituto Lukacs",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial)</b></p><p>LESSA, Sérgio. <b>Cadê os operários?</b> São Paulo: Instituto Lukacs, 2014.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Metodologia científica",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Marconi",
+          "firstName": "Marina de Andrade"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Lakatos",
+          "firstName": "Eva Maria"
+        }
+      ],
+      "date": "2004",
+      "edition": "4",
+      "place": "São Paulo",
+      "publisher": "Atlas",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial)</b></p><p>MARCONI, Marina de Andrade; LAKATOS, Eva Maria. <b>Metodologia científica</b>. 4. ed. São Paulo: Atlas, 2004.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Educação escolar: políticas, estrutura e organização",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Libâneo",
+          "firstName": "José Carlos"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Oliveira",
+          "firstName": "João Ferreira de"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Toschi",
+          "firstName": "Mirza Seabra"
+        }
+      ],
+      "date": "2012",
+      "place": "São Paulo",
+      "publisher": "Cortez",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial)</b></p><p>LIBÂNEO, José Carlos; OLIVEIRA, João Ferreira de; TOSCHI, Mirza Seabra. <b>Educação escolar</b>: políticas, estrutura e organização. São Paulo: Cortez, 2012.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Didática e docência",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Farias",
+          "firstName": "I. M. S."
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Sales",
+          "firstName": "J. C. B."
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Braga",
+          "firstName": "M. M. S. C."
+        },
+        {
+          "creatorType": "author",
+          "lastName": "França",
+          "firstName": "M. do S. L. M."
+        }
+      ],
+      "date": "2014",
+      "edition": "4",
+      "place": "Brasília, DF",
+      "publisher": "Liber Livro",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial, 4 autores)</b></p><p>FARIAS, I. M. S.; SALES, J. C. B.; BRAGA, M. M. S. C.; FRANÇA, M. do S. L. M. <b>Didática e docência</b>. 4. ed. Brasília, DF: Liber Livro, 2014.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Para ensinar geografia: contribuições para os trabalhos com 1º e 2º graus",
+      "creators": [
+        { "creatorType": "author", "lastName": "Rua", "firstName": "João" },
+        {
+          "creatorType": "author",
+          "lastName": "Waszkiavicus",
+          "firstName": "Fernando Antônio"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Tannuri",
+          "firstName": "Maria Regina Petrus"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Póvoa Neto",
+          "firstName": "Helion"
+        }
+      ],
+      "date": "1993",
+      "place": "Rio de Janeiro",
+      "publisher": "ACCESS",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial, et al.)</b></p><p>RUA, João et al. <b>Para ensinar geografia</b>: contribuições para os trabalhos com 1º e 2º graus. Rio de Janeiro: ACCESS, 1993.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Dicionário contemporâneo da língua portuguesa",
+      "creators": [
+        { "creatorType": "author", "lastName": "Aulete", "firstName": "Caldas" }
+      ],
+      "date": "1980",
+      "edition": "3",
+      "place": "Rio de Janeiro",
+      "publisher": "Delta",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial, dicionário)</b></p><p>AULETE, Caldas. <b>Dicionário contemporâneo da língua portuguesa</b>. 3. ed. Rio de Janeiro: Delta, 1980.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Enciclopédia da moda: de 1840 à década de 90",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "O'Hara",
+          "firstName": "Georgina"
+        }
+      ],
+      "date": "2007",
+      "place": "São Paulo",
+      "publisher": "Companhia das Letras",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial, apóstrofe no sobrenome)</b></p><p>O'HARA, Georgina. <b>Enciclopédia da moda</b>: de 1840 à década de 90. São Paulo: Companhia das Letras, 2007.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Relatório de atividades 2011",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Universidade Federal do Ceará. Biblioteca Universitária"
+        }
+      ],
+      "date": "2011",
+      "place": "Fortaleza",
+      "publisher": "Biblioteca Universitária",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial, autor institucional)</b></p><p>UNIVERSIDADE FEDERAL DO CEARÁ. Biblioteca Universitária. <b>Relatório de atividades 2011</b>. Fortaleza: Biblioteca Universitária, 2011.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "COLLINS dicionário: inglês-português, português-inglês",
+      "creators": [],
+      "date": "2009",
+      "edition": "6",
+      "place": "Glasgow",
+      "publisher": "Collins",
+      "tags": [{ "tag": "§3.1.1.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (essencial, sem autoria)</b></p><p>COLLINS dicionário: inglês-português, português-inglês. 6th ed. Glasgow: Collins, 2009.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "A reinvenção da sociedade primitiva: transformações de um mito",
+      "creators": [
+        { "creatorType": "author", "lastName": "Kuper", "firstName": "Adam" }
+      ],
+      "date": "2008",
+      "place": "Recife",
+      "publisher": "Ed. Universitária da UFPE",
+      "numPages": "338",
+      "extra": "Tradução de Simone Miziara Frangella",
+      "tags": [{ "tag": "§3.1.1.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (complementar)</b></p><p>KUPER, Adam. <b>A reinvenção da sociedade primitiva</b>: transformações de um mito. Tradução de Simone Miziara Frangella. Recife: Ed. Universitária da UFPE, 2008. 338 p.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Cadê os operários?",
+      "creators": [
+        { "creatorType": "author", "lastName": "Lessa", "firstName": "Sérgio" }
+      ],
+      "date": "2014",
+      "place": "São Paulo",
+      "publisher": "Instituto Lukacs",
+      "numPages": "96",
+      "ISBN": "978-85-65999-18-2",
+      "tags": [{ "tag": "§3.1.1.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (complementar, ISBN)</b></p><p>LESSA, Sérgio. <b>Cadê os operários?</b> São Paulo: Instituto Lukacs, 2014. 96 p. ISBN 978-85-65999-18-2.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Dicionário da língua de sinais do Brasil: a Libras em suas mãos",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Povilla",
+          "firstName": "Fernando Cesar"
+        }
+      ],
+      "date": "2017",
+      "place": "São Paulo",
+      "publisher": "EDUSP",
+      "ISBN": "978-85-31416-45-3",
+      "tags": [{ "tag": "§3.1.1.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (complementar, ISBN)</b></p><p>POVILLA, Fernando Cesar. <b>Dicionário da língua de sinais do Brasil</b>: a Libras em suas mãos. São Paulo: EDUSP, 2017. ISBN 978-85-31416-45-3.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Cuidados neurointensivos",
+      "creators": [
+        {
+          "creatorType": "editor",
+          "lastName": "Terzi",
+          "firstName": "Renato G. G."
+        },
+        {
+          "creatorType": "editor",
+          "lastName": "Falcão",
+          "firstName": "Antonio Luis Eiras"
+        },
+        {
+          "creatorType": "editor",
+          "lastName": "Videtta",
+          "firstName": "Walter"
+        }
+      ],
+      "date": "2013",
+      "place": "São Paulo",
+      "publisher": "Atheneu",
+      "numPages": "480",
+      "series": "Clínicas de Medicina Intensiva Brasileira",
+      "seriesNumber": "18",
+      "tags": [{ "tag": "§3.1.1.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (complementar, editores, série)</b></p><p>TERZI, Renato G. G.; FALCÃO, Antonio Luis Eiras; VIDETTA, Walter (ed.). <b>Cuidados neurointensivos</b>. São Paulo: Atheneu, 2013. 480 p. (Clínicas de Medicina Intensiva Brasileira, v. 18).</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "ENCICLOPÉDIA Mirador Internacional: livro do ano 1991: eventos de 1990",
+      "creators": [],
+      "date": "1991",
+      "place": "São Paulo",
+      "publisher": "Encyclopaedia Britannica do Brasil",
+      "numPages": "448",
+      "tags": [{ "tag": "§3.1.1.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (complementar, sem autoria)</b></p><p>ENCICLOPÉDIA Mirador Internacional: livro do ano 1991: eventos de 1990. São Paulo: Encyclopaedia Britannica do Brasil, c1991. 448 p.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "THE NEW encyclopaedia britannica: micropaedia",
+      "creators": [],
+      "date": "1986",
+      "place": "Chicago",
+      "publisher": "Encyclopaedia Britannica",
+      "numberOfVolumes": "30",
+      "tags": [{ "tag": "§3.1.1.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (complementar, sem autoria, 30 v.)</b></p><p>THE NEW encyclopaedia britannica: micropaedia. Chicago: Encyclopaedia Britannica, 1986. 30 v.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Enciclopédia e dicionário digital",
+      "creators": [
+        { "creatorType": "editor", "lastName": "Koogan", "firstName": "André" },
+        {
+          "creatorType": "editor",
+          "lastName": "Houaiss",
+          "firstName": "Antônio"
+        }
+      ],
+      "date": "1998",
+      "place": "São Paulo",
+      "publisher": "Delta",
+      "extra": "5 CD-ROM",
+      "tags": [{ "tag": "§3.1.1.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (essencial)</b></p><p>KOOGAN, André; HOUAISS, Antônio (ed.). <b>Enciclopédia e dicionário digital</b>. São Paulo: Delta, 1998. 5 CD-ROM.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Água e democracia na América Latina",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Castro",
+          "firstName": "José Esteban"
+        }
+      ],
+      "date": "2016",
+      "place": "Campina Grande",
+      "publisher": "EDUEPB",
+      "url": "http://books.scielo.org/id/tn4y9/pdf/castro-9788578794866.pdf",
+      "accessDate": "2019-08-22",
+      "extra": "E-book",
+      "tags": [{ "tag": "§3.1.1.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (essencial)</b></p><p>CASTRO, José Esteban. <b>Água e democracia na América Latina</b>. Campina Grande: EDUEPB, 2016. E-book. Disponível em: http://books.scielo.org/id/tn4y9/pdf/castro-9788578794866.pdf. Acesso em: 22 ago. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Dicionário Aurélio da língua portuguesa",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Ferreira",
+          "firstName": "Aurélio Buarque de Holanda"
+        }
+      ],
+      "date": "2010",
+      "edition": "5",
+      "place": "Curitiba",
+      "publisher": "Positivo",
+      "url": "https://pergamum.ufc.br/pergamum/biblioteca/fotos.php?cod_acervo=171775",
+      "accessDate": "2019-02-12",
+      "tags": [{ "tag": "§3.1.1.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (essencial)</b></p><p>FERREIRA, Aurélio Buarque de Holanda. <b>Dicionário Aurélio da língua portuguesa</b>. 5. ed. Curitiba: Positivo, 2010. Disponível em: https://pergamum.ufc.br/pergamum/biblioteca/fotos.php?cod_acervo=171775. Acesso em: 12 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "A batalha do apocalipse: da queda dos anjos ao crepúsculo do mundo",
+      "creators": [
+        { "creatorType": "author", "lastName": "Spohr", "firstName": "Eduardo" }
+      ],
+      "date": "2010",
+      "place": "Campinas",
+      "publisher": "Verus",
+      "extra": "E-book",
+      "tags": [{ "tag": "§3.1.1.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (essencial)</b></p><p>SPOHR, Eduardo. <b>A batalha do apocalipse</b>: da queda dos anjos ao crepúsculo do mundo. Campinas: Verus, 2010. E-book.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Relatório de gestão: exercício 2014",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Brasil. Controladoria Geral da União"
+        }
+      ],
+      "date": "2015",
+      "place": "Brasília, DF",
+      "publisher": "CGU",
+      "numPages": "150",
+      "url": "http://goo.gl/C7lXCw",
+      "accessDate": "2016-05-24",
+      "tags": [{ "tag": "§3.1.1.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (essencial, autor institucional)</b></p><p>BRASIL. Controladoria Geral da União. <b>Relatório de gestão</b>: exercício 2014. Brasília, DF: CGU, 2015. 150 p. Disponível em: http://goo.gl/C7lXCw. Acesso em: 24 maio 2016.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "bookSection",
+      "title": "O macroeixo São Paulo-Buenos Aires e a gestão territorializada de governos subnacionais",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Muller",
+          "firstName": "Geraldo"
+        },
+        {
+          "creatorType": "editor",
+          "lastName": "Castro",
+          "firstName": "Iná Elias de"
+        },
+        {
+          "creatorType": "editor",
+          "lastName": "Miranda",
+          "firstName": "Mariana"
+        },
+        { "creatorType": "editor", "lastName": "Egler", "firstName": "Claudio" }
+      ],
+      "date": "1999",
+      "bookTitle": "Redescobrindo o Brasil: 500 anos depois",
+      "place": "Rio de Janeiro",
+      "publisher": "Bertrand Brasil: FAPERJ",
+      "pages": "41-55",
+      "tags": [{ "tag": "§3.1.1.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.3 — Capítulo de livro (essencial)</b></p><p>MULLER, Geraldo. O macroeixo São Paulo-Buenos Aires e a gestão territorializada de governos subnacionais. In: CASTRO, Iná Elias de; MIRANDA, Mariana; EGLER, Claudio (org.). <b>Redescobrindo o Brasil</b>: 500 anos depois. Rio de Janeiro: Bertrand Brasil: FAPERJ, 1999. p. 41-55.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "bookSection",
+      "title": "Introdução",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Barbosa",
+          "firstName": "G. A."
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Pinheiro",
+          "firstName": "A. G."
+        },
+        {
+          "creatorType": "editor",
+          "lastName": "Pimentel",
+          "firstName": "A. J. P."
+        },
+        {
+          "creatorType": "editor",
+          "lastName": "Andrade",
+          "firstName": "E. O."
+        },
+        { "creatorType": "editor", "lastName": "Barbosa", "firstName": "G. A." }
+      ],
+      "date": "2004",
+      "bookTitle": "Os estudantes de medicina e o ato médico: atitudes e valores que norteiam seu posicionamento",
+      "place": "Brasília, DF",
+      "publisher": "Conselho Federal de Medicina",
+      "pages": "25-30",
+      "tags": [{ "tag": "§3.1.1.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.3 — Capítulo de livro (essencial)</b></p><p>BARBOSA, G. A.; PINHEIRO, A. G. Introdução. In: PIMENTEL, A. J. P.; ANDRADE, E. O.; BARBOSA, G. A. (org.). <b>Os estudantes de medicina e o ato médico</b>: atitudes e valores que norteiam seu posicionamento. Brasília, DF: Conselho Federal de Medicina, 2004. p. 25-30.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "bookSection",
+      "title": "Amebas de vida livre",
+      "creators": [
+        { "creatorType": "author", "lastName": "Neves", "firstName": "D. P." },
+        { "creatorType": "editor", "lastName": "Neves", "firstName": "D. P." }
+      ],
+      "date": "2005",
+      "bookTitle": "Parasitologia humana",
+      "edition": "11",
+      "place": "São Paulo",
+      "publisher": "Atheneu",
+      "extra": "cap. 16",
+      "tags": [{ "tag": "§3.1.1.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.3 — Capítulo de livro (essencial)</b></p><p>NEVES, D. P. Amebas de vida livre. In: NEVES, D. P. <b>Parasitologia humana</b>. 11. ed. São Paulo: Atheneu, 2005. cap. 16.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "dictionaryEntry",
+      "title": "Batuque",
+      "creators": [],
+      "date": "2012",
+      "dictionaryTitle": "Dicionário do folclore brasileiro",
+      "edition": "12",
+      "place": "São Paulo",
+      "publisher": "Global",
+      "pages": "59",
+      "extra": "In: CASCUDO, Luis da Câmara",
+      "tags": [{ "tag": "§3.1.1.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.3 — Verbete de dicionário (essencial)</b></p><p>BATUQUE. In: CASCUDO, Luis da Câmara. <b>Dicionário do folclore brasileiro</b>. 12. ed. São Paulo: Global, 2012. p. 59.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "dictionaryEntry",
+      "title": "Formatação",
+      "creators": [],
+      "date": "2008",
+      "dictionaryTitle": "Dicionário de biblioteconomia e arquivologia",
+      "place": "Brasília, DF",
+      "publisher": "Briquet de Lemos",
+      "pages": "173",
+      "extra": "In: CUNHA, Murilo Bastos; CAVALCANTI, Cordélia Robalinho de Oliveira",
+      "tags": [{ "tag": "§3.1.1.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.3 — Verbete de dicionário (essencial)</b></p><p>FORMATAÇÃO. In: CUNHA, Murilo Bastos; CAVALCANTI, Cordélia Robalinho de Oliveira. <b>Dicionário de biblioteconomia e arquivologia</b>. Brasília, DF: Briquet de Lemos, 2008. p. 173.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "bookSection",
+      "title": "Morfologia dos artrópodes",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Nascimento",
+          "firstName": "E."
+        },
+        { "creatorType": "editor", "lastName": "Castro", "firstName": "I." }
+      ],
+      "date": "1998",
+      "bookTitle": "Enciclopédia multimídia dos seres vivos",
+      "place": "[S. l.]",
+      "publisher": "Planeta DeAgostini",
+      "extra": "CD-ROM 9",
+      "tags": [{ "tag": "§3.1.1.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.4 — Capítulo de livro eletrônico (essencial)</b></p><p>NASCIMENTO, E. Morfologia dos artrópodes. In: CASTRO, I. (org.). <b>Enciclopédia multimídia dos seres vivos</b>. [S. l.]: Planeta DeAgostini, c1998. CD-ROM 9.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "bookSection",
+      "title": "Hilda Hilst no fluxo da consciência: o horizonte estético de contos d'escárnio",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Silva",
+          "firstName": "Reginaldo Oliveira"
+        }
+      ],
+      "date": "2013",
+      "bookTitle": "Uma superfície de gelo ancorada no riso: a atualidade do grotesco em Hilda Hilst",
+      "place": "Campina Grande",
+      "publisher": "EDUEPB",
+      "pages": "199-292",
+      "url": "http://books.scielo.org/id/wwfpz",
+      "accessDate": "2016-04-01",
+      "tags": [{ "tag": "§3.1.1.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.4 — Capítulo de livro eletrônico (essencial)</b></p><p>SILVA, Reginaldo Oliveira. Hilda Hilst no fluxo da consciência: o horizonte estético de contos d'escárnio. In: SILVA, Reginaldo Oliveira. <b>Uma superfície de gelo ancorada no riso</b>: a atualidade do grotesco em Hilda Hilst. Campina Grande: EDUEPB, 2013. p. 199-292. Disponível em: http://books.scielo.org/id/wwfpz. Acesso em: 1 abr. 2016.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "bookSection",
+      "title": "Identificação da instituição",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Universidade Federal do Ceará. Biblioteca Universitária"
+        }
+      ],
+      "date": "2017",
+      "bookTitle": "Relatório de avaliação dos produtos e serviços oferecidos pelo Sistema de Bibliotecas da Universidade Federal do Ceará: aplicação 03",
+      "place": "Fortaleza",
+      "publisher": "Biblioteca Universitária",
+      "url": "http://www.biblioteca.ufc.br/wp-content/uploads/2017/12/rel-avaliacao-servicos-2017.pdf",
+      "accessDate": "2019-03-25",
+      "tags": [{ "tag": "§3.1.1.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.4 — Capítulo de livro eletrônico (essencial, institucional)</b></p><p>UNIVERSIDADE FEDERAL DO CEARÁ. Biblioteca Universitária. Identificação da instituição. In: UNIVERSIDADE FEDERAL DO CEARÁ. Biblioteca Universitária. <b>Relatório de avaliação dos produtos e serviços oferecidos pelo Sistema de Bibliotecas da Universidade Federal do Ceará</b>: aplicação 03. Fortaleza: Biblioteca Universitária, 2017. Disponível em: http://www.biblioteca.ufc.br/wp-content/uploads/2017/12/rel-avaliacao-servicos-2017.pdf. Acesso em: 25 mar. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "thesis",
+      "title": "Três ensaios em análise econômica",
+      "creators": [
+        { "creatorType": "author", "lastName": "Benegas", "firstName": "M." }
+      ],
+      "date": "2006",
+      "thesisType": "Tese (Doutorado em Economia)",
+      "university": "Universidade Federal do Ceará",
+      "place": "Fortaleza",
+      "archive": "Faculdade de Economia, Administração, Atuária e Contabilidade",
+      "tags": [{ "tag": "§3.1.2.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.2.1 — Tese (essencial)</b></p><p>BENEGAS, M. <b>Três ensaios em análise econômica</b>. 2006. Tese (Doutorado em Economia) – Faculdade de Economia, Administração, Atuária e Contabilidade, Universidade Federal do Ceará, Fortaleza, 2006.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "thesis",
+      "title": "Análise de transmissão de preços do mercado de melão do Brasil",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Mayorga",
+          "firstName": "Rodrigo de Oliveira"
+        }
+      ],
+      "date": "2006",
+      "thesisType": "Dissertação (Mestrado em Economia Rural)",
+      "university": "Universidade Federal do Ceará",
+      "place": "Fortaleza",
+      "archive": "Centro de Ciências Agrárias",
+      "tags": [{ "tag": "§3.1.2.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.2.1 — Dissertação (essencial)</b></p><p>MAYORGA, Rodrigo de Oliveira. <b>Análise de transmissão de preços do mercado de melão do Brasil</b>. 2006. Dissertação (Mestrado em Economia Rural) – Centro de Ciências Agrárias, Universidade Federal do Ceará, Fortaleza, 2006.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "thesis",
+      "title": "Estudo bioeconômico da pesca da lagosta no nordeste do Brasil: análise estática",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Campos",
+          "firstName": "Ludmila Maria de Araújo"
+        },
+        {
+          "creatorType": "contributor",
+          "lastName": "Carvalho",
+          "firstName": "Roberto Cláudio de Almeida"
+        }
+      ],
+      "date": "2001",
+      "thesisType": "Dissertação (Mestrado em Desenvolvimento e Meio Ambiente)",
+      "university": "Universidade Federal do Ceará",
+      "place": "Fortaleza",
+      "archive": "Pró-Reitoria de Pesquisa e Pós-Graduação",
+      "extra": "Orientador: Roberto Cláudio de Almeida Carvalho",
+      "tags": [{ "tag": "§3.1.2.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.2.1 — Dissertação (complementar, orientador)</b></p><p>CAMPOS, Ludmila Maria de Araújo. <b>Estudo bioeconômico da pesca da lagosta no nordeste do Brasil</b>: análise estática. Orientador: Roberto Cláudio de Almeida Carvalho. 2001. Dissertação (Mestrado em Desenvolvimento e Meio Ambiente) – Pró-Reitoria de Pesquisa e Pós-Graduação, Universidade Federal do Ceará, Fortaleza, 2000.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "thesis",
+      "title": "Reuso de água tendo como estudo de caso o projeto do Aeroporto Zumbi dos Palmares",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Chagas Júnior",
+          "firstName": "L. W. R."
+        }
+      ],
+      "date": "2006",
+      "thesisType": "Trabalho de conclusão de curso (Especialização em Avaliações e Perícias de Engenharia)",
+      "university": "Universidade Federal do Ceará",
+      "place": "Fortaleza",
+      "archive": "Centro de Tecnologia",
+      "numPages": "47",
+      "tags": [{ "tag": "§3.1.2.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.2.1 — TCC (complementar, 47 p.)</b></p><p>CHAGAS JÚNIOR, L. W. R. <b>Reuso de água tendo como estudo de caso o projeto do Aeroporto Zumbi dos Palmares</b>. 2006. 47 p. Trabalho de conclusão de curso (Especialização em Avaliações e Perícias de Engenharia) – Centro de Tecnologia, Universidade Federal do Ceará, Fortaleza, 2006.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "thesis",
+      "title": "Proposta de modelo físico-socioambiental para o estudo de bacias hidrográficas semiáridas do nordeste setentrional (Brasil)",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Lourenço",
+          "firstName": "Ronaldo Mendes"
+        }
+      ],
+      "date": "2018",
+      "thesisType": "Tese (Doutorado em Geografia)",
+      "university": "Universidade Federal do Ceará",
+      "place": "Fortaleza",
+      "archive": "Centro de Ciências",
+      "url": "http://www.repositorio.ufc.br/handle/riufc/39044",
+      "accessDate": "2019-02-13",
+      "tags": [{ "tag": "§3.1.2.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.2.2 — Tese eletrônica (essencial)</b></p><p>LOURENÇO, Ronaldo Mendes. <b>Proposta de modelo físico-socioambiental para o estudo de bacias hidrográficas semiáridas do nordeste setentrional (Brasil)</b>. 2018. Tese (Doutorado em Geografia) – Centro de Ciências, Universidade Federal do Ceará, Fortaleza, 2018. Disponível em: http://www.repositorio.ufc.br/handle/riufc/39044. Acesso em: 13 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "letter",
+      "title": "[Carta para o filho]",
+      "creators": [
+        { "creatorType": "author", "lastName": "Santos", "firstName": "Heitor" }
+      ],
+      "date": "2019",
+      "extra": "Destinatário: Jefferson Amorim da Silva. Caucaia, 2019. 1 carta.",
+      "tags": [{ "tag": "§3.2.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.2.1 — Correspondência (essencial)</b></p><p>SANTOS, Heitor. [Carta para o filho]. Destinatário: Jefferson Amorim da Silva. Caucaia, 2019. 1 carta.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "letter",
+      "title": "[Correspondência]",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Castro",
+          "firstName": "Islânia"
+        }
+      ],
+      "date": "2019",
+      "extra": "Destinatário: Weslayne Sales. [S.l.], 2019. 1 bilhete.",
+      "tags": [{ "tag": "§3.2.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.2.1 — Correspondência (essencial)</b></p><p>CASTRO, Islânia. [Correspondência]. Destinatário: Weslayne Sales. [S.l.], 2019. 1 bilhete.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "letter",
+      "title": "[Correspondência]",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Nascimento",
+          "firstName": "Isabela"
+        }
+      ],
+      "date": "2019-06-17",
+      "extra": "Destinatário: Anderson Pereira. Fortaleza, 17 jun. 2019. 1 cartão pessoal.",
+      "tags": [{ "tag": "§3.2.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.2.1 — Correspondência (essencial)</b></p><p>NASCIMENTO, Isabela. [Correspondência]. Destinatário: Anderson Pereira. Fortaleza, 17 jun. 2019. 1 cartão pessoal.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "A autoridade e a questão do pai",
+      "creators": [
+        { "creatorType": "author", "lastName": "Hoffmann", "firstName": "C." }
+      ],
+      "date": "2006-07",
+      "publicationTitle": "Ágora: estudos em teoria psicanalítica",
+      "place": "Rio de Janeiro",
+      "volume": "9",
+      "issue": "2",
+      "pages": "169-176",
+      "tags": [{ "tag": "§3.3.7-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.7 — Artigo de periódico (essencial)</b></p><p>HOFFMANN, C. A autoridade e a questão do pai. <b>Ágora</b>: estudos em teoria psicanalítica, Rio de Janeiro, v. 9, n. 2, p. 169-176, jul. 2006.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "La orientación temática a través de las materias en BN-OPALE plus (BnF): los problemas de la importación de registros bibliográficos",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Nunez",
+          "firstName": "Fernanda"
+        }
+      ],
+      "date": "2005",
+      "publicationTitle": "Investigación Bibliotecológica",
+      "place": "Ciudad de México",
+      "volume": "19",
+      "issue": "38",
+      "pages": "41-63",
+      "tags": [{ "tag": "§3.3.7-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.7 — Artigo de periódico (essencial)</b></p><p>NUNEZ, Fernanda. La orientación temática a través de las materias en BN-OPALE plus (BnF): los problemas de la importación de registros bibliográficos. <b>Investigación Bibliotecológica</b>, Ciudad de México, v. 19, n. 38, p. 41-63, 2005.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "How many species of mammals are there?",
+      "creators": [
+        { "creatorType": "author", "lastName": "Rees", "firstName": "J. L." }
+      ],
+      "date": "2011",
+      "publicationTitle": "Journal of Mammalogy",
+      "volume": "92",
+      "issue": "1",
+      "pages": "1-14",
+      "tags": [{ "tag": "§3.3.7-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.7 — Artigo de periódico (essencial)</b></p><p>REES, J. L. How many species of mammals are there? <b>Journal of Mammalogy</b>, v. 92, n. 1, p. 1-14, 2011.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "Sobre a tensão entre a universalidade e a particularidade na crítica de arte",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Favoretto",
+          "firstName": "Bruna"
+        }
+      ],
+      "date": "2013-07",
+      "publicationTitle": "Kínesis",
+      "place": "Marília",
+      "volume": "5",
+      "issue": "10",
+      "pages": "167-179",
+      "tags": [{ "tag": "§3.3.7-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.7 — Artigo de periódico (essencial)</b></p><p>FAVORETTO, Bruna. Sobre a tensão entre a universalidade e a particularidade na crítica de arte. <b>Kínesis</b>, Marília, v. 5, n. 10, p. 167-179, jul. 2013.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "Impactos da gestão de aulas baseadas em problemas verbais de matemática sobre a aprendizagem",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Souza",
+          "firstName": "Maria Alice Veiga Ferreira de"
+        }
+      ],
+      "date": "2017-04",
+      "publicationTitle": "Educar em Revista",
+      "place": "Curitiba",
+      "volume": "33",
+      "issue": "64",
+      "pages": "231-246",
+      "DOI": "10.1590/0104-4060.46978",
+      "url": "https://revistas.ufpr.br/educar/article/view/46978/32186",
+      "accessDate": "2019-02-14",
+      "tags": [{ "tag": "§3.3.8-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.8 — Artigo de periódico eletrônico (essencial)</b></p><p>SOUZA, Maria Alice Veiga Ferreira de. Impactos da gestão de aulas baseadas em problemas verbais de matemática sobre a aprendizagem. <b>Educar em Revista</b>, Curitiba, v. 33, n. 64, p. 231-246, abr. 2017. DOI 10.1590/0104-4060.46978. Disponível em: https://revistas.ufpr.br/educar/article/view/46978/32186. Acesso em: 14 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "Representación y participación en la crítica democrática",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Lavalle",
+          "firstName": "Adrián Gurza"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Isunza Vera",
+          "firstName": "Ernesto"
+        }
+      ],
+      "date": "2015",
+      "publicationTitle": "Desacatos",
+      "place": "Ciudad del México",
+      "volume": "49",
+      "pages": "10-27",
+      "url": "https://desacatos.ciesas.edu.mx/index.php/Desacatos/article/view/150",
+      "accessDate": "2019-07-31",
+      "tags": [{ "tag": "§3.3.8-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.8 — Artigo de periódico eletrônico (essencial)</b></p><p>LAVALLE, Adrián Gurza; ISUNZA VERA, Ernesto. Representación y participación en la crítica democrática. <b>Desacatos</b>, Ciudad del México, v. 49, p. 10-27, 2015. Disponível em: https://desacatos.ciesas.edu.mx/index.php/Desacatos/article/view/150. Acesso em: 31 jul. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "newspaperArticle",
+      "title": "STF deve concluir hoje julgamento sobre criminalização da homofobia",
+      "creators": [
+        { "creatorType": "author", "lastName": "Barros", "firstName": "Luana" }
+      ],
+      "date": "2019-02-14",
+      "publicationTitle": "O Povo",
+      "place": "Fortaleza",
+      "pages": "11",
+      "section": "Caderno política",
+      "extra": "ano 43, n. 30.547",
+      "tags": [{ "tag": "§3.3.9-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.9 — Artigo de jornal impresso (essencial)</b></p><p>BARROS, Luana. STF deve concluir hoje julgamento sobre criminalização da homofobia. <b>O Povo</b>, Fortaleza, ano 43, n. 30.547, 14 fev. 2019. Caderno política, p. 11.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "newspaperArticle",
+      "title": "Mercosul precisa modernizar regras para investimentos",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Holanda",
+          "firstName": "Aurélio Buarque de"
+        }
+      ],
+      "date": "2019-02-14",
+      "publicationTitle": "O Povo",
+      "place": "Fortaleza",
+      "pages": "17",
+      "section": "Caderno economia",
+      "extra": "ano 43, n. 30.547",
+      "tags": [{ "tag": "§3.3.9-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.9 — Artigo de jornal (essencial)</b></p><p>HOLANDA, Aurélio Buarque de. Mercosul precisa modernizar regras para investimentos. <b>O Povo</b>, Fortaleza, ano 43, n. 30.547, 14 fev. 2019. Caderno economia, p. 17.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "newspaperArticle",
+      "title": "Boechat: Anac suspende empresa dona do helicóptero",
+      "creators": [],
+      "date": "2019-02-14",
+      "publicationTitle": "O Estado",
+      "place": "Fortaleza",
+      "pages": "6",
+      "section": "Caderno Nacional",
+      "url": "http://www.oestadoce.com.br/digital",
+      "accessDate": "2019-02-14",
+      "extra": "ano 82, n. 23.475",
+      "tags": [{ "tag": "§3.3.10-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.10 — Artigo de jornal eletrônico (essencial)</b></p><p>BOECHAT: Anac suspende empresa dona do helicóptero. <b>O Estado</b>, Fortaleza, ano 82, n. 23.475, 14 fev. 2019. Caderno Nacional, p. 6. Disponível em: http://www.oestadoce.com.br/digital. Acesso em: 14 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "conferencePaper",
+      "title": "Parque Nacional do Pico da Neblina: conservação, pesquisa e divulgação",
+      "creators": [
+        { "creatorType": "author", "lastName": "Dias", "firstName": "R. L." }
+      ],
+      "date": "2004",
+      "proceedingsTitle": "Anais [...]",
+      "conferenceName": "Congresso Brasileiro de Unidades de Conservação, 4., 2004, Curitiba",
+      "place": "Curitiba",
+      "publisher": "Fundação Boticário de Proteção à Natureza",
+      "pages": "45-54",
+      "tags": [{ "tag": "§3.4.2.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.4.2.1 — Trabalho em evento (essencial)</b></p><p>DIAS, R. L. Parque Nacional do Pico da Neblina: conservação, pesquisa e divulgação. In: CONGRESSO BRASILEIRO DE UNIDADES DE CONSERVAÇÃO, 4., 2004, Curitiba. <b>Anais [...]</b>. Curitiba: Fundação Boticário de Proteção à Natureza, 2004. p. 45-54.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "conferencePaper",
+      "title": "A importância da gestão ambiental na manutenção das áreas verdes urbanas como instrumento na qualidade de vida",
+      "creators": [
+        { "creatorType": "author", "lastName": "Lima", "firstName": "M. J. A." }
+      ],
+      "date": "2003",
+      "proceedingsTitle": "Resumos [...]",
+      "conferenceName": "Simpósio de Ciências Aplicadas, 5., 2003, São Paulo",
+      "place": "São Paulo",
+      "publisher": "FACT",
+      "pages": "55",
+      "tags": [{ "tag": "§3.4.2.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.4.2.1 — Trabalho em evento (essencial)</b></p><p>LIMA, M. J. A. A importância da gestão ambiental na manutenção das áreas verdes urbanas como instrumento na qualidade de vida. In: SIMPÓSIO DE CIÊNCIAS APLICADAS, 5., 2003, São Paulo. <b>Resumos [...]</b>. São Paulo: FACT, 2003. p. 55.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "conferencePaper",
+      "title": "Avaliação de desempenho: resultados das organizações que utilizam o PDCA e o SDCA",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Bugarim",
+          "firstName": "Maria Clara Cavalcante"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Oliveira",
+          "firstName": "Oderlene Vieira de"
+        }
+      ],
+      "date": "2018",
+      "proceedingsTitle": "Anais [...]",
+      "conferenceName": "Congresso de Contabilidade da UFRGS, 3., 2018, Porto Alegre",
+      "place": "Porto Alegre",
+      "publisher": "UFRGS",
+      "url": "https://www.ufrgs.br/congressocont/index.php/IIIContUFRGS/IIIContUFRGS/paper/view/64/36",
+      "accessDate": "2019-08-22",
+      "tags": [{ "tag": "§3.4.2.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.4.2.2 — Trabalho em evento eletrônico (essencial)</b></p><p>BUGARIM, Maria Clara Cavalcante; OLIVEIRA, Oderlene Vieira de. Avaliação de desempenho: resultados das organizações que utilizam o PDCA e o SDCA. In: CONGRESSO DE CONTABILIDADE DA UFRGS, 3., 2018, Porto Alegre. <b>Anais [...]</b>. Porto Alegre: UFRGS, 2018. Disponível em: https://www.ufrgs.br/congressocont/index.php/IIIContUFRGS/IIIContUFRGS/paper/view/64/36. Acesso em: 22 ago. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "conferencePaper",
+      "title": "O estudo de caso dirigido como metodologia de pesquisa para a educação à distância (EAD)",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Serra",
+          "firstName": "Antonio Roberto Coelho"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Santos",
+          "firstName": "Ernani Marques dos"
+        }
+      ],
+      "date": "2017",
+      "proceedingsTitle": "Anais [...]",
+      "conferenceName": "Seminário Nacional ABED de Educação a Distância, 5., 2017, Belo Horizonte",
+      "place": "Belo Horizonte",
+      "publisher": "ABED",
+      "url": "http://www.abed.org.br/congresso2003/docs/anais/TC54.htm",
+      "accessDate": "2019-08-20",
+      "tags": [{ "tag": "§3.4.2.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.4.2.2 — Trabalho em evento eletrônico (essencial)</b></p><p>SERRA, Antonio Roberto Coelho; SANTOS, Ernani Marques dos. O estudo de caso dirigido como metodologia de pesquisa para a educação à distância (EAD). In: SEMINÁRIO NACIONAL ABED DE EDUCAÇÃO A DISTÂNCIA, 5., 2017, Belo Horizonte. <b>Anais [...]</b>. Belo Horizonte: ABED, 2017. Disponível em: http://www.abed.org.br/congresso2003/docs/anais/TC54.htm. Acesso em: 20 ago. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "O perigo dos livros",
+      "creators": [
+        { "creatorType": "author", "lastName": "Abreu", "firstName": "Márcia" }
+      ],
+      "date": "2006",
+      "publicationTitle": "Cadernos do Centro de Pesquisas Literárias da PUCRS",
+      "place": "Porto Alegre",
+      "volume": "12",
+      "issue": "1",
+      "pages": "41-51",
+      "extra": "Trabalho apresentado no Seminário Internacional de História da Literatura, 6., 2005, Porto Alegre.",
+      "tags": [{ "tag": "§3.4.2.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.4.2.3 — Trabalho em evento publicado em periódico</b></p><p>ABREU, Márcia. O perigo dos livros. <b>Cadernos do Centro de Pesquisas Literárias da PUCRS</b>, Porto Alegre, v. 12, n. 1, p. 41-51, 2006. Trabalho apresentado no Seminário Internacional de História da Literatura, 6., 2005, Porto Alegre.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "patent",
+      "title": "Aparelho para servir bebidas e processo para converter um aparelho para servir bebidas",
+      "creators": [
+        {
+          "creatorType": "inventor",
+          "lastName": "Schroeder",
+          "firstName": "Alfred A."
+        },
+        {
+          "creatorType": "inventor",
+          "lastName": "Credle",
+          "firstName": "William S."
+        }
+      ],
+      "assignee": "The Coca-Cola Company",
+      "patentNumber": "PI 8706898-2 B1",
+      "filingDate": "1988-03-29",
+      "date": "1991-10-29",
+      "extra": "Depósito: 29 mar. 1988. Concessão: 29 out. 1991.",
+      "tags": [{ "tag": "§3.5.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.5.1 — Patente (essencial)</b></p><p>SCHROEDER, Alfred A.; CREDLE, William S. <b>Aparelho para servir bebidas e processo para converter um aparelho para servir bebidas</b>. Depositante: The Coca-Cola Company. PI 8706898-2 B1. Depósito: 29 mar. 1988. Concessão: 29 out. 1991.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "patent",
+      "title": "Processo para o preparo do adubo de caranguejo",
+      "creators": [
+        {
+          "creatorType": "inventor",
+          "lastName": "Araújo",
+          "firstName": "Francisco José Freire de"
+        }
+      ],
+      "assignee": "Universidade Federal do Ceará",
+      "patentNumber": "PI0704286-8 A2",
+      "filingDate": "2007-11-09",
+      "date": "2009-07-07",
+      "url": "https://busca.inpi.gov.br/pePI/servlet/PatenteServletController",
+      "accessDate": "2023-11-27",
+      "extra": "Depósito: 9 nov. 2007. Concessão: 7 jul. 2009.",
+      "tags": [{ "tag": "§3.5.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.5.2 — Patente eletrônica (essencial)</b></p><p>ARAÚJO, Francisco José Freire de. <b>Processo para o preparo do adubo de caranguejo</b>. Depositante: Universidade Federal do Ceará. PI0704286-8 A2. Depósito: 9 nov. 2007. Concessão: 7 jul. 2009. Disponível em: https://busca.inpi.gov.br/pePI/servlet/PatenteServletController. Acesso em: 27 nov. 2023.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "statute",
+      "title": "Constituição da República Federativa do Brasil: promulgada em 5 de outubro de 1988",
+      "creators": [
+        { "creatorType": "author", "firstName": "", "lastName": "Brasil" }
+      ],
+      "date": "2003",
+      "edition": "31",
+      "place": "São Paulo",
+      "publisher": "Saraiva",
+      "extra": "Legislação impressa",
+      "tags": [{ "tag": "§3.6.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.1 — Legislação impressa (essencial)</b></p><p>BRASIL. <b>Constituição da República Federativa do Brasil</b>: promulgada em 5 de outubro de 1988. 31. ed. São Paulo: Saraiva, 2003.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "statute",
+      "title": "Lei nº 12.305, de 2 de agosto de 2010",
+      "creators": [
+        { "creatorType": "author", "firstName": "", "lastName": "Brasil" }
+      ],
+      "date": "2010",
+      "place": "Brasília, DF",
+      "publisher": "Casa Civil",
+      "url": "http://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm",
+      "accessDate": "2019-02-13",
+      "abstractNote": "Institui a Política Nacional de Resíduos Sólidos.",
+      "tags": [{ "tag": "§3.6.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.2 — Legislação eletrônica (essencial)</b></p><p>BRASIL. <b>Lei nº 12.305, de 2 de agosto de 2010</b>. Institui a Política Nacional de Resíduos Sólidos. Brasília, DF: Casa Civil, 2010. Disponível em: http://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm. Acesso em: 13 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "statute",
+      "title": "Lei nº 10.851, de 02 de janeiro de 2019",
+      "creators": [
+        { "creatorType": "author", "firstName": "", "lastName": "Fortaleza" }
+      ],
+      "date": "2019",
+      "place": "Fortaleza",
+      "publisher": "Diário Oficial do Município",
+      "url": "http://apps.fortaleza.ce.gov.br/diariooficial/download-diario.php",
+      "accessDate": "2019-01-25",
+      "abstractNote": "Institui a Política Pública e Programa de Conscientização do Uso Responsável de Água Potável no município de Fortaleza.",
+      "tags": [{ "tag": "§3.6.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.2 — Legislação eletrônica (essencial)</b></p><p>FORTALEZA. <b>Lei nº 10.851, de 02 de janeiro de 2019</b>. Institui a Política Pública e Programa de Conscientização do Uso Responsável de Água Potável no município de Fortaleza. Fortaleza: Diário Oficial do Município, 1 fev. 2019. Disponível em: http://apps.fortaleza.ce.gov.br/diariooficial/download-diario.php. Acesso em: 25 jan. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "case",
+      "title": "Agravo regimental no agravo de instrumento nº 798.263 — RS",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Brasil. Superior Tribunal de Justiça"
+        }
+      ],
+      "court": "Superior Tribunal de Justiça",
+      "dateDecided": "2006-09-18",
+      "extra": "Agravante: Edson Cezar Kruel Quintana. Agravado: Estado do Rio Grande do Sul. Relatora: Min. Eliana Calmon. Brasília, DF, 18 de setembro de 2006. Diário da Justiça, Brasília, DF, 2 out. 2006. Seção 1, p. 245.",
+      "tags": [{ "tag": "§3.6.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.3 — Jurisprudência (essencial)</b></p><p>BRASIL. Superior Tribunal de Justiça. <b>Agravo regimental no agravo de instrumento nº 798.263 — RS</b>. Agravante: Edson Cezar Kruel Quintana. Agravado: Estado do Rio Grande do Sul. Relatora: Min. Eliana Calmon. Brasília, DF, 18 de setembro de 2006. <b>Diário da Justiça</b>, Brasília, DF, 2 out. 2006. Seção 1, p. 245.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "case",
+      "title": "Súmula n° 14",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Brasil. Supremo Tribunal Federal"
+        }
+      ],
+      "court": "Supremo Tribunal Federal",
+      "extra": "Não é admissível, por ato administrativo, restringir, em razão da idade, inscrição em concurso para cargo público. In: BRASIL. Supremo Tribunal Federal. Súmulas. Brasília, DF, 1964. p. 16.",
+      "tags": [{ "tag": "§3.6.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.3 — Jurisprudência: Súmula (essencial)</b></p><p>BRASIL. Supremo Tribunal Federal. <b>Súmula nº 14</b>. Não é admissível, por ato administrativo, restringir, em razão da idade, inscrição em concurso para cargo público. In: BRASIL. Supremo Tribunal Federal. <b>Súmulas</b>. Brasília, DF, 1964. p. 16.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "videoRecording",
+      "title": "Alzheimer: mudanças na comunicação e no comportamento",
+      "creators": [
+        {
+          "creatorType": "director",
+          "lastName": "Jessouroun",
+          "firstName": "Thereza"
+        }
+      ],
+      "date": "2011",
+      "place": "[Rio de Janeiro]",
+      "studio": "Kino Filmes",
+      "runningTime": "26 min",
+      "extra": "1 DVD",
+      "tags": [{ "tag": "§3.8.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.8.1 — Filme / vídeo (essencial)</b></p><p><b>ALZHEIMER</b>: mudanças na comunicação e no comportamento. Direção: Thereza Jessouroun. [Rio de Janeiro]: Kino Filmes, 2011. 1 DVD (26 min).</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "videoRecording",
+      "title": "TIM MAIA in concert",
+      "creators": [],
+      "date": "2007",
+      "place": "[Manaus]",
+      "studio": "Pólo Industrial de Manaus",
+      "extra": "1 DVD",
+      "tags": [{ "tag": "§3.8.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.8.1 — Filme / vídeo (essencial)</b></p><p><b>TIM MAIA</b> in concert. [Manaus]: Pólo Industrial de Manaus, 2007. 1 DVD.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "videoRecording",
+      "title": "Game of thrones: primeira temporada completa",
+      "creators": [
+        {
+          "creatorType": "director",
+          "lastName": "Van Patten",
+          "firstName": "Tim"
+        },
+        { "creatorType": "director", "lastName": "Kirk", "firstName": "Brian" },
+        {
+          "creatorType": "director",
+          "lastName": "Minahan",
+          "firstName": "Daniel"
+        },
+        { "creatorType": "director", "lastName": "Taylor", "firstName": "Alan" }
+      ],
+      "date": "2012",
+      "place": "Burbank",
+      "studio": "Warner Bros. Entertainment",
+      "extra": "5 DVDs (545 min). Baseado na série de livros A Song of Ice and Fire, de George R. R. Martin.",
+      "tags": [{ "tag": "§3.8.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.8.1 — Filme / vídeo (essencial, série)</b></p><p><b>GAME OF THRONES</b>: primeira temporada completa. Direção: Tim Van Patten et al. Burbank: Warner Bros. Entertainment, 2012. 5 DVDs (545 min).</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "audioRecording",
+      "title": "Brasilização",
+      "creators": [],
+      "date": "2006",
+      "place": "Fortaleza",
+      "label": "Estúdio Santa Música",
+      "extra": "1 CD",
+      "tags": [{ "tag": "§3.8.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.8.3 — Documento sonoro (essencial)</b></p><p><b>BRASILIZAÇÃO</b>. Fortaleza: Estúdio Santa Música, 2006. 1 CD.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "audioRecording",
+      "title": "Cantando coisas de cá",
+      "creators": [
+        {
+          "creatorType": "performer",
+          "lastName": "Angélica",
+          "firstName": "Joana"
+        }
+      ],
+      "date": "2007",
+      "place": "Fortaleza",
+      "label": "Radiadora Cultural",
+      "extra": "1 CD",
+      "tags": [{ "tag": "§3.8.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.8.3 — Documento sonoro (essencial)</b></p><p>ANGÉLICA, Joana. <b>Cantando coisas de cá</b>. Fortaleza: Radiadora Cultural, 2007. 1 CD.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "audioRecording",
+      "title": "Flor da paisagem",
+      "creators": [
+        {
+          "creatorType": "performer",
+          "lastName": "Angélica",
+          "firstName": "Joana"
+        }
+      ],
+      "date": "2007",
+      "extra": "In: ANGÉLICA, Joana. Cantando coisas de cá. Fortaleza: Radiadora Cultural, 2007. 1 CD, faixa 8.",
+      "tags": [{ "tag": "§3.8.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.8.4 — Parte de documento sonoro (essencial)</b></p><p>ANGÉLICA, Joana. Flor da paisagem. In: ANGÉLICA, Joana. <b>Cantando coisas de cá</b>. Fortaleza: Radiadora Cultural, 2007. 1 CD, faixa 8.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "artwork",
+      "title": "Café",
+      "creators": [
+        { "creatorType": "artist", "lastName": "Portinari", "firstName": "C." }
+      ],
+      "date": "1935",
+      "artworkMedium": "óleo sobre tela",
+      "artworkSize": "130 x 195 cm",
+      "extra": "1 reprodução",
+      "tags": [{ "tag": "§3.10.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.10.1 — Documento iconográfico (essencial)</b></p><p>PORTINARI, C. <b>Café</b>. 1935. 1 reprodução, óleo sobre tela, 130 x 195 cm.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "artwork",
+      "title": "Caló montada em seu burrinho",
+      "creators": [
+        {
+          "creatorType": "artist",
+          "lastName": "Moreira",
+          "firstName": "Jair Célio"
+        }
+      ],
+      "date": "2016",
+      "url": "https://www.facebook.com/photo.php?fbid=1220904821321837",
+      "accessDate": "2019-07-28",
+      "tags": [{ "tag": "§3.10.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.10.2 — Documento iconográfico eletrônico (essencial)</b></p><p>MOREIRA, Jair Célio. <b>Caló montada em seu burrinho</b>. 2016. Disponível em: https://www.facebook.com/photo.php?fbid=1220904821321837. Acesso em: 28 jul. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "map",
+      "title": "Atlas do Ceará",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Fundação Instituto de Planejamento do Ceará"
+        }
+      ],
+      "date": "1997",
+      "place": "Fortaleza",
+      "extra": "1 atlas",
+      "tags": [{ "tag": "§3.11.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.11.1 — Documento cartográfico (essencial)</b></p><p>FUNDAÇÃO INSTITUTO DE PLANEJAMENTO DO CEARÁ. <b>Atlas do Ceará</b>. Fortaleza, 1997. 1 atlas.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "map",
+      "title": "Desigualdade econômica: infância",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "IBGE. Diretoria de Geodesia e Cartografia"
+        }
+      ],
+      "date": "2010",
+      "place": "Rio de Janeiro",
+      "scale": "1:30.000.000",
+      "url": "https://atlasescolar.ibge.gov.br/images/atlas/mapas_brasil/brasil_infancia.pdf",
+      "accessDate": "2019-05-25",
+      "extra": "1 mapa",
+      "tags": [{ "tag": "§3.11.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.11.2 — Documento cartográfico eletrônico (essencial)</b></p><p>IBGE. Diretoria de Geodesia e Cartografia. <b>Desigualdade econômica</b>: infância. Rio de Janeiro, 2010. 1 mapa. Escala 1:30.000.000. Disponível em: https://atlasescolar.ibge.gov.br/images/atlas/mapas_brasil/brasil_infancia.pdf. Acesso em: 25 maio 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "computerProgram",
+      "title": "Avast antivirus",
+      "creators": [
+        {
+          "creatorType": "programmer",
+          "firstName": "",
+          "lastName": "Avast Software"
+        }
+      ],
+      "date": "2019",
+      "place": "Praga",
+      "url": "https://www.avast.com/index#pc",
+      "accessDate": "2019-07-29",
+      "tags": [{ "tag": "§3.13.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.13.3 — Software (essencial)</b></p><p>AVAST SOFTWARE. <b>Avast antivirus</b>. Praga, 2019. Disponível em: https://www.avast.com/index#pc. Acesso em: 29 jul. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "computerProgram",
+      "title": "Microsoft Project for Windows 95: project planning software",
+      "creators": [
+        {
+          "creatorType": "programmer",
+          "firstName": "",
+          "lastName": "Microsoft Corporation"
+        }
+      ],
+      "date": "1995",
+      "place": "Redmond",
+      "company": "Microsoft Corporation",
+      "extra": "1 CD-ROM",
+      "tags": [{ "tag": "§3.13.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.13.3 — Software (essencial)</b></p><p>MICROSOFT CORPORATION. <b>Microsoft Project for Windows 95</b>: project planning software. Redmond: Microsoft Corporation, 1995. 1 CD-ROM.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "blogPost",
+      "title": "A saudade",
+      "creators": [
+        { "creatorType": "author", "lastName": "Couto", "firstName": "Mia" }
+      ],
+      "date": "2019-08-17",
+      "blogTitle": "Facebook: @miacoutooficial",
+      "url": "https://www.facebook.com/miacoutooficial/photos/a.298941346819589/1244373005609747/",
+      "accessDate": "2019-02-22",
+      "extra": "Cidade da Beira",
+      "tags": [{ "tag": "§3.13.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.13.4 — Redes sociais: Facebook (essencial)</b></p><p>COUTO, Mia. A saudade. Cidade da Beira, 17 ago. 2019. Facebook: @miacoutooficial. Disponível em: https://www.facebook.com/miacoutooficial/photos/a.298941346819589/1244373005609747/. Acesso em: 22 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "blogPost",
+      "title": "O Brasil tem ciência de alta qualidade e pesquisadores de excelência reconhecida nacional e internacionalmente",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Conselho Nacional de Desenvolvimento Científico e Tecnológico"
+        }
+      ],
+      "date": "2019-07-08",
+      "blogTitle": "Twitter: @CNPq_Oficial",
+      "url": "https://twitter.com/CNPq_Oficial/status/1148340918141018118",
+      "accessDate": "2019-08-22",
+      "extra": "Brasília, DF",
+      "tags": [{ "tag": "§3.13.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.13.4 — Redes sociais: Twitter (essencial)</b></p><p>CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTÍFICO E TECNOLÓGICO. O Brasil tem ciência de alta qualidade e pesquisadores de excelência reconhecida nacional e internacionalmente. Brasília, DF, 8 jul. 2019. Twitter: @CNPq_Oficial. Disponível em: https://twitter.com/CNPq_Oficial/status/1148340918141018118. Acesso em: 22 ago. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "webpage",
+      "title": "Biblioteca Universitária",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Universidade Federal do Ceará. Biblioteca Universitária"
+        }
+      ],
+      "date": "2019",
+      "websiteTitle": "Biblioteca Universitária",
+      "place": "Fortaleza",
+      "url": "http://www.biblioteca.ufc.br",
+      "accessDate": "2019-05-18",
+      "tags": [{ "tag": "§3.13.6-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.13.6 — Website (essencial)</b></p><p>UNIVERSIDADE FEDERAL DO CEARÁ. Biblioteca Universitária. <b>Biblioteca Universitária</b>. Fortaleza: UFC, 2019. Disponível em: http://www.biblioteca.ufc.br. Acesso em: 18 maio 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "Entrevista: Raymond Duval e a teoria dos registros de representação semiótica",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Duval",
+          "firstName": "Raymond"
+        },
+        {
+          "creatorType": "contributor",
+          "lastName": "Freitas",
+          "firstName": "José Luiz Magalhães de"
+        },
+        {
+          "creatorType": "contributor",
+          "lastName": "Rezende",
+          "firstName": "Veridiana"
+        }
+      ],
+      "date": "2020",
+      "publicationTitle": "Revista Paranaense de Educação Matemática",
+      "place": "Campo Mourão",
+      "volume": "2",
+      "issue": "3",
+      "pages": "10-34",
+      "extra": "Entrevista concedida a José Luiz Magalhães de Freitas e Veridiana Rezende.",
+      "tags": [{ "tag": "§3.14.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.1 — Entrevista publicada (essencial)</b></p><p>DUVAL, Raymond. Entrevista: Raymond Duval e a teoria dos registros de representação semiótica. Entrevista concedida a José Luiz Magalhães de Freitas e Veridiana Rezende. <b>Revista Paranaense de Educação Matemática</b>, Campo Mourão, v. 2, n. 3, p. 10-34, jul./dez. 2020.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "bookSection",
+      "title": "César Barreira",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Barreira",
+          "firstName": "César"
+        },
+        {
+          "creatorType": "editor",
+          "lastName": "Ratton",
+          "firstName": "José Luiz"
+        },
+        {
+          "creatorType": "editor",
+          "lastName": "Lima",
+          "firstName": "Renato Sérgio de"
+        }
+      ],
+      "date": "2011",
+      "bookTitle": "As ciências sociais e os pioneiros nos estudos sobre crime, violência e direitos humanos no Brasil",
+      "place": "São Paulo",
+      "publisher": "ANPOCS",
+      "pages": "192-207",
+      "extra": "Entrevista concedida a José Luiz Ratton.",
+      "tags": [{ "tag": "§3.14.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.1 — Entrevista em livro (essencial)</b></p><p>BARREIRA, César. César Barreira. Entrevista concedida a José Luiz Ratton. In: RATTON, José Luiz; LIMA, Renato Sérgio de (org.). <b>As ciências sociais e os pioneiros nos estudos sobre crime, violência e direitos humanos no Brasil</b>. São Paulo: ANPOCS, 2011. p. 192-207.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "Entrevista com Eduardo Hoornaert",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Hoornaert",
+          "firstName": "Eduardo"
+        },
+        {
+          "creatorType": "contributor",
+          "lastName": "Holanda",
+          "firstName": "Cristina Rodrigues"
+        }
+      ],
+      "date": "2006",
+      "publicationTitle": "Trajetos: revista de história da UFC",
+      "place": "Fortaleza",
+      "volume": "4",
+      "issue": "8",
+      "pages": "247-278",
+      "url": "http://www.repositorio.ufc.br/handle/riufc/20009",
+      "accessDate": "2019-08-19",
+      "extra": "[Entrevista concedida a] Cristina Rodrigues Holanda.",
+      "tags": [{ "tag": "§3.14.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.2 — Entrevista eletrônica (essencial)</b></p><p>HOORNAERT, Eduardo. Entrevista com Eduardo Hoornaert. [Entrevista concedida a] Cristina Rodrigues Holanda. <b>Trajetos</b>: revista de história da UFC, Fortaleza, v. 4, n. 8, p. 247-278, 2006. Disponível em: http://www.repositorio.ufc.br/handle/riufc/20009. Acesso em: 19 ago. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "Brecht, Benjamin e a questão do engajamento",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Campos Filho",
+          "firstName": "Lindberg S."
+        }
+      ],
+      "date": "2019-05",
+      "publicationTitle": "Margem Esquerda",
+      "place": "São Paulo",
+      "issue": "32",
+      "pages": "149-152",
+      "extra": "Resenha da obra de: BENJAMIN, Walter. Ensaios sobre Brecht. São Paulo: Boitempo, 2017. 152 p.",
+      "tags": [{ "tag": "§3.14.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.3 — Resenha (essencial)</b></p><p>CAMPOS FILHO, Lindberg S. Brecht, Benjamin e a questão do engajamento. <b>Margem Esquerda</b>, São Paulo, n. 32, p. 149-152, maio 2019. Resenha da obra de: BENJAMIN, Walter. Ensaios sobre Brecht. São Paulo: Boitempo, 2017. 152 p.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "Recensão de livro",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Marques",
+          "firstName": "Ramiro"
+        }
+      ],
+      "date": "2006",
+      "publicationTitle": "Interações",
+      "place": "Porto",
+      "issue": "3",
+      "pages": "188-189",
+      "extra": "Recensão da obra de: JARDIM, J.; PEREIRA, A. Competências pessoais e sociais: guia prático para a mudança positiva. Porto: Edições Asa, 2006.",
+      "tags": [{ "tag": "§3.14.3-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.3 — Recensão (essencial)</b></p><p>MARQUES, Ramiro. Recensão de livro. <b>Interações</b>, Porto, n. 3, p. 188-189, 2006. Recensão da obra de: JARDIM, J.; PEREIRA, A. Competências pessoais e sociais: guia prático para a mudança positiva. Porto: Edições Asa, 2006.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "blogPost",
+      "title": "Introdução à teoria geral da biblioteconomia: resenha",
+      "creators": [
+        { "creatorType": "author", "lastName": "Lima", "firstName": "Izabel" }
+      ],
+      "date": "2014",
+      "blogTitle": "Blog estante da bibliotecária",
+      "url": "https://estantedabibliotecaria.wordpress.com/2014/11/20/introducao-a-teoria-geral-da-biblioteconomia-resenha/",
+      "accessDate": "2016-04-28",
+      "extra": "Resenha da obra de: VIEIRA, Ronaldo. Introdução à teoria geral da biblioteconomia. Rio de Janeiro: Interciência, 2014. Fortaleza.",
+      "tags": [{ "tag": "§3.14.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.4 — Resenha eletrônica (essencial)</b></p><p>LIMA, Izabel. Introdução à teoria geral da biblioteconomia: resenha. In: LIMA, Izabel. Blog estante da bibliotecária, Fortaleza, 2014. Resenha da obra de: VIEIRA, Ronaldo. Introdução à teoria geral da biblioteconomia. Rio de Janeiro: Interciência, 2014. Disponível em: https://estantedabibliotecaria.wordpress.com/2014/11/20/introducao-a-teoria-geral-da-biblioteconomia-resenha/. Acesso em: 28 abr. 2016.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "newspaperArticle",
+      "title": "O livro e o pão",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Martirani",
+          "firstName": "M. C."
+        }
+      ],
+      "date": "2011-10-25",
+      "publicationTitle": "Gazeta do Povo",
+      "place": "Curitiba",
+      "url": "http://rascunho.gazetadopovo.com.br/o-livro-e-o-pao",
+      "accessDate": "2011-11-18",
+      "extra": "Resenha da obra de: SANT'ANNA, A. R. de. Ler o mundo. São Paulo: Global, 2011.",
+      "tags": [{ "tag": "§3.14.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.4 — Resenha em jornal eletrônico (essencial)</b></p><p>MARTIRANI, M. C. O livro e o pão. <b>Gazeta do Povo</b>, Curitiba, 25 out. 2011. Resenha da obra de: SANT'ANNA, A. R. de. Ler o mundo. São Paulo: Global, 2011. Disponível em: http://rascunho.gazetadopovo.com.br/o-livro-e-o-pao. Acesso em: 18 nov. 2011.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "document",
+      "title": "Dipirona monoidratada: frasco gotejador",
+      "creators": [],
+      "date": "2013",
+      "publisher": "Farmace",
+      "extra": "Bula de remédio. Responsável técnico A. F. Sandes. Barbalha: Farmace, 2013. 1 bula de remédio.",
+      "tags": [{ "tag": "§3.14.5-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.5 — Bula de remédio (essencial)</b></p><p>DIPIRONA monoidratada: frasco gotejador. Responsável técnico A. F. Sandes. Barbalha: Farmace, 2013. 1 bula de remédio.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "document",
+      "title": "Cefadroxila",
+      "creators": [],
+      "date": "2010",
+      "publisher": "EMS",
+      "extra": "Bula de remédio. Responsável técnico Ronoel Caza de Dio. Hortolândia: EMS, 2010. 1 bula de remédio.",
+      "tags": [{ "tag": "§3.14.5-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.5 — Bula de remédio (essencial)</b></p><p>CEFADROXILA. Responsável técnico Ronoel Caza de Dio. Hortolândia: EMS, 2010. 1 bula de remédio.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "document",
+      "title": "Xeljanz",
+      "creators": [],
+      "date": "2017",
+      "publisher": "Pfizer",
+      "extra": "Bula de remédio. Responsável técnico Carolina C. S. Rizoli. São Paulo: Pfizer, 2017. 1 bula de remédio.",
+      "tags": [{ "tag": "§3.14.5-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.5 — Bula de remédio (essencial)</b></p><p>XELJANZ. Responsável técnico Carolina C. S. Rizoli. São Paulo: Pfizer, 2017. 1 bula de remédio.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "document",
+      "title": "Advil: ibuprofeno",
+      "creators": [],
+      "date": "2013",
+      "publisher": "Wyeth Indústria Farmacêutica",
+      "url": "https://bula.medicinanet.com.br/bula/6551/advil_ibuprofeno.htm",
+      "accessDate": "2019-02-15",
+      "extra": "Bula de remédio. Responsável técnico Edina S. M. Nakaruma. São Paulo: Wyeth Indústria Farmacêutica, 2013. 1 bula de remédio.",
+      "tags": [{ "tag": "§3.14.6-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.6 — Bula de remédio eletrônica (essencial)</b></p><p>ADVIL: ibuprofeno. Responsável técnico Edina S. M. Nakaruma. São Paulo: Wyeth Indústria Farmacêutica, 2013. 1 bula de remédio. Disponível em: https://bula.medicinanet.com.br/bula/6551/advil_ibuprofeno.htm. Acesso em: 15 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Brasil, coração do mundo, pátria do evangelho",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Campos",
+          "firstName": "Humberto de"
+        }
+      ],
+      "date": "2015",
+      "place": "Brasília, DF",
+      "publisher": "FEB",
+      "extra": "Espírito. Psicografado por Francisco Cândido Xavier.",
+      "tags": [{ "tag": "§3.14.7-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.7 — Psicografia (essencial)</b></p><p>CAMPOS, Humberto de (Espírito). <b>Brasil, coração do mundo, pátria do evangelho</b>. Psicografado por Francisco Cândido Xavier. Brasília, DF: FEB, 2015.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Cinquenta anos depois",
+      "creators": [
+        { "creatorType": "author", "lastName": "Emanuel", "firstName": "" }
+      ],
+      "date": "2013",
+      "place": "Brasília, DF",
+      "publisher": "FEB",
+      "extra": "Espírito. Psicografado por Francisco Cândido Xavier.",
+      "tags": [{ "tag": "§3.14.7-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.7 — Psicografia (essencial)</b></p><p>EMANUEL (Espírito). <b>Cinquenta anos depois</b>. Psicografado por Francisco Cândido Xavier. Brasília, DF: FEB, 2013.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Crônicas de além-túmulo",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Campos",
+          "firstName": "Humberto de"
+        }
+      ],
+      "date": "1963",
+      "place": "São Paulo",
+      "publisher": "FEB",
+      "url": "http://www.oconsolador.com.br/linkfixo/bibliotecavirtual/chicoxavier/cronicasdealemturmulo.pdf",
+      "accessDate": "2019-02-21",
+      "extra": "Espírito. Psicografado por Francisco Cândido Xavier.",
+      "tags": [{ "tag": "§3.14.8-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.8 — Psicografia eletrônica (essencial)</b></p><p>CAMPOS, Humberto de (Espírito). <b>Crônicas de além-túmulo</b>. Psicografado por Francisco Cândido Xavier. São Paulo: FEB, 1963. Disponível em: http://www.oconsolador.com.br/linkfixo/bibliotecavirtual/chicoxavier/cronicasdealemturmulo.pdf. Acesso em: 21 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Há 2000 anos...: episódios da história do cristianismo no século I",
+      "creators": [
+        { "creatorType": "author", "lastName": "Emanuel", "firstName": "" }
+      ],
+      "date": "1996",
+      "edition": "29",
+      "place": "Rio de Janeiro",
+      "publisher": "FEB",
+      "url": "http://www.oconsolador.com.br/linkfixo/bibliotecavirtual/chicoxavier/ha2000anos.pdf",
+      "accessDate": "2019-02-21",
+      "extra": "Espírito. Psicografado por Francisco Cândido Xavier.",
+      "tags": [{ "tag": "§3.14.8-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.8 — Psicografia eletrônica (essencial)</b></p><p>EMANUEL (Espírito). <b>Há 2000 anos...</b>: episódios da história do cristianismo no século I. Psicografado por Francisco Cândido Xavier. 29. ed. Rio de Janeiro: FEB, 1996. Disponível em: http://www.oconsolador.com.br/linkfixo/bibliotecavirtual/chicoxavier/ha2000anos.pdf. Acesso em: 21 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Bíblia sagrada",
+      "creators": [
+        { "creatorType": "author", "firstName": "", "lastName": "Bíblia" }
+      ],
+      "date": "1999",
+      "edition": "2",
+      "place": "Barueri",
+      "publisher": "Sociedade Bíblica do Brasil",
+      "language": "pt",
+      "extra": "Português",
+      "tags": [{ "tag": "§3.14.9-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.14.9 — Bíblia (essencial)</b></p><p>BÍBLIA. Português. <b>Bíblia sagrada</b>. 2. ed. Barueri: Sociedade Bíblica do Brasil, 1999.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "A brilhante aurora: mazurka de salão",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Araújo",
+          "firstName": "João Gomes de"
+        }
+      ],
+      "date": "1870",
+      "place": "Rio de Janeiro",
+      "publisher": "Narciso & Arthur Napoleão",
+      "extra": "1 partitura. Piano solo.",
+      "tags": [{ "tag": "§3.9.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.9.1 — Partitura (essencial)</b></p><p>ARAÚJO, João Gomes de. <b>A brilhante aurora</b>: mazurka de salão. Rio de Janeiro: Narciso & Arthur Napoleão, [1870]. 1 partitura. Piano solo.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Quartetos de cordas nº 1 e nº 2",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Villa-Lobos",
+          "firstName": "Heitor"
+        }
+      ],
+      "date": "1916",
+      "place": "Rio de Janeiro",
+      "publisher": "ABM; Funarte",
+      "extra": "2 partituras. Quartetos de cordas.",
+      "tags": [{ "tag": "§3.9.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.9.1 — Partitura (essencial)</b></p><p>VILLA-LOBOS, Heitor. <b>Quartetos de cordas nº 1 e nº 2</b>. Rio de Janeiro: ABM; Funarte, 1916. 2 partituras. Quartetos de cordas.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "A noiva",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Gonzaga",
+          "firstName": "Chiquinha"
+        }
+      ],
+      "date": "1901",
+      "place": "[S. l.]",
+      "publisher": "[s. n.]",
+      "url": "http://www.chiquinhagonzaga.com/acervo/partituras/a-noite_piano.pdf",
+      "accessDate": "2019-07-30",
+      "extra": "1 partitura. Piano.",
+      "tags": [{ "tag": "§3.9.2-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.9.2 — Partitura eletrônica (essencial)</b></p><p>GONZAGA, Chiquinha. <b>A noiva</b>. [S. l., 19--]. 1 partitura. Piano. Disponível em: http://www.chiquinhagonzaga.com/acervo/partituras/a-noite_piano.pdf. Acesso em: 30 jul. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "report",
+      "title": "Portaria nº 5046, de 20 de novembro de 2015",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Universidade Federal do Ceará"
+        }
+      ],
+      "date": "2015",
+      "extra": "Ato administrativo. Dispõe sobre as normas para execução e controle orçamentário, financeiro e patrimonial no âmbito da Universidade Federal do Ceará (UFC). Fortaleza: UFC, 2015.",
+      "tags": [{ "tag": "§3.6.5-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.5 — Ato administrativo (essencial)</b></p><p>UNIVERSIDADE FEDERAL DO CEARÁ. <b>Portaria nº 5046, de 20 de novembro de 2015</b>. Dispõe sobre as normas para execução e controle orçamentário, financeiro e patrimonial no âmbito da Universidade Federal do Ceará (UFC). Fortaleza: UFC, 2015.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "report",
+      "title": "Regimento geral da Universidade Federal do Ceará",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Universidade Federal do Ceará"
+        }
+      ],
+      "date": "2018",
+      "place": "Fortaleza",
+      "institution": "UFC",
+      "extra": "Ato administrativo. Inclui todas as alterações até a Resolução nº 09/CONSUNI, de 23 de abril de 2018.",
+      "tags": [{ "tag": "§3.6.5-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.5 — Ato administrativo: regimento (essencial)</b></p><p>UNIVERSIDADE FEDERAL DO CEARÁ. <b>Regimento geral da Universidade Federal do Ceará</b>. Fortaleza: UFC, 2018.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Relatório de avaliação sobre a percepção da comunidade acadêmica a respeito dos serviços do Sistema de Bibliotecas",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Universidade Federal do Ceará. Biblioteca Universitária"
+        }
+      ],
+      "date": "2011",
+      "place": "Fortaleza",
+      "publisher": "Biblioteca Universitária",
+      "numPages": "35",
+      "extra": "Inclui bibliografia.",
+      "tags": [{ "tag": "§3.1.1.1-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.1 — Livro (complementar, institucional)</b></p><p>UNIVERSIDADE FEDERAL DO CEARÁ. Biblioteca Universitária. <b>Relatório de avaliação sobre a percepção da comunidade acadêmica a respeito dos serviços do Sistema de Bibliotecas</b>. Fortaleza: Biblioteca Universitária, 2011. 35 p. Inclui bibliografia.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Dicionário da língua brasileira de sinais (LIBRAS)",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Lira",
+          "firstName": "Guilherme de Azambuja"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Souza",
+          "firstName": "Tanya Amara Felipe de"
+        }
+      ],
+      "date": "2005",
+      "place": "Rio de Janeiro",
+      "publisher": "Instituto Nacional de Educação de Surdos",
+      "extra": "1 CD-ROM (181 MB)",
+      "tags": [{ "tag": "§3.1.1.2-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (complementar)</b></p><p>LIRA, Guilherme de Azambuja; SOUZA, Tanya Amara Felipe de. <b>Dicionário da língua brasileira de sinais (LIBRAS)</b>. Rio de Janeiro: Instituto Nacional de Educação de Surdos, 2005. 1 CD-ROM (181 MB).</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Jornalismo cidadão: informa ou deforma?",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Targino",
+          "firstName": "Maria das Graças"
+        }
+      ],
+      "date": "2009",
+      "place": "Brasília, DF",
+      "publisher": "IBICT: UNESCO",
+      "numPages": "258",
+      "url": "http://livroaberto.ibict.br/handle/1/792",
+      "accessDate": "2016-04-01",
+      "tags": [{ "tag": "§3.1.1.2-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (complementar)</b></p><p>TARGINO, Maria das Graças. <b>Jornalismo cidadão</b>: informa ou deforma? Brasília, DF: IBICT: UNESCO, 2009. 258 p. Disponível em: http://livroaberto.ibict.br/handle/1/792. Acesso em: 1 abr. 2016.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Anatomia humana",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Martini",
+          "firstName": "Frederic H."
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Timmons",
+          "firstName": "Michael J."
+        },
+        {
+          "creatorType": "author",
+          "lastName": "Tallitsch",
+          "firstName": "Robert B."
+        }
+      ],
+      "date": "2009",
+      "place": "Porto Alegre",
+      "publisher": "Artmed",
+      "ISBN": "978-85-363-1794-6",
+      "extra": "1 CD-ROM",
+      "tags": [{ "tag": "§3.1.1.2-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (complementar, CD-ROM)</b></p><p>MARTINI, Frederic H.; TIMMONS, Michael J.; TALLITSCH, Robert B. <b>Anatomia humana</b>. Porto Alegre: Artmed, 2009. 1 CD-ROM. ISBN 978-85-363-1794-6.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "Enciclopédia Itaú Cultural",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Itaú Cultural"
+        }
+      ],
+      "date": "2019",
+      "place": "São Paulo",
+      "publisher": "Itaú Cultural",
+      "ISBN": "978-85-7979-060-7",
+      "url": "http://enciclopedia.itaucultural.org.br/",
+      "accessDate": "2019-02-12",
+      "tags": [{ "tag": "§3.1.1.2-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.2 — Livro eletrônico (complementar, institucional)</b></p><p>ITAÚ CULTURAL. <b>Enciclopédia Itaú Cultural</b>. São Paulo: Itaú Cultural, 2019. ISBN 978-85-7979-060-7. Disponível em: http://enciclopedia.itaucultural.org.br/. Acesso em: 12 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "bookSection",
+      "title": "De volta ao Brasil",
+      "creators": [
+        { "creatorType": "author", "lastName": "Lessa", "firstName": "Sérgio" }
+      ],
+      "date": "2014",
+      "bookTitle": "Cadê os operários?",
+      "place": "São Paulo",
+      "publisher": "Instituto Lukács",
+      "pages": "27-30",
+      "extra": "Inclui bibliografia.",
+      "tags": [{ "tag": "§3.1.1.3-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.1.3 — Capítulo de livro (complementar)</b></p><p>LESSA, Sérgio. De volta ao Brasil. In: LESSA, Sérgio. <b>Cadê os operários?</b> São Paulo: Instituto Lukács, 2014. p. 27-30. Inclui bibliografia.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "thesis",
+      "title": "O construto de um Brasil moderno",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Silva",
+          "firstName": "Regina Cláudia Oliveira da"
+        }
+      ],
+      "date": "2014",
+      "thesisType": "Tese (Doutorado em Educação Brasileira)",
+      "university": "Universidade Federal do Ceará",
+      "place": "Fortaleza",
+      "archive": "Faculdade de Educação",
+      "pages": "30-52",
+      "url": "http://www.repositoriobib.ufc.br/000032/00003234.pdf",
+      "accessDate": "2019-04-12",
+      "extra": "Parte de trabalho acadêmico eletrônico",
+      "tags": [{ "tag": "§3.1.2.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.1.2.4 — Parte de tese eletrônica (essencial)</b></p><p>SILVA, Regina Cláudia Oliveira da. O construto de um Brasil moderno. In: SILVA, Regina Cláudia Oliveira da. <b>A ação educacional e o legado cultural de Gustavo Barroso para a moderna museologia brasileira</b>. 2014. Tese (Doutorado em Educação Brasileira) – Faculdade de Educação, Universidade Federal do Ceará, Fortaleza, 2014. p. 30-52. Disponível em: http://www.repositoriobib.ufc.br/000032/00003234.pdf. Acesso em: 12 abr. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "statute",
+      "title": "Decreto nº 6.063, de 20 de março de 2007",
+      "creators": [
+        { "creatorType": "author", "firstName": "", "lastName": "Brasil" }
+      ],
+      "date": "2007",
+      "place": "Brasília, DF",
+      "publisher": "Presidência da República",
+      "abstractNote": "Regulamenta, no âmbito federal, dispositivos da Lei nº 11.284, de 2 de março de 2006, que dispõe sobre a gestão de florestas públicas para a produção sustentável.",
+      "extra": "Legislação impressa",
+      "tags": [{ "tag": "§3.6.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.1 — Legislação: decreto (essencial)</b></p><p>BRASIL. <b>Decreto nº 6.063, de 20 de março de 2007</b>. Regulamenta, no âmbito federal, dispositivos da Lei nº 11.284, de 2 de março de 2006. Brasília, DF: Presidência da República, 2007.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "statute",
+      "title": "Código civil",
+      "creators": [
+        { "creatorType": "author", "firstName": "", "lastName": "Brasil" }
+      ],
+      "date": "2005",
+      "edition": "56",
+      "place": "São Paulo",
+      "publisher": "Saraiva",
+      "extra": "Legislação impressa",
+      "tags": [{ "tag": "§3.6.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.1 — Legislação: código (essencial)</b></p><p>BRASIL. <b>Código civil</b>. 56. ed. São Paulo: Saraiva, 2005.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "hearing",
+      "title": "Mandado de segurança nº 32.941 — DF",
+      "creators": [
+        {
+          "creatorType": "contributor",
+          "firstName": "",
+          "lastName": "Brasil. Supremo Tribunal Federal"
+        }
+      ],
+      "date": "2015-03-20",
+      "url": "http://portal.stf.jus.br/processos/downloadPeca.asp?id=305794397&ext=.pdf",
+      "accessDate": "2019-02-18",
+      "extra": "Jurisprudência eletrônica. Impetrante: Rede Sustentabilidade. Impetrado: Presidente da Mesa Diretora do Congresso Nacional. Relator: Min. Gilmar Mendes. Brasília, DF, 20 mar. 2015.",
+      "tags": [{ "tag": "§3.6.4-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.6.4 — Jurisprudência eletrônica (essencial)</b></p><p>BRASIL. Supremo Tribunal Federal. <b>Mandado de segurança nº 32.941 — DF</b>. Impetrante: Rede Sustentabilidade. Impetrado: Presidente da Mesa Diretora do Congresso Nacional. Relator: Min. Gilmar Mendes. Brasília, DF, 20 mar. 2015. Disponível em: http://portal.stf.jus.br/processos/downloadPeca.asp?id=305794397&ext=.pdf. Acesso em: 18 fev. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "videoRecording",
+      "title": "Tesouro direto: conheça a aplicação financeira mais acessível do país",
+      "creators": [],
+      "date": "2018",
+      "url": "https://www.youtube.com/watch?v=ry3TbOmXQo8",
+      "accessDate": "2019-08-22",
+      "extra": "1 vídeo (4 min). Publicado pelo canal Me Poupe!",
+      "tags": [{ "tag": "§3.8.1-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.8.1 — Vídeo online (essencial)</b></p><p><b>TESOURO DIRETO</b>: conheça a aplicação financeira mais acessível do país. [S. l.: s. n.], 2018. 1 vídeo (4 min). Publicado pelo canal Me Poupe! Disponível em: https://www.youtube.com/watch?v=ry3TbOmXQo8. Acesso em: 22 ago. 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "journalArticle",
+      "title": "Collins in the COBUILD era",
+      "creators": [
+        { "creatorType": "author", "lastName": "Collins", "firstName": "John" }
+      ],
+      "date": "2019",
+      "publicationTitle": "International Journal of Lexicography",
+      "volume": "32",
+      "issue": "2",
+      "pages": "135-155",
+      "tags": [{ "tag": "§3.3.7-complementar" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.3.7 — Artigo de periódico (complementar)</b></p><p>COLLINS, John. Collins in the COBUILD era. <b>International Journal of Lexicography</b>, v. 32, n. 2, p. 135-155, 2019.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "document",
+      "title": "Certidão de nascimento [de] Janaína Santos",
+      "creators": [
+        { "creatorType": "author", "firstName": "", "lastName": "Fortaleza" }
+      ],
+      "date": "1997",
+      "extra": "Registro civil. Cartório Sérgio Guedes, 1º Ofício. Fortaleza, 1997.",
+      "tags": [{ "tag": "§3.7-essencial" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Seção 3.7 — Documento civil (essencial)</b></p><p>FORTALEZA. <b>Certidão de nascimento [de] Janaína Santos</b>. Registro civil. Cartório Sérgio Guedes, 1º Ofício. Fortaleza, 1997.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "ABNT NBR 6023: informação e documentação: referências: elaboração",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Associação Brasileira de Normas Técnicas"
+        }
+      ],
+      "date": "2018",
+      "place": "Rio de Janeiro",
+      "publisher": "ABNT",
+      "tags": [{ "tag": "norma-técnica" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Norma técnica ABNT</b></p><p>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <b>ABNT NBR 6023</b>: informação e documentação: referências: elaboração. Rio de Janeiro: ABNT, 2018.</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "book",
+      "title": "ABNT NBR 10520: informação e documentação: citações em documentos: apresentação",
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "",
+          "lastName": "Associação Brasileira de Normas Técnicas"
+        }
+      ],
+      "date": "2023",
+      "place": "Rio de Janeiro",
+      "publisher": "ABNT",
+      "tags": [{ "tag": "norma-técnica" }, { "tag": "guia-ufc" }],
+      "notes": [
+        {
+          "note": "<p><b>Norma técnica ABNT</b></p><p>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <b>ABNT NBR 10520</b>: informação e documentação: citações em documentos: apresentação. Rio de Janeiro: ABNT, 2023.</p>"
+        }
+      ]
+    }
+  ]
+}

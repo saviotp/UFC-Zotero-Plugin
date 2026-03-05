@@ -81,6 +81,8 @@ const BOLD_ON_TITLE_TYPES: ReadonlySet<string> = new Set([
   "interview", // entrevista avulsa (não publicada em periódico)
   "podcast",
   "preprint",
+  "case", // legal_case no CSL — jurisprudência (acórdão, súmula, sentença)
+  "hearing", // hearing no CSL — decisão judicial / audiência
 ]);
 
 /**
