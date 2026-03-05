@@ -1,7 +1,7 @@
 {
   "name": "ufc-title-formatter",
   "type": "module",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Formata títulos ABNT conforme normas da UFC (NBR 6023:2018)",
   "config": {
     "addonName": "UFC Title Formatter",
