@@ -59,21 +59,21 @@ const BOLD_ON_TITLE_TYPES: ReadonlySet<string> = new Set([
   "book",
   "thesis",
   "report",
-  "film",              // motion_picture no CSL
+  "film", // motion_picture no CSL
   "map",
-  "artwork",           // graphic no CSL
-  "audioRecording",    // song/álbum no CSL
-  "statute",           // legislation no CSL
+  "artwork", // graphic no CSL
+  "audioRecording", // song/álbum no CSL
+  "statute", // legislation no CSL
   "patent",
   "webpage",
-  "blogPost",          // post-weblog no CSL
+  "blogPost", // post-weblog no CSL
   "computerProgram",
-  "document",          // tipo genérico — tratar como obra autônoma
+  "document", // tipo genérico — tratar como obra autônoma
   "manuscript",
   "presentation",
   "videoRecording",
   "letter",
-  "interview",         // entrevista avulsa (não publicada em periódico)
+  "interview", // entrevista avulsa (não publicada em periódico)
   "podcast",
   "preprint",
 ]);
@@ -83,11 +83,11 @@ const BOLD_ON_TITLE_TYPES: ReadonlySet<string> = new Set([
  * São partes de um todo: artigos, capítulos, trabalhos em evento.
  */
 const BOLD_ON_CONTAINER_TYPES: ReadonlySet<string> = new Set([
-  "journalArticle",       // article-journal no CSL
-  "newspaperArticle",     // article-newspaper no CSL
-  "magazineArticle",      // article-magazine no CSL
-  "bookSection",          // chapter no CSL
-  "conferencePaper",      // paper-conference no CSL
+  "journalArticle", // article-journal no CSL
+  "newspaperArticle", // article-newspaper no CSL
+  "magazineArticle", // article-magazine no CSL
+  "bookSection", // chapter no CSL
+  "conferencePaper", // paper-conference no CSL
   "encyclopediaArticle",
   "dictionaryEntry",
 ]);
@@ -149,10 +149,7 @@ export function isUpperCase(text: string): boolean {
   );
   if (letters.length === 0) return false;
 
-  const upperLetters = letters.replace(
-    /[^A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÜÇ]/g,
-    "",
-  );
+  const upperLetters = letters.replace(/[^A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÜÇ]/g, "");
   return upperLetters.length / letters.length > 0.7;
 }
 
@@ -162,29 +159,131 @@ export function isUpperCase(text: string): boolean {
 
 /** Siglas de estados brasileiros (UF) */
 const BRAZILIAN_STATES = [
-  "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO",
-  "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI",
-  "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO",
+  "AC",
+  "AL",
+  "AP",
+  "AM",
+  "BA",
+  "CE",
+  "DF",
+  "ES",
+  "GO",
+  "MA",
+  "MT",
+  "MS",
+  "MG",
+  "PA",
+  "PB",
+  "PR",
+  "PE",
+  "PI",
+  "RJ",
+  "RN",
+  "RS",
+  "RO",
+  "RR",
+  "SC",
+  "SP",
+  "SE",
+  "TO",
 ];
 
 /** Siglas institucionais, acadêmicas e normativas comuns */
 const INSTITUTIONAL_ACRONYMS = [
   // Universidades
-  "UFC", "UFAM", "USP", "UNICAMP", "UFRJ", "UFMG", "UFPE", "UFRGS",
-  "UFBA", "UFSC", "UFPR", "UFF", "UFPA", "UFSM", "UFG", "UFES",
-  "UFJF", "UFAL", "UFMA", "UFPI", "UFRN", "UFPB", "UFS", "UFMS",
-  "UFMT", "UFT", "UFAC", "UFRR", "UFAP", "UNIR", "UNIFAP",
-  "UNIFESP", "UNESP", "UERJ", "UEL", "UEM", "UNEB",
-  "PUC", "PUCRS", "PUCSP", "PUCMG", "PUCPR", "PUCCAMP",
+  "UFC",
+  "UFAM",
+  "USP",
+  "UNICAMP",
+  "UFRJ",
+  "UFMG",
+  "UFPE",
+  "UFRGS",
+  "UFBA",
+  "UFSC",
+  "UFPR",
+  "UFF",
+  "UFPA",
+  "UFSM",
+  "UFG",
+  "UFES",
+  "UFJF",
+  "UFAL",
+  "UFMA",
+  "UFPI",
+  "UFRN",
+  "UFPB",
+  "UFS",
+  "UFMS",
+  "UFMT",
+  "UFT",
+  "UFAC",
+  "UFRR",
+  "UFAP",
+  "UNIR",
+  "UNIFAP",
+  "UNIFESP",
+  "UNESP",
+  "UERJ",
+  "UEL",
+  "UEM",
+  "UNEB",
+  "PUC",
+  "PUCRS",
+  "PUCSP",
+  "PUCMG",
+  "PUCPR",
+  "PUCCAMP",
   // Órgãos e organismos
-  "ABNT", "NBR", "ISO", "IBGE", "CNPq", "CAPES", "INEP", "INPA",
-  "MEC", "SUS", "OMS", "ONU", "UNESCO", "OPAS", "OIT",
-  "IPEA", "EMBRAPA", "FIOCRUZ", "INPE", "INPI",
+  "ABNT",
+  "NBR",
+  "ISO",
+  "IBGE",
+  "CNPq",
+  "CAPES",
+  "INEP",
+  "INPA",
+  "MEC",
+  "SUS",
+  "OMS",
+  "ONU",
+  "UNESCO",
+  "OPAS",
+  "OIT",
+  "IPEA",
+  "EMBRAPA",
+  "FIOCRUZ",
+  "INPE",
+  "INPI",
   // Outros
-  "TCC", "EAD", "ENEM", "SINAES", "BDTD", "DOI", "ISBN", "ISSN",
-  "LGPD", "CLT", "STF", "STJ", "TSE", "TST", "TRF", "TRT",
-  "IBAMA", "FUNAI", "ICMBio", "INCRA", "ANVISA",
-  "PDF", "HTML", "URL", "HTTP", "HTTPS", "XML", "CSV",
+  "TCC",
+  "EAD",
+  "ENEM",
+  "SINAES",
+  "BDTD",
+  "DOI",
+  "ISBN",
+  "ISSN",
+  "LGPD",
+  "CLT",
+  "STF",
+  "STJ",
+  "TSE",
+  "TST",
+  "TRF",
+  "TRT",
+  "IBAMA",
+  "FUNAI",
+  "ICMBio",
+  "INCRA",
+  "ANVISA",
+  "PDF",
+  "HTML",
+  "URL",
+  "HTTP",
+  "HTTPS",
+  "XML",
+  "CSV",
 ];
 
 /** Todas as siglas combinadas, para lookup rápido */
@@ -301,13 +400,11 @@ export function toSentenceCase(text: string): string {
 
   // Tratar "A" isolado após ; ou : (ex: "Subtítulo: A partir de...")
   masked = masked
-    .replace(
-      /[;:]\uFFFD*\s+\uFFFD*A\s/g,
-      (match) => match.toLocaleLowerCase(locale),
+    .replace(/[;:]\uFFFD*\s+\uFFFD*A\s/g, (match) =>
+      match.toLocaleLowerCase(locale),
     )
-    .replace(
-      /[–—]\uFFFD*(?:\s+\uFFFD*)?A\s/g,
-      (match) => match.toLocaleLowerCase(locale),
+    .replace(/[–—]\uFFFD*(?:\s+\uFFFD*)?A\s/g, (match) =>
+      match.toLocaleLowerCase(locale),
     );
 
   // Processar cada "palavra" (incluindo palavras compostas com hífen)
@@ -427,10 +524,7 @@ function determineFormatAction(item: Zotero.Item): FormatAction {
   const itemType = item.itemType as string;
 
   // Grupo 3 — Sem autor em tipos que requerem autoria para negrito
-  if (
-    NO_BOLD_WHEN_NO_AUTHOR_TYPES.has(itemType) &&
-    !itemHasCreators(item)
-  ) {
+  if (NO_BOLD_WHEN_NO_AUTHOR_TYPES.has(itemType) && !itemHasCreators(item)) {
     return {
       action: "skip",
       reason: "no-author",
@@ -546,8 +640,7 @@ async function applyBoldToField(
  * Exibe uma notificação com o resultado, discriminando por campo alterado.
  */
 export async function formatSelectedItems(): Promise<void> {
-  const zoteroPane =
-    Zotero.getActiveZoteroPane && Zotero.getActiveZoteroPane();
+  const zoteroPane = Zotero.getActiveZoteroPane && Zotero.getActiveZoteroPane();
   if (!zoteroPane) {
     return;
   }
@@ -684,10 +777,7 @@ export function registerTitleFormatterNotifier(): void {
 export function unregisterTitleFormatterNotifier(): void {
   if (_notifierID) {
     Zotero.Notifier.unregisterObserver(_notifierID);
-    ztoolkit.log(
-      "[UFC Title Formatter] Notifier desregistrado:",
-      _notifierID,
-    );
+    ztoolkit.log("[UFC Title Formatter] Notifier desregistrado:", _notifierID);
     _notifierID = undefined;
   }
 }

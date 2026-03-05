@@ -62,18 +62,21 @@ zotero-plugin-template/
 
 1. **Título com subtítulo** — texto antes do primeiro `:` recebe `<b>...</b>`;
    subtítulo (após `:`) permanece sem tag:
+
    ```
    Entrada:  "Educação escolar: políticas, estrutura e organização"
    Saída:    "<b>Educação escolar</b>: políticas, estrutura e organização"
    ```
 
 2. **Título sem subtítulo** — título inteiro recebe `<b>...</b>`:
+
    ```
    Entrada:  "Cadê os operários?"
    Saída:    "<b>Cadê os operários?</b>"
    ```
 
 3. **Tags já existentes** — não sobrescrever se `<b>` já estiver presente:
+
    ```
    Entrada:  "<b>Título já formatado</b>: subtítulo"
    Saída:    (sem alteração)
@@ -99,6 +102,7 @@ zotero-plugin-template/
 ## API do Zotero relevante
 
 ### Registrar observer (escutar eventos de item)
+
 ```typescript
 const observerID = Zotero.Notifier.registerObserver(
   {
@@ -112,11 +116,12 @@ const observerID = Zotero.Notifier.registerObserver(
     },
   },
   ["item"],
-  "ufc-title-formatter"
+  "ufc-title-formatter",
 );
 ```
 
 ### Ler e escrever o campo title
+
 ```typescript
 const title = item.getField("title") as string;
 item.setField("title", newTitle);
@@ -124,11 +129,13 @@ await item.saveTx();
 ```
 
 ### Desregistrar observer (ao desativar o plugin)
+
 ```typescript
 Zotero.Notifier.unregisterObserver(observerID);
 ```
 
 ### Ciclo de vida do plugin (src/index.ts)
+
 ```typescript
 async function startup({ id, version, rootURI }) {
   // Registrar observers, menus, preferências
@@ -163,13 +170,13 @@ function shutdown() {
 
 ## Fontes dos Guias UFC (PDFs públicos)
 
-| Guia | URL |
-|---|---|
-| Trabalhos Acadêmicos | https://biblioteca.ufc.br/wp-content/uploads/2022/05/guianormalizacaotrabalhosacademicos-17.05.2022.pdf |
-| Artigo Científico | https://biblioteca.ufc.br/wp-content/uploads/2023/04/guia-de-normalizacao-de-artigo-corrigido-27.04.2023.pdf |
-| Citações (2025) | https://biblioteca.ufc.br/wp-content/uploads/2025/06/guianormalizacaocitacoes2025.pdf |
-| Referências (2023) | https://biblioteca.ufc.br/wp-content/uploads/2023/12/guianormalizacaoreferencias.pdf |
-| Projetos de Pesquisa | https://biblioteca.ufc.br/wp-content/uploads/2019/10/guia-de-projetos-06.10.2019.pdf |
+| Guia                 | URL                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Trabalhos Acadêmicos | https://biblioteca.ufc.br/wp-content/uploads/2022/05/guianormalizacaotrabalhosacademicos-17.05.2022.pdf      |
+| Artigo Científico    | https://biblioteca.ufc.br/wp-content/uploads/2023/04/guia-de-normalizacao-de-artigo-corrigido-27.04.2023.pdf |
+| Citações (2025)      | https://biblioteca.ufc.br/wp-content/uploads/2025/06/guianormalizacaocitacoes2025.pdf                        |
+| Referências (2023)   | https://biblioteca.ufc.br/wp-content/uploads/2023/12/guianormalizacaoreferencias.pdf                         |
+| Projetos de Pesquisa | https://biblioteca.ufc.br/wp-content/uploads/2019/10/guia-de-projetos-06.10.2019.pdf                         |
 
 ---
 
@@ -683,18 +690,21 @@ metodologia de conteúdos." (Toro, 2006, p. 43, tradução nossa).
 ### NOTAS DE RODAPÉ — Expressões latinas
 
 #### Idem (Id.)
+
 ```
 6  VIDAL, Maria de Fátima; GONÇALVES, Marcos Falcão. O segmento da pesca...
 7  VIDAL; GONÇALVES, 2010, p. 4.
 ```
 
 #### Ibidem (Ibid.)
+
 ```
 9  ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS, 2002, p. 4.
 10 Ibid., p. 7.
 ```
 
 #### Opus citatum (op. cit.)
+
 ```
 11 FERREIRA, 2006, p. 19.
 12 LOUREIRO, 2004, p. 29-32.
@@ -702,11 +712,13 @@ metodologia de conteúdos." (Toro, 2006, p. 43, tradução nossa).
 ```
 
 #### Passim
+
 ```
 15 OLIVEIRA, 2006, passim.
 ```
 
 #### Loco citato (loc. cit.)
+
 ```
 16 NASCIMENTO; CASTRO, 2010, p. 33-40.
 17 PEREIRA, 2017, p. 15.
@@ -714,16 +726,19 @@ metodologia de conteúdos." (Toro, 2006, p. 43, tradução nossa).
 ```
 
 #### Conferre (Cf.)
+
 ```
 19 Cf. SANTOS, 2009.
 ```
 
 #### Sequentia (et seq.)
+
 ```
 20 MOURA, 2011, p. 22 et seq.
 ```
 
 #### apud
+
 ```
 "Um texto é citado para ser interpretado ou para apoio a uma interpretação"
 (Eco, 1983, p. 121 apud Koche, 2009, p. 147).
