@@ -649,11 +649,161 @@ export async function formatItemTitle(
   return { changed: false, reason: "no-action" };
 }
 
+// ---------------------------------------------------------------------------
+// Normalização do campo edition para ABNT
+// ---------------------------------------------------------------------------
+
 /**
- * Alias para formatItemTitle — nome usado pelo observer de integração.
- * Processa um item individual, aplicando negrito conforme regras ABNT/UFC.
+ * Mapa de ordinais escritos por extenso (português e inglês) para número.
  */
-export const processarItem = formatItemTitle;
+const ORDINAL_WORDS: ReadonlyMap<string, string> = new Map([
+  // Português
+  ["primeira", "1"],
+  ["segundo", "2"],
+  ["segunda", "2"],
+  ["terceira", "3"],
+  ["terceiro", "3"],
+  ["quarta", "4"],
+  ["quarto", "4"],
+  ["quinta", "5"],
+  ["quinto", "5"],
+  ["sexta", "6"],
+  ["sexto", "6"],
+  ["sétima", "7"],
+  ["sétimo", "7"],
+  ["oitava", "8"],
+  ["oitavo", "8"],
+  ["nona", "9"],
+  ["nono", "9"],
+  ["décima", "10"],
+  ["décimo", "10"],
+  // Inglês
+  ["first", "1"],
+  ["second", "2"],
+  ["third", "3"],
+  ["fourth", "4"],
+  ["fifth", "5"],
+  ["sixth", "6"],
+  ["seventh", "7"],
+  ["eighth", "8"],
+  ["ninth", "9"],
+  ["tenth", "10"],
+]);
+
+/**
+ * Normaliza o campo `edition` para conter apenas o número.
+ *
+ * O CSL ABNT-UFC espera um valor numérico puro (ex: `2`) para gerar
+ * corretamente `2. ed.`. Porém, importações via ISBN/DOI frequentemente
+ * retornam formatos como:
+ *   - "2a edição", "3ª ed.", "2. ed."
+ *   - "2nd edition", "3rd ed.", "Revised edition"
+ *   - "Segunda edição", "Third edition"
+ *
+ * Esta função extrai o número e retorna apenas ele. Se o valor já for
+ * numérico puro ou não puder ser normalizado, retorna null (sem alteração).
+ *
+ * @returns O número como string se houve normalização, null caso contrário.
+ */
+export function normalizeEdition(edition: string): string | null {
+  if (!edition || edition.trim().length === 0) return null;
+
+  const trimmed = edition.trim();
+
+  // Já é numérico puro → nada a fazer
+  if (/^\d+$/.test(trimmed)) return null;
+
+  // Padrão 1: Número seguido de sufixo ordinal + opcional "edição/edition/ed."
+  // Ex: "2a edição", "3ª ed.", "2nd edition", "1st ed.", "4th edition"
+  //     "2. ed.", "3. edição"
+  const numericMatch = trimmed.match(
+    /^(\d+)\s*[.ªaº]?\s*(?:st|nd|rd|th)?\s*(?:edi[çc][ãa]o|edition|ed\.?)?$/i,
+  );
+  if (numericMatch) {
+    return numericMatch[1];
+  }
+
+  // Padrão 2: Ordinal por extenso + "edição/edition/ed."
+  // Ex: "Segunda edição", "Third edition"
+  const wordMatch = trimmed.match(
+    /^(\p{L}+)\s+(?:edi[çc][ãa]o|edition|ed\.?)$/iu,
+  );
+  if (wordMatch) {
+    const word = wordMatch[1].toLocaleLowerCase("pt-BR");
+    const num = ORDINAL_WORDS.get(word);
+    if (num) return num;
+  }
+
+  // Padrão 3: Apenas ordinal por extenso (sem "edição")
+  // Ex: "Segunda", "Third"
+  const bareWord = trimmed.toLocaleLowerCase("pt-BR");
+  const bareNum = ORDINAL_WORDS.get(bareWord);
+  if (bareNum) return bareNum;
+
+  // Padrão 4: Número no início seguido de qualquer coisa
+  // Ex: "2nd revised edition", "3e édition"
+  const leadingNum = trimmed.match(/^(\d+)\b/);
+  if (leadingNum) {
+    return leadingNum[1];
+  }
+
+  // Não conseguiu extrair → não altera (deixa o texto original)
+  return null;
+}
+
+/**
+ * Normaliza o campo `edition` de um item do Zotero, se necessário.
+ * Retorna true se o campo foi alterado (sem salvar — o save é feito
+ * pelo chamador).
+ */
+function normalizeEditionField(item: Zotero.Item): boolean {
+  let edition: string;
+  try {
+    edition = item.getField("edition") as string;
+  } catch {
+    return false;
+  }
+
+  if (!edition || edition.trim().length === 0) return false;
+
+  const normalized = normalizeEdition(edition);
+  if (normalized === null) return false;
+
+  ztoolkit.log(`[UFC] normalizeEdition: "${edition}" → "${normalized}"`);
+  item.setField("edition", normalized);
+  return true;
+}
+
+/**
+ * Processa um item individual: normaliza edition + aplica negrito ABNT/UFC.
+ * Esta é a função principal chamada pelo Notifier e pelo menu de contexto.
+ */
+export async function processarItem(item: Zotero.Item): Promise<FormatResult> {
+  // Ignorar notas e anexos
+  if (item.isNote() || item.isAttachment()) {
+    return { changed: false, reason: "note-or-attachment" };
+  }
+
+  // Fase 1: Normalizar edition (antes do formatItemTitle para não
+  // duplicar o save — se edition mudar, o save virá junto com o título)
+  const editionChanged = normalizeEditionField(item);
+
+  // Fase 2: Formatar título (negrito)
+  const result = await formatItemTitle(item);
+
+  // Se o título não mudou mas edition sim, precisamos salvar
+  if (!result.changed && editionChanged) {
+    _isFormatting = true;
+    try {
+      await item.saveTx();
+    } finally {
+      _isFormatting = false;
+    }
+    return { changed: true, field: "title" };
+  }
+
+  return result;
+}
 
 /**
  * Aplica <b> em um campo específico do item e salva.
@@ -759,7 +909,7 @@ export async function formatSelectedItems(): Promise<void> {
   let skippedOther = 0;
 
   for (const it of items) {
-    const result = await formatItemTitle(it);
+    const result = await processarItem(it);
     if (result.changed) {
       if (result.field === "title") titleCount++;
       else containerCount++;
