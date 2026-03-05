@@ -402,7 +402,7 @@
 
         <!-- TESE / DISSERTAÇÃO / TCC
              Guia UFC 2023, seção 3.1.2:
-             AUTOR. Título. Ano. Nº p. Tipo (Grau em Curso) – Centro/Faculdade,
+             AUTOR. Título. Ano. Nº f. Tipo (Grau em Curso) – Centro/Faculdade,
              Universidade, Local, ano. Disponível em: URL. Acesso em: data.
 
              Mapeamento Zotero → CSL:
@@ -410,7 +410,7 @@
                archive          → Centro/Faculdade (ex: "Centro de Ciências")
                publisher        → Universidade (ex: "Universidade Federal do Ceará")
                publisher-place  → Cidade (ex: "Fortaleza")
-               number-of-pages  → folhas/páginas (elemento complementar)
+               number-of-pages  → folhas (elemento complementar; ABNT usa "f." para teses)
 
              Exemplo essencial (seção 3.1.2.1):
                BENEGAS, M. Três ensaios em análise econômica. 2006. Tese (Doutorado
@@ -418,7 +418,7 @@
                Contabilidade, Universidade Federal do Ceará, Fortaleza, 2006.
 
              Exemplo complementar (seção 3.1.2.1):
-               CHAGAS JÚNIOR, L. W. R. Reuso de água... 2006. 47 p. Trabalho de
+               CHAGAS JÚNIOR, L. W. R. Reuso de água... 2006. 47 f. Trabalho de
                conclusão de curso (Especialização em ...) – Centro de Tecnologia,
                Universidade Federal do Ceará, Fortaleza, 2006.
         -->
@@ -428,7 +428,7 @@
             <text macro="title"/>
             <text macro="year-date"/>
             <group>
-              <text variable="number-of-pages" suffix=" p"/>
+              <text variable="number-of-pages" suffix=" f"/>
             </group>
             <group delimiter=" – ">
               <text variable="genre"/>

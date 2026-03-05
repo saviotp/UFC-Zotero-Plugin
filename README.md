@@ -111,12 +111,14 @@ Rio de Janeiro: Bertrand Brasil: FAPERJ, 1999. p. 41-55.
 | **Item Type**  | `Book Section`                            |                                             |
 | **Author**     | `Muller, Geraldo`                         | Autor do capítulo.                          |
 | **Title**      | `O macroeixo São Paulo-Buenos Aires...`   | Título do capítulo (sem negrito).           |
-| **Editor**     | `Castro, Iná Elias de`                    | Organizador(es) do livro. Adicione cada um. |
+| **Editor**     | `Castro, Iná Elias de`                    | ⚠️ Organizador(es) do livro. **Adicione cada um separadamente** (clique em "+" no Zotero). Todos aparecerão na referência. |
 | **Book Title** | `Redescobrindo o Brasil: 500 anos depois` | Título do livro (recebe `<b>` via plugin).  |
 | **Place**      | `Rio de Janeiro`                          |                                             |
 | **Publisher**  | `Bertrand Brasil: FAPERJ`                 | Duas editoras separadas por `: `.           |
 | **Date**       | `1999`                                    |                                             |
 | **Pages**      | `41-55`                                   |                                             |
+
+> **⚠️ Importante:** Se a referência ABNT mostra vários organizadores (ex: `CASTRO; MIRANDA; EGLER (org.)`), **todos** devem ser cadastrados como "Editor" no Zotero, um por linha. Se apenas um editor for cadastrado, apenas ele aparecerá na referência.
 
 ---
 
@@ -142,7 +144,7 @@ Acesso em: 13 fev. 2019.
 | **Place**      | `Fortaleza`                                        |                                                  |
 | **Date**       | `2018`                                             |                                                  |
 | **Archive**    | `Centro de Ciências`                               | ⚠️ **Faculdade ou Centro.** Se vazio, é omitido. |
-| **# of Pages** | `47`                                               | (Opcional) Gera "47 p."                          |
+| **# of Pages** | `47`                                               | (Opcional) Gera "47 f." (folhas, conforme ABNT). |
 | **URL**        | `http://www.repositorio.ufc.br/handle/riufc/39044` |                                                  |
 | **Accessed**   | `2019-02-13`                                       | Data de acesso.                                  |
 
