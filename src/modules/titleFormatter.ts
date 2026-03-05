@@ -29,8 +29,13 @@
  * é editável via setField() no Zotero 8 (diferente do container-title
  * do CSL). O plugin aplica <b> diretamente nesse campo.
  *
- * Referência normativa:
- *   Guia de Normalização para Elaboração de Referências — UFC 2023, §2.3d
+ * Referências normativas:
+ *   - Guia de Normalização de Trabalhos Acadêmicos — UFC 2022
+ *     https://biblioteca.ufc.br/wp-content/uploads/2022/05/guianormalizacaotrabalhosacademicos-17.05.2022.pdf
+ *   - Guia de Normalização para Elaboração de Referências — UFC 2023
+ *     https://biblioteca.ufc.br/wp-content/uploads/2023/12/guianormalizacaoreferencias.pdf
+ *   - Guia de Normalização de Citações — UFC 2025
+ *     https://biblioteca.ufc.br/wp-content/uploads/2025/06/guianormalizacaocitacoes2025.pdf
  */
 
 import { getString } from "../utils/locale";
@@ -95,16 +100,32 @@ const BOLD_ON_CONTAINER_TYPES: ReadonlySet<string> = new Set([
 /**
  * Tipos que, quando **sem autor**, não recebem negrito algum
  * (Grupo 3 — entrada pelo título em maiúsculas).
- * Inclui os tipos mais comuns que aparecem sem autoria na ABNT.
+ *
+ * Na ABNT, quando não há indicação de responsabilidade, a entrada é
+ * pelo título em MAIÚSCULAS (a primeira palavra ou até o primeiro
+ * sinal de pontuação). Nesse caso, NÃO se aplica destaque tipográfico.
+ *
+ * Exemplos dos guias UFC:
+ *   COLLINS dicionário: inglês-português...
+ *   BRASILIZAÇÃO. Fortaleza: Estúdio Santa Música, 2006. 1 CD.
+ *   ALZHEIMER: mudanças na comunicação...
+ *   TIM MAIA in concert. [Manaus]...
  */
 const NO_BOLD_WHEN_NO_AUTHOR_TYPES: ReadonlySet<string> = new Set([
   "book",
   "film",
   "newspaperArticle",
+  "magazineArticle",
   "webpage",
   "audioRecording",
+  "videoRecording",
   "artwork",
   "document",
+  "statute",
+  "map",
+  "encyclopediaArticle",
+  "dictionaryEntry",
+  "report",
 ]);
 
 // ---------------------------------------------------------------------------
@@ -255,6 +276,21 @@ const INSTITUTIONAL_ACRONYMS = [
   "FIOCRUZ",
   "INPE",
   "INPI",
+  "ANAC",
+  "DNIT",
+  "DETRAN",
+  // Editoras e fundações acadêmicas
+  "EDUEPB",
+  "EDUFPE",
+  "EDUSP",
+  "EDUEL",
+  "EDUEM",
+  "EDUFBA",
+  "EDUFMA",
+  "FAPERJ",
+  "FAPESP",
+  "FUNCAP",
+  "FEB",
   // Outros
   "TCC",
   "EAD",
@@ -277,6 +313,9 @@ const INSTITUTIONAL_ACRONYMS = [
   "ICMBio",
   "INCRA",
   "ANVISA",
+  "AIP",
+  "DVD",
+  "CD",
   "PDF",
   "HTML",
   "URL",
@@ -371,9 +410,10 @@ export function toSentenceCase(text: string): string {
     },
   );
 
-  // 1d. Proteger conteúdo dentro de tags de formatação (<i>, <b>, <sup>, <sub>)
+  // 1d. Proteger conteúdo dentro de tags de formatação (<i>, <sup>, <sub>, <em>, <strong>)
+  // NÃO incluir <b> aqui — o plugin gerencia <b> separadamente (via computeFormattedTitle)
   text.replace(
-    /<(i|b|em|strong|sup|sub)(?:\s[^>]*)?>.*?<\/\1>/gi,
+    /<(i|em|strong|sup|sub)(?:\s[^>]*)?>.*?<\/\1>/gi,
     (match, _tagName, offset) => {
       preserve.push({ start: offset, end: offset + match.length });
       return match;
@@ -411,11 +451,36 @@ export function toSentenceCase(text: string): string {
   masked = masked.replace(
     /([\u{FFFD}\p{L}\p{N}]+([\u{FFFD}\p{L}\p{N}\p{Pc}]*))|(\s(\p{Lu}+\.){2,})?/gu,
     (word) => {
+      const unmasked = word.replace(/\uFFFD/g, "");
+
+      if (unmasked.length === 0) return word;
+
+      // Sigla conhecida → preservar em MAIÚSCULAS (funciona em allcaps e mixed)
+      if (ALL_ACRONYMS.has(unmasked.toLocaleUpperCase(locale))) {
+        // Restaurar a forma canônica da sigla (ex: "cnpq" → "CNPq")
+        const canonical = [...ALL_ACRONYMS].find(
+          (a) => a.toLocaleUpperCase(locale) === unmasked.toLocaleUpperCase(locale),
+        );
+        if (canonical) {
+          // Substituir apenas a parte não-mascarada, mantendo \uFFFD
+          let result = "";
+          let ci = 0;
+          for (const ch of word) {
+            if (ch === "\uFFFD") {
+              result += ch;
+            } else {
+              result += ci < canonical.length ? canonical[ci] : ch;
+              ci++;
+            }
+          }
+          return result;
+        }
+        return word;
+      }
+
       if (allcaps) {
         return word.toLocaleLowerCase(locale);
       }
-
-      const unmasked = word.replace(/\uFFFD/g, "");
 
       // Letra isolada: só converter "A" → "a"
       if (unmasked.length === 1) {
@@ -427,16 +492,11 @@ export function toSentenceCase(text: string): string {
         return word;
       }
 
-      // Identificadores alfanuméricos (ex: "H2O") ou siglas (ex: "UNESCO")
+      // Identificadores alfanuméricos (ex: "H2O") ou siglas genéricas (ex: "XPTO")
       if (
         unmasked.match(/^\p{L}+\p{N}[\p{L}\p{N}]*$/u) ||
         unmasked.match(/^[\p{Lu}\p{N}]+$/u)
       ) {
-        return word;
-      }
-
-      // Sigla conhecida → preservar
-      if (ALL_ACRONYMS.has(unmasked)) {
         return word;
       }
 
@@ -569,6 +629,10 @@ export async function formatItemTitle(
 
   const action = determineFormatAction(item);
 
+  ztoolkit.log(
+    `[UFC] formatItemTitle: itemType=${item.itemType as string}, action=${action.action}${action.action === "skip" ? ` (${action.reason})` : ""}`,
+  );
+
   if (action.action === "skip") {
     return { changed: false, reason: action.reason };
   }
@@ -603,31 +667,61 @@ async function applyBoldToField(
   try {
     value = item.getField(field) as string;
   } catch {
+    ztoolkit.log(`[UFC] applyBoldToField: campo ${field} não existe`);
     return { changed: false, reason: `no-field-${field}` };
   }
 
+  if (!value || value.trim().length === 0) {
+    ztoolkit.log(`[UFC] applyBoldToField: campo ${field} vazio`);
+    return { changed: false, reason: `empty-field-${field}` };
+  }
+
+  ztoolkit.log(
+    `[UFC] applyBoldToField: field=${field}, value="${value.substring(0, 80)}..."`,
+  );
+
   let changed = false;
 
-  // Etapa 1: Corrigir caixa alta se habilitado
+  // Etapa 0: Se já contém <b> mas o texto está em MAIÚSCULAS,
+  // remover as tags <b> existentes para permitir re-processamento.
+  // Isso permite corrigir itens formatados antes do sentence case existir.
   const fixUppercase = getPref("fixUppercase");
+  const upper = isUpperCase(value);
+  ztoolkit.log(
+    `[UFC] fixUppercase=${String(fixUppercase)}, isUpperCase=${String(upper)}`,
+  );
+
+  if (fixUppercase && upper && /<b[\s>]/i.test(value)) {
+    ztoolkit.log(`[UFC] Removendo <b> existente para re-processar`);
+    value = value.replace(/<\/?b>/gi, "");
+  }
+
+  // Etapa 1: Corrigir caixa alta se habilitado
   if (fixUppercase && isUpperCase(value)) {
     value = toSentenceCase(value);
+    ztoolkit.log(`[UFC] sentence case: "${value.substring(0, 80)}..."`);
     item.setField(field, value);
     changed = true;
   }
 
   // Etapa 2: Aplicar negrito
   const newValue = computeFormattedTitle(value);
+  ztoolkit.log(
+    `[UFC] computeFormattedTitle: ${newValue !== null ? `"${newValue.substring(0, 80)}..."` : "null (sem alteração)"}`,
+  );
+
   if (newValue !== null) {
     item.setField(field, newValue);
     changed = true;
   }
 
   if (changed) {
+    ztoolkit.log(`[UFC] Salvando item...`);
     await item.saveTx();
     return { changed: true, field };
   }
 
+  ztoolkit.log(`[UFC] Nenhuma alteração necessária`);
   return { changed: false, reason: "already-formatted" };
 }
 
@@ -735,10 +829,27 @@ export function registerTitleFormatterNotifier(): void {
       ids: Array<number | string>,
       _extraData: { [key: string]: any },
     ) => {
-      if (_isFormatting) return;
-      if (!addon?.data.alive) return;
+      if (_isFormatting) {
+        ztoolkit.log(`[UFC] Notifier: ignorando (já está formatando)`);
+        return;
+      }
+      if (!addon?.data.alive) {
+        ztoolkit.log(`[UFC] Notifier: ignorando (addon não está ativo)`);
+        return;
+      }
       if (type !== "item") return;
       if (event !== "add" && event !== "modify") return;
+
+      // Verificar se a formatação automática está habilitada
+      const enabled = getPref("enable");
+      if (!enabled) {
+        ztoolkit.log(`[UFC] Notifier: ignorando (formatação automática desabilitada)`);
+        return;
+      }
+
+      ztoolkit.log(
+        `[UFC] Notifier: event=${event}, type=${type}, ids=[${ids.join(",")}]`,
+      );
 
       _isFormatting = true;
       try {
