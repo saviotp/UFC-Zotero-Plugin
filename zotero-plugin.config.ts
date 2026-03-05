@@ -8,9 +8,11 @@ export default defineConfig({
   id: pkg.config.addonID,
   namespace: pkg.config.addonRef,
   updateURL:
-    "https://github.com/saviotp/UFC-Zotero-Plugin/releases/download/release/update.json",
+    `https://github.com/{{owner}}/{{repo}}/releases/download/release/${
+      pkg.version.includes("-") ? "update-beta.json" : "update.json"
+    }`,
   xpiDownloadLink:
-    "https://github.com/saviotp/UFC-Zotero-Plugin/releases/download/release/ufc-title-formatter.xpi",
+    "https://github.com/{{owner}}/{{repo}}/releases/download/v{{version}}/{{xpiName}}.xpi",
 
   build: {
     assets: ["addon/**/*.*"],
