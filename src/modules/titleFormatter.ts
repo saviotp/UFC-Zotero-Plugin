@@ -776,8 +776,58 @@ function normalizeEditionField(item: Zotero.Item): boolean {
   return true;
 }
 
+// ---------------------------------------------------------------------------
+// Normalização de sobrenomes para MAIÚSCULAS (ABNT NBR 6023:2018)
+// ---------------------------------------------------------------------------
+
 /**
- * Processa um item individual: normaliza edition + aplica negrito ABNT/UFC.
+ * Normaliza os sobrenomes (lastName) de todos os creators do item
+ * para MAIÚSCULAS, conforme exige a ABNT NBR 6023:2018.
+ *
+ * Regras:
+ *  - fieldMode === 0 (two-field, pessoa física): lastName → MAIÚSCULAS
+ *  - fieldMode === 1 (single-field, literal/institucional): não altera
+ *    (o usuário controla manualmente o que fica em maiúsculas no literal)
+ *
+ * Retorna true se ao menos um creator foi alterado (sem salvar —
+ * o save é responsabilidade do chamador).
+ */
+function normalizeCreatorLastNames(item: Zotero.Item): boolean {
+  let creators: ReturnType<Zotero.Item["getCreators"]>;
+  try {
+    creators = item.getCreators();
+  } catch {
+    return false;
+  }
+
+  if (!Array.isArray(creators) || creators.length === 0) return false;
+
+  let changed = false;
+
+  const updated = creators.map((creator) => {
+    // fieldMode 1 = campo único (institucional/literal) → não altera
+    if (creator.fieldMode === 1) return creator;
+
+    const upper = (creator.lastName ?? "").toLocaleUpperCase("pt-BR");
+    if (upper !== creator.lastName) {
+      changed = true;
+      ztoolkit.log(
+        `[UFC] normalizeCreatorLastNames: "${creator.lastName}" → "${upper}"`,
+      );
+      return { ...creator, lastName: upper };
+    }
+    return creator;
+  });
+
+  if (changed) {
+    item.setCreators(updated);
+  }
+
+  return changed;
+}
+
+/**
+ * Processa um item individual: normaliza sobrenomes + edition + aplica negrito ABNT/UFC.
  * Esta é a função principal chamada pelo Notifier e pelo menu de contexto.
  */
 export async function processarItem(item: Zotero.Item): Promise<FormatResult> {
@@ -786,15 +836,17 @@ export async function processarItem(item: Zotero.Item): Promise<FormatResult> {
     return { changed: false, reason: "note-or-attachment" };
   }
 
-  // Fase 1: Normalizar edition (antes do formatItemTitle para não
-  // duplicar o save — se edition mudar, o save virá junto com o título)
+  // Fase 1: Normalizar sobrenomes para MAIÚSCULAS (ABNT NBR 6023:2018)
+  const creatorsChanged = normalizeCreatorLastNames(item);
+
+  // Fase 2: Normalizar edition
   const editionChanged = normalizeEditionField(item);
 
-  // Fase 2: Formatar título (negrito)
+  // Fase 3: Formatar título (negrito)
   const result = await formatItemTitle(item);
 
-  // Se o título não mudou mas edition sim, precisamos salvar
-  if (!result.changed && editionChanged) {
+  // Se o título não mudou mas creators ou edition sim, precisamos salvar
+  if (!result.changed && (creatorsChanged || editionChanged)) {
     _isFormatting = true;
     try {
       await item.saveTx();
