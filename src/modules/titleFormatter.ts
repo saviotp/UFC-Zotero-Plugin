@@ -901,12 +901,30 @@ async function applyBoldToField(
     value = value.replace(/<\/?b>/gi, "");
   }
 
-  // Etapa 1: Corrigir caixa alta se habilitado
-  if (fixUppercase && isUpperCase(value)) {
-    value = toSentenceCase(value);
-    ztoolkit.log(`[UFC] sentence case: "${value.substring(0, 80)}..."`);
-    item.setField(field, value);
-    changed = true;
+  // Etapa 1: Normalizar títulos de obras para sentence case (sempre)
+  // Conforme solicitado: títulos das obras (Grupo 1) devem ficar com
+  // apenas a primeira letra maiúscula. Usamos toSentenceCase, que
+  // preserva siglas e marcas internas.
+  try {
+    const itemType = item.itemType as string;
+    if (field === "title" && BOLD_ON_TITLE_TYPES.has(itemType)) {
+      const sentence = toSentenceCase(value);
+      if (sentence !== value) {
+        value = sentence;
+        ztoolkit.log(`[UFC] normalized title to sentence case: "${value.substring(0, 80)}..."`);
+        item.setField(field, value);
+        changed = true;
+      }
+    } else if (fixUppercase && isUpperCase(value)) {
+      // fallback: preservamos comportamento anterior para outros campos
+      value = toSentenceCase(value);
+      ztoolkit.log(`[UFC] sentence case: "${value.substring(0, 80)}..."`);
+      item.setField(field, value);
+      changed = true;
+    }
+  } catch (e) {
+    // Segurança: não bloquear formatação se item.itemType for inacessível
+    ztoolkit.log(`[UFC] erro ao tentar normalizar título:`, e);
   }
 
   // Etapa 2: Aplicar negrito
