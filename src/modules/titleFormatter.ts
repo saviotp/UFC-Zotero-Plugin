@@ -911,7 +911,9 @@ async function applyBoldToField(
       const sentence = toSentenceCase(value);
       if (sentence !== value) {
         value = sentence;
-        ztoolkit.log(`[UFC] normalized title to sentence case: "${value.substring(0, 80)}..."`);
+        ztoolkit.log(
+          `[UFC] normalized title to sentence case: "${value.substring(0, 80)}..."`,
+        );
         item.setField(field, value);
         changed = true;
       }
