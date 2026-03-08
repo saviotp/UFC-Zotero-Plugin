@@ -2,6 +2,10 @@ import {
   registerTitleFormatterNotifier,
   unregisterTitleFormatterNotifier,
   registerContextMenu,
+  // Portuguese aliases (backwards-compatible)
+  registrarNotificadorFormatador,
+  desregistrarNotificadorFormatador,
+  registrarMenuDeContexto,
 } from "./modules/titleFormatter";
 import { getString, initLocale } from "./utils/locale";
 import { registerPrefsScripts } from "./modules/preferenceScript";
@@ -25,7 +29,12 @@ async function onStartup() {
   });
 
   // Registrar observer de itens (add/modify)
-  registerTitleFormatterNotifier();
+  // Prefer using Portuguese alias within hooks for readability
+  if (typeof registrarNotificadorFormatador === "function") {
+    registrarNotificadorFormatador();
+  } else {
+    registerTitleFormatterNotifier();
+  }
 
   await Promise.all(
     Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
@@ -61,8 +70,33 @@ async function onMainWindowLoad(win: _ZoteroTypes.MainWindow): Promise<void> {
     text: `[50%] ${getString("startup-begin")}`,
   });
 
+  // Global error handlers to surface uncaught rejections/errors in Dev
+  try {
+    win.addEventListener("unhandledrejection", (ev: any) => {
+      try {
+        ztoolkit.log("[UFC] window.unhandledrejection:", ev.reason);
+      } catch (e) {
+        // swallow
+      }
+    });
+
+    win.addEventListener("error", (ev: any) => {
+      try {
+        ztoolkit.log("[UFC] window.error:", ev.message || ev.error || ev);
+      } catch (e) {
+        // swallow
+      }
+    });
+  } catch (e) {
+    // Some older windows may not allow adding listeners; ignore safely
+  }
+
   // Registrar menu de contexto (botão direito → "Formatar título")
-  registerContextMenu();
+  if (typeof registrarMenuDeContexto === "function") {
+    registrarMenuDeContexto();
+  } else {
+    registerContextMenu();
+  }
 
   await Zotero.Promise.delay(500);
 

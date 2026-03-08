@@ -40,6 +40,13 @@
 
 import { getString } from "../utils/locale";
 import { getPref } from "../utils/prefs";
+import { normalizePublisherField } from "./publisherFormatter";
+import { possuiCreators, normalizarSobrenomes, marcarTradutoresUppercase } from "./creatorsFormatter";
+import { mostrarResultado } from "./notifications";
+
+export type FormatResult =
+  | { changed: true; field: "title" | "publicationTitle" | "publisher" }
+  | { changed: false; reason: string };
 
 // ---------------------------------------------------------------------------
 // Flag anti-loop: impede que o observer dispare novamente ao salvar
@@ -78,23 +85,22 @@ const BOLD_ON_TITLE_TYPES: ReadonlySet<string> = new Set([
   "presentation",
   "videoRecording",
   "letter",
-  "interview", // entrevista avulsa (não publicada em periódico)
+  "interview",
   "podcast",
   "preprint",
-  "case", // legal_case no CSL — jurisprudência (acórdão, súmula, sentença)
-  "hearing", // hearing no CSL — decisão judicial / audiência
+  "case",
+  "hearing",
 ]);
 
 /**
  * Grupo 2 — O destaque vai no campo `publicationTitle` (container-title).
- * São partes de um todo: artigos, capítulos, trabalhos em evento.
  */
 const BOLD_ON_CONTAINER_TYPES: ReadonlySet<string> = new Set([
-  "journalArticle", // article-journal no CSL
-  "newspaperArticle", // article-newspaper no CSL
-  "magazineArticle", // article-magazine no CSL
-  "bookSection", // chapter no CSL
-  "conferencePaper", // paper-conference no CSL
+  "journalArticle",
+  "newspaperArticle",
+  "magazineArticle",
+  "bookSection",
+  "conferencePaper",
   "encyclopediaArticle",
   "dictionaryEntry",
 ]);
@@ -102,16 +108,6 @@ const BOLD_ON_CONTAINER_TYPES: ReadonlySet<string> = new Set([
 /**
  * Tipos que, quando **sem autor**, não recebem negrito algum
  * (Grupo 3 — entrada pelo título em maiúsculas).
- *
- * Na ABNT, quando não há indicação de responsabilidade, a entrada é
- * pelo título em MAIÚSCULAS (a primeira palavra ou até o primeiro
- * sinal de pontuação). Nesse caso, NÃO se aplica destaque tipográfico.
- *
- * Exemplos dos guias UFC:
- *   COLLINS dicionário: inglês-português...
- *   BRASILIZAÇÃO. Fortaleza: Estúdio Santa Música, 2006. 1 CD.
- *   ALZHEIMER: mudanças na comunicação...
- *   TIM MAIA in concert. [Manaus]...
  */
 const NO_BOLD_WHEN_NO_AUTHOR_TYPES: ReadonlySet<string> = new Set([
   "book",
@@ -129,6 +125,25 @@ const NO_BOLD_WHEN_NO_AUTHOR_TYPES: ReadonlySet<string> = new Set([
   "dictionaryEntry",
   "report",
 ]);
+
+export type FormatAction =
+  | { action: "skip"; reason: string }
+  | { action: "bold-title" }
+  | { action: "bold-container" }
+  | { action: "no-action" };
+
+function determineFormatAction(item: Zotero.Item): FormatAction {
+  const itemType = item.itemType as string;
+
+  if (NO_BOLD_WHEN_NO_AUTHOR_TYPES.has(itemType) && !possuiCreators(item)) {
+    return { action: "skip", reason: "no-author" };
+  }
+
+  if (BOLD_ON_TITLE_TYPES.has(itemType)) return { action: "bold-title" };
+  if (BOLD_ON_CONTAINER_TYPES.has(itemType)) return { action: "bold-container" };
+
+  return { action: "no-action" };
+}
 
 // ---------------------------------------------------------------------------
 // Lógica de formatação pura (sem efeitos colaterais)
@@ -175,6 +190,9 @@ export function isUpperCase(text: string): boolean {
   const upperLetters = letters.replace(/[^A-ZÁÀÂÃÉÈÊÍÏÓÔÕÖÚÜÇ]/g, "");
   return upperLetters.length / letters.length > 0.7;
 }
+
+// Compatibilidade: alias em português
+export const estaEmMaiusculas = isUpperCase;
 
 // ---------------------------------------------------------------------------
 // Siglas e termos brasileiros que devem ser preservados em MAIÚSCULAS
@@ -524,6 +542,9 @@ export function toSentenceCase(text: string): string {
   return masked;
 }
 
+// Compatibilidade: alias em português
+export const converterParaSentenceCase = toSentenceCase;
+
 /**
  * Dado um título, retorna a versão formatada conforme ABNT/UFC.
  * Retorna `null` se nenhuma alteração for necessária.
@@ -557,32 +578,89 @@ export function computeFormattedTitle(title: string): string | null {
   return newTitle !== title ? newTitle : null;
 }
 
+// Compatibilidade: alias em português
+export const computarTituloFormatado = computeFormattedTitle;
+
 // ---------------------------------------------------------------------------
 // Verifica se o item possui ao menos um creator (autor, editor, etc.)
 // ---------------------------------------------------------------------------
 
-function itemHasCreators(item: Zotero.Item): boolean {
+// ...existing code...
+
+/**
+ * Normaliza o campo `edition` de um item do Zotero, se necessário.
+ * Retorna true se o campo foi alterado (sem salvar — o save é feito
+ * pelo chamador).
+ */
+function normalizeEditionField(item: Zotero.Item): boolean {
+  let edition: string;
   try {
-    const creators = item.getCreators();
-    return Array.isArray(creators) && creators.length > 0;
+    edition = item.getField("edition") as string;
   } catch {
     return false;
   }
+
+  if (!edition || edition.trim().length === 0) return false;
+
+  // Tentamos extrair/normalizar com a função utilitária. Ela retorna
+  // null quando não há alteração a ser feita (por exemplo: texto livre
+  // que não conseguimos mapear). Contudo, mesmo que normalizeEdition
+  // retorne null, se o campo for apenas um número (ex: "3") queremos
+  // formatá-lo explicitamente aqui para evitar que o CSL gere ordinais
+  // com markup (que podem aparecer como '3^o' em alguns previews).
+  const normalized = normalizeEdition(edition);
+  const isPureNumber = /^\s*\d+\s*$/.test(edition);
+  if (normalized === null && !isPureNumber) return false;
+
+  // Detectar idioma do item (campo language). Se disponível e for inglês
+  // (startsWith 'en'), escrever a forma ordinal em inglês seguida de ' ed.'
+  // Ex: 6 -> '6th ed.'; se for português ou campo vazio, escrever '6. ed.'
+  let language = "";
+  try {
+    language = (item.getField("language") as string) || "";
+  } catch {
+    language = "";
+  }
+
+  const lang = language.toLocaleLowerCase();
+
+  // Determinar o número a partir de `normalized` (pode ser "3" ou "3rd")
+  const raw = (normalized ?? edition).toString().trim();
+  const leadingNumMatch = raw.match(/^(\d+)/);
+  if (!leadingNumMatch) return false;
+
+  const n = parseInt(leadingNumMatch[1], 10);
+
+  // decidir formato: se linguagem é pt/pt-BR ou está vazia (assumimos pt),
+  // escrevemos português explícito '3. ed.'; se for inglês, escrevemos
+  // '3rd ed.'; outros idiomas seguem o inglês por compatibilidade.
+  const usePortuguese = !lang || lang.startsWith("pt");
+
+  if (usePortuguese) {
+    const ptEdition = `${n}. ed.`;
+    ztoolkit.log(`[UFC] normalizeEdition (lang=${language || "(empty)"}): "${edition}" → "${ptEdition}"`);
+    item.setField("edition", ptEdition);
+    return true;
+  }
+
+  // Caso inglês/outros: montar ordinal em ASCII + ' ed.'
+  let suffix = "th";
+  const mod100 = n % 100;
+  if (mod100 < 11 || mod100 > 13) {
+    const mod10 = n % 10;
+    if (mod10 === 1) suffix = "st";
+    else if (mod10 === 2) suffix = "nd";
+    else if (mod10 === 3) suffix = "rd";
+  }
+  const engEdition = `${n}${suffix} ed.`;
+  ztoolkit.log(`[UFC] normalizeEdition (lang=${language}): "${edition}" → "${engEdition}"`);
+  item.setField("edition", engEdition);
+  return true;
 }
-
-// ---------------------------------------------------------------------------
-// Determina a ação de formatação para um item
-// ---------------------------------------------------------------------------
-
-type FormatAction =
-  | { action: "bold-title" }
-  | { action: "bold-container" }
-  | { action: "skip"; reason: string };
 
 /**
  * Decide qual campo deve receber negrito (ou nenhum) com base no
- * tipo de documento e presença de autores.
- */
+  // Ex: 6 -> '6th ed.'; se for português, escrever '6. ed.' (padrão UFC).
 function determineFormatAction(item: Zotero.Item): FormatAction {
   const itemType = item.itemType as string;
 
@@ -592,32 +670,40 @@ function determineFormatAction(item: Zotero.Item): FormatAction {
       action: "skip",
       reason: "no-author",
     };
+  // Determinar o número a partir de `normalized` (pode ser "3" ou "3rd")
+  const raw = (normalized ?? edition).toString().trim();
+  const leadingNumMatch = raw.match(/^(\d+)/);
+  if (!leadingNumMatch) return false; // algo inesperado — não alteramos
+
+  const n = parseInt(leadingNumMatch[1], 10);
+
+  // decidir formato: se linguagem é pt/pt-BR ou está vazia (assumimos pt),
+  // escrevemos português explícito '3. ed.'; se for inglês, escrevemos
+  // '3rd ed.'; outros idiomas seguem o inglês por compatibilidade.
+  const usePortuguese = !lang || lang.startsWith("pt");
+
+  if (usePortuguese) {
+    const ptEdition = `${n}. ed.`;
+    ztoolkit.log(`[UFC] normalizeEdition (lang=${language || "(empty)"}): "${edition}" → "${ptEdition}"`);
+    item.setField("edition", ptEdition);
+    return true;
   }
 
-  // Grupo 1 — Negrito no title
-  if (BOLD_ON_TITLE_TYPES.has(itemType)) {
-    return { action: "bold-title" };
+  // Caso inglês/outros: montar ordinal em ASCII + ' ed.'
+  let suffix = "th";
+  const mod100 = n % 100;
+  if (mod100 < 11 || mod100 > 13) {
+    const mod10 = n % 10;
+    if (mod10 === 1) suffix = "st";
+    else if (mod10 === 2) suffix = "nd";
+    else if (mod10 === 3) suffix = "rd";
   }
-
-  // Grupo 2 — Negrito no container-title (publicationTitle)
-  if (BOLD_ON_CONTAINER_TYPES.has(itemType)) {
-    return { action: "bold-container" };
-  }
-
-  // Tipo desconhecido → por segurança, não altera
-  return {
-    action: "skip",
-    reason: "unknown-type",
-  };
-}
-
-// ---------------------------------------------------------------------------
+  const engEdition = `${n}${suffix} ed.`;
+  ztoolkit.log(`[UFC] normalizeEdition (lang=${language}): "${edition}" → "${engEdition}"`);
+  item.setField("edition", engEdition);
+  return true;
 // Formata um item do Zotero (com save)
 // ---------------------------------------------------------------------------
-
-export type FormatResult =
-  | { changed: true; field: "title" | "publicationTitle" }
-  | { changed: false; reason: string };
 
 /**
  * Analisa o tipo do item e aplica <b> no campo correto conforme ABNT/UFC.
@@ -650,6 +736,9 @@ export async function formatItemTitle(
 
   return { changed: false, reason: "no-action" };
 }
+
+// Compatibilidade: alias em português
+export const formatarTituloItem = formatItemTitle;
 
 // ---------------------------------------------------------------------------
 // Normalização do campo edition para ABNT
@@ -715,6 +804,19 @@ export function normalizeEdition(edition: string): string | null {
   // Já é numérico puro → nada a fazer
   if (/^\d+$/.test(trimmed)) return null;
 
+  const hasEnglishIndicators =
+    /\b(?:st|nd|rd|th)\b/i.test(trimmed) || /\bedition\b/i.test(trimmed);
+
+  const ordinalSuffix = (n: number) => {
+    const mod100 = n % 100;
+    if (mod100 >= 11 && mod100 <= 13) return "th";
+    const mod10 = n % 10;
+    if (mod10 === 1) return "st";
+    if (mod10 === 2) return "nd";
+    if (mod10 === 3) return "rd";
+    return "th";
+  };
+
   // Padrão 1: Número seguido de sufixo ordinal + opcional "edição/edition/ed."
   // Ex: "2a edição", "3ª ed.", "2nd edition", "1st ed.", "4th edition"
   //     "2. ed.", "3. edição"
@@ -722,7 +824,12 @@ export function normalizeEdition(edition: string): string | null {
     /^(\d+)\s*[.ªaº]?\s*(?:st|nd|rd|th)?\s*(?:edi[çc][ãa]o|edition|ed\.?)?$/i,
   );
   if (numericMatch) {
-    return numericMatch[1];
+    const n = numericMatch[1];
+    if (hasEnglishIndicators) {
+      const num = parseInt(n, 10);
+      return `${num}${ordinalSuffix(num)}`;
+    }
+    return n;
   }
 
   // Padrão 2: Ordinal por extenso + "edição/edition/ed."
@@ -733,48 +840,47 @@ export function normalizeEdition(edition: string): string | null {
   if (wordMatch) {
     const word = wordMatch[1].toLocaleLowerCase("pt-BR");
     const num = ORDINAL_WORDS.get(word);
-    if (num) return num;
+    if (num) {
+      if (hasEnglishIndicators) {
+        const n = parseInt(num, 10);
+        return `${n}${ordinalSuffix(n)}`;
+      }
+      return num;
+    }
   }
 
   // Padrão 3: Apenas ordinal por extenso (sem "edição")
   // Ex: "Segunda", "Third"
   const bareWord = trimmed.toLocaleLowerCase("pt-BR");
   const bareNum = ORDINAL_WORDS.get(bareWord);
-  if (bareNum) return bareNum;
+  if (bareNum) {
+    if (hasEnglishIndicators) {
+      const n = parseInt(bareNum, 10);
+      return `${n}${ordinalSuffix(n)}`;
+    }
+    return bareNum;
+  }
 
   // Padrão 4: Número no início seguido de qualquer coisa
   // Ex: "2nd revised edition", "3e édition"
   const leadingNum = trimmed.match(/^(\d+)\b/);
   if (leadingNum) {
-    return leadingNum[1];
+    const n = leadingNum[1];
+    if (hasEnglishIndicators) {
+      const num = parseInt(n, 10);
+      return `${num}${ordinalSuffix(num)}`;
+    }
+    return n;
   }
 
   // Não conseguiu extrair → não altera (deixa o texto original)
   return null;
 }
 
-/**
- * Normaliza o campo `edition` de um item do Zotero, se necessário.
- * Retorna true se o campo foi alterado (sem salvar — o save é feito
- * pelo chamador).
- */
-function normalizeEditionField(item: Zotero.Item): boolean {
-  let edition: string;
-  try {
-    edition = item.getField("edition") as string;
-  } catch {
-    return false;
-  }
+// Compatibilidade: alias em português
+export const normalizarEdicao = normalizeEdition;
 
-  if (!edition || edition.trim().length === 0) return false;
-
-  const normalized = normalizeEdition(edition);
-  if (normalized === null) return false;
-
-  ztoolkit.log(`[UFC] normalizeEdition: "${edition}" → "${normalized}"`);
-  item.setField("edition", normalized);
-  return true;
-}
+// (A implementação de normalizeEditionField está acima — mantida)
 
 // ---------------------------------------------------------------------------
 // Normalização de sobrenomes para MAIÚSCULAS (ABNT NBR 6023:2018)
@@ -792,39 +898,7 @@ function normalizeEditionField(item: Zotero.Item): boolean {
  * Retorna true se ao menos um creator foi alterado (sem salvar —
  * o save é responsabilidade do chamador).
  */
-function normalizeCreatorLastNames(item: Zotero.Item): boolean {
-  let creators: ReturnType<Zotero.Item["getCreators"]>;
-  try {
-    creators = item.getCreators();
-  } catch {
-    return false;
-  }
-
-  if (!Array.isArray(creators) || creators.length === 0) return false;
-
-  let changed = false;
-
-  const updated = creators.map((creator) => {
-    // fieldMode 1 = campo único (institucional/literal) → não altera
-    if (creator.fieldMode === 1) return creator;
-
-    const upper = (creator.lastName ?? "").toLocaleUpperCase("pt-BR");
-    if (upper !== creator.lastName) {
-      changed = true;
-      ztoolkit.log(
-        `[UFC] normalizeCreatorLastNames: "${creator.lastName}" → "${upper}"`,
-      );
-      return { ...creator, lastName: upper };
-    }
-    return creator;
-  });
-
-  if (changed) {
-    item.setCreators(updated);
-  }
-
-  return changed;
-}
+// creators normalization moved to src/modules/creatorsFormatter.ts
 
 /**
  * Processa um item individual: normaliza sobrenomes + edition + aplica negrito ABNT/UFC.
@@ -837,10 +911,25 @@ export async function processarItem(item: Zotero.Item): Promise<FormatResult> {
   }
 
   // Fase 1: Normalizar sobrenomes para MAIÚSCULAS (ABNT NBR 6023:2018)
-  const creatorsChanged = normalizeCreatorLastNames(item);
+  const creatorsChanged = normalizarSobrenomes(item);
+
+  // Se alteramos creators (por ex. tradutores convertidos), salvar imediatamente
+  // para garantir que a normalização seja persistida antes de outras etapas.
+  if (creatorsChanged) {
+    _isFormatting = true;
+    try {
+      ztoolkit.log("[UFC] processarItem: creatorsChanged=true — salvando imediatamente");
+      await item.saveTx();
+    } finally {
+      _isFormatting = false;
+    }
+  }
 
   // Fase 2: Normalizar edition
   const editionChanged = normalizeEditionField(item);
+
+  // Fase 2.5: Normalizar editora (remover palavra genérica 'Editora')
+  const publisherChanged = normalizePublisherField(item);
 
   // Fase 3: Formatar título (negrito)
   const result = await formatItemTitle(item);
@@ -950,6 +1039,14 @@ async function applyBoldToField(
   return { changed: false, reason: "already-formatted" };
 }
 
+// Compatibilidade: wrapper em português (reexport)
+export async function aplicarNegritoNoCampo(
+  item: Zotero.Item,
+  field: "title" | "publicationTitle",
+): Promise<FormatResult> {
+  return applyBoldToField(item, field);
+}
+
 // ---------------------------------------------------------------------------
 // Formatar itens selecionados (ação manual via menu de contexto)
 // ---------------------------------------------------------------------------
@@ -979,6 +1076,7 @@ export async function formatSelectedItems(): Promise<void> {
 
   let titleCount = 0;
   let containerCount = 0;
+  let publisherCount = 0;
   let skippedNoAuthor = 0;
   let skippedOther = 0;
 
@@ -986,6 +1084,7 @@ export async function formatSelectedItems(): Promise<void> {
     const result = await processarItem(it);
     if (result.changed) {
       if (result.field === "title") titleCount++;
+      else if (result.field === "publisher") publisherCount++;
       else containerCount++;
     } else {
       if (result.reason === "no-author") skippedNoAuthor++;
@@ -993,47 +1092,20 @@ export async function formatSelectedItems(): Promise<void> {
     }
   }
 
-  const total = titleCount + containerCount;
+  const total = titleCount + containerCount + publisherCount;
 
-  // Monta mensagem detalhada
-  let message: string;
-  if (total === 0) {
-    message = getString("format-no-changes");
-  } else {
-    const parts: string[] = [];
-    if (titleCount > 0) {
-      parts.push(
-        getString("format-success-title", {
-          args: { count: String(titleCount) },
-        }),
-      );
-    }
-    if (containerCount > 0) {
-      parts.push(
-        getString("format-success-container", {
-          args: { count: String(containerCount) },
-        }),
-      );
-    }
-    message = parts.join(" ");
-  }
-
-  if (skippedNoAuthor > 0) {
-    message +=
-      " " +
-      getString("format-skipped-no-author", {
-        args: { count: String(skippedNoAuthor) },
-      });
-  }
-
-  const pw = new ztoolkit.ProgressWindow(addon.data.config.addonName, {
-    closeOnClick: true,
+  mostrarResultado({
+    title: titleCount,
+    container: containerCount,
+    publisher: publisherCount,
+    creators: 0,
+    edition: 0,
+    skipped: skippedNoAuthor,
   });
-  pw.createLine({
-    text: message,
-    type: total > 0 ? "success" : "default",
-  }).show();
 }
+
+// Compatibilidade: alias em português
+export const formatarItensSelecionados = formatSelectedItems;
 
 // ---------------------------------------------------------------------------
 // Registrar Notifier (observer de eventos de item)
@@ -1135,5 +1207,101 @@ export function registerContextMenu(): void {
     icon: menuIcon,
   });
 
+  // Note: marking/persisting translators is integrated into the main "Format Title" action.
+  // We still provide a separate action to "Selecionar Tradutores" so users can mark candidates
+  // without running the full format flow immediately.
+  ztoolkit.Menu.register("item", {
+    tag: "menuitem",
+    id: "zotero-itemmenu-ufc-mark-translators",
+    label: "Selecionar tradutores (selecionados)",
+    commandListener: () => marcarTradutoresSelecionados(),
+    icon: menuIcon,
+  });
+
   ztoolkit.log("[UFC Title Formatter] Menu de contexto registrado.");
 }
+
+/**
+ * Marca tradutores para os itens selecionados (procura sobrenomes em MAIÚSCULAS).
+ */
+export async function marcarTradutoresSelecionados(): Promise<void> {
+  const zoteroPane = Zotero.getActiveZoteroPane && Zotero.getActiveZoteroPane();
+  if (!zoteroPane) return;
+
+  const items = zoteroPane.getSelectedItems() as Zotero.Item[];
+  if (!items || items.length === 0) return;
+  // Collect candidate uppercase surnames from the first selected item
+  const firstCreators = (items[0].getCreators() || []) as Array<any>;
+  const uppercaseSurnames = Array.from(
+    new Set(
+      firstCreators
+        .map((c) => (c.lastName || "").toString())
+        .filter((ln) => ln && ln.replace(/[^A-Za-zÀ-ÿ]/g, "") === ln && ln === ln.toLocaleUpperCase("pt-BR")),
+    ),
+  );
+
+  if (uppercaseSurnames.length === 0) {
+    // Nothing obvious to mark
+    new ztoolkit.ProgressWindow(addon.data.config.addonName, { closeOnClick: true })
+      .createLine({ text: getString("format-no-items"), type: "default" })
+      .show();
+    return;
+  }
+
+  // Ask user which surnames to mark (comma-separated); default to all candidates
+  const defaultInput = uppercaseSurnames.join(", ");
+  const mainWin = Zotero.getMainWindows && Zotero.getMainWindows()[0];
+  const userInput = mainWin && (mainWin as any).prompt
+    ? (mainWin as any).prompt(`Marcar quais tradutores? (vírgula-separados)\nEx.: ${defaultInput}`, defaultInput)
+    : defaultInput;
+
+  if (!userInput) return;
+
+  const toMark = (userInput as string)
+    .split(/\s*,\s*/)
+    .map(function (s: string) {
+      return s.trim();
+    })
+    .filter(Boolean);
+
+  // Store pending marks per-item in addon.data.pendingTranslators
+  let markedItems = 0;
+  try {
+    if (!addon.data) (addon as any).data = {};
+    if (!((addon.data as any).pendingTranslators)) (addon.data as any).pendingTranslators = {};
+    const root = (addon.data as any).pendingTranslators;
+
+    for (const it of items) {
+      try {
+        const key = String(it.id);
+        root[key] = toMark.slice();
+        markedItems++;
+        // Preview normalization by calling processarItem (which will consult pending marks)
+        try {
+          await processarItem(it);
+        } catch (e) {
+          // preview failure shouldn't block storing marks
+          ztoolkit.log("[UFC] marcarTradutoresSelecionados: preview failed", e);
+        }
+      } catch (e) {
+        ztoolkit.log("[UFC] marcarTradutoresSelecionados: erro ao armazenar marca", e);
+      }
+    }
+  } catch (e) {
+    ztoolkit.log("[UFC] marcarTradutoresSelecionados: erro ao inicializar pendingTranslators", e);
+  }
+
+  mostrarResultado({ title: 0, container: 0, publisher: 0, creators: markedItems, edition: 0, skipped: 0 });
+}
+
+/**
+ * Persiste as marcas de tradutores pendentes para os itens selecionados.
+ * Para cada item selecionado, converte as marcas em creatorType='translator'
+ * e salva o item. Remove a marca pendente após salvar.
+ */
+// persistirMarcasTradutoresSelecionados removed — persistence is now integrated into formatSelectedItems
+
+// Compatibilidade: aliases com nomes em português para uso interno
+export const registrarNotificadorFormatador = registerTitleFormatterNotifier;
+export const desregistrarNotificadorFormatador = unregisterTitleFormatterNotifier;
+export const registrarMenuDeContexto = registerContextMenu;

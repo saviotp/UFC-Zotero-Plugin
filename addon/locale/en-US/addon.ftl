@@ -6,5 +6,6 @@ format-no-items = No items selected.
 format-success = {$count} title(s) formatted.
 format-success-title = {$count} title(s) bolded.
 format-success-container = {$count} journal(s)/book(s) bolded.
+format-success-publisher = {$count} publisher(s) normalized.
 format-skipped-no-author = {$count} item(s) without author skipped.
 format-no-changes = No changes needed.
