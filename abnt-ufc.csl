@@ -695,6 +695,23 @@
             </choose>
           </group>
         </else-if>
+        <else-if type="personal_communication">
+          <group>
+            <text macro="author" suffix=". "/>
+            <!--Remetente-->
+            <text macro="title" suffix=". "/>
+            <!--Título ex: [Carta para o filho]-->
+            <text variable="note" suffix=". "/>
+            <!--Destinatário via Extra: note-->
+            <text variable="event-place" suffix=", "/>
+            <!--Local via campo event-place-->
+            <text macro="issued-year" suffix=". "/>
+            <!--Ano-->
+            <text variable="publisher" suffix="."/>
+            <!--Tipo ex: 1 carta, via Extra: publisher-->
+            <text macro="medium-access"/>
+          </group>
+        </else-if>
         <else-if type="manuscript">
           <group>
             <text macro="author" suffix=". "/>
