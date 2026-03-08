@@ -214,7 +214,7 @@ psicanalítica, Rio de Janeiro, v. 9, n. 2, p. 169-176, jul. 2006.
 
 **Saída esperada (com seção):**
 ```
-BOECHAT. Anac suspende empresa dona do helicóptero. O Estado, Fortaleza,
+BOECHAT: Anac suspende empresa dona do helicóptero. O Estado, Fortaleza,
 ano 82, n. 23.475, 14 fev. 2019. Caderno Nacional, p. 6. Disponível em:
 http://www.oestadoce.com.br/digital. Acesso em: 14 fev. 2019.
 ```
