@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+  preferences.xhtml — Tela de preferências do plugin
+
+  Este arquivo define a interface gráfica que aparece quando o usuário
+  acessa Editar > Preferências > [aba do plugin] no Zotero 8.
+
+  Pontos importantes:
+  - Usa XHTML (XML estrito), não HTML comum
+  - O namespace xmlns:html permite usar tags HTML dentro do XUL
+  - data-l10n-id conecta textos ao sistema Fluent de tradução
+  - O atributo "preference" nos inputs conecta automaticamente o valor
+    ao sistema de preferências do Gecko (o que o prefs.js definiu)
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<head>
+  <title data-l10n-id="pref-title"></title>
+  <!-- Carrega as traduções Fluent do locale ativo -->
+  <link rel="localization" href="__addonRef__/addon.ftl" />
+</head>
+<body>
+  <div id="ufc-zotero-plugin-preferences">
+    <!--
+      Seção: Pós-processamento
+      Controla se o plugin aplica correções automáticas às referências
+      geradas pelo CSL (subtítulo fora do negrito, en-dash para hífen, etc.)
+    -->
+    <groupbox>
+      <label><strong data-l10n-id="pref-postprocess-title"></strong></label>
+      <div style="margin-top: 8px;">
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox"
+                 preference="extensions.__addonRef__.postprocess.enabled"
+                 data-bind="pref" />
+          <span data-l10n-id="pref-postprocess-enable"></span>
+        </label>
+        <p style="margin-top: 4px; color: gray; font-size: 0.9em;"
+           data-l10n-id="pref-postprocess-description"></p>
+      </div>
+    </groupbox>
+  </div>
+</body>
+</html>

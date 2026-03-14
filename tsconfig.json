@@ -1,0 +1,79 @@
+{
+  "compilerOptions": {
+    // ─── Alvo de compilação ─────────────────────────────────
+    // O Zotero 8 usa Gecko 115+ (Firefox 115), que suporta ES2022.
+    // Isso nos permite usar funcionalidades modernas do JavaScript
+    // sem precisar de polyfills ou transpilação extra.
+    "target": "ES2022",
+    "lib": ["ES2022"],
+
+    // ─── Sistema de módulos ─────────────────────────────────
+    // ESNext = ES Modules nativos (import/export).
+    // O Gecko carrega nosso código via ChromeUtils.importESModule(),
+    // então precisamos que a saída seja ESM, não CommonJS.
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    // ─── Emissão ────────────────────────────────────────────
+    // noEmit: true → o TypeScript NÃO gera arquivos .js.
+    // Quem faz a transpilação real é o ESBuild (via zotero-plugin-scaffold).
+    // O tsc serve apenas para CHECAGEM DE TIPOS durante o desenvolvimento.
+    //
+    // Por que ESBuild e não tsc?
+    //   - ESBuild é ~100x mais rápido (escrito em Go, não em JS)
+    //   - ESBuild faz bundling (junta tudo em um arquivo)
+    //   - tsc não faz bundling nativo
+    "noEmit": true,
+
+    // ─── Checagem de tipos ──────────────────────────────────
+    // strict: true → ativa TODAS as verificações estritas:
+    //   - strictNullChecks: null/undefined são tipos separados
+    //   - strictFunctionTypes: parâmetros de função são checados
+    //   - noImplicitAny: variáveis sem tipo dão erro
+    //   - etc.
+    // Isso pega erros em tempo de compilação que seriam bugs silenciosos.
+    "strict": true,
+
+    // skipLibCheck: pula checagem de tipos em node_modules.
+    // Sem isso, erros em tipos de pacotes de terceiros (que não
+    // controlamos) travariam nossa compilação.
+    "skipLibCheck": true,
+
+    // Permite importar módulos CommonJS com "import x from 'y'"
+    // em vez de "import * as x from 'y'". Necessário porque
+    // zotero-plugin-toolkit é distribuído como CommonJS.
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Garante consistência de casing em imports (evita bugs em
+    // sistemas case-insensitive como macOS que não apareceriam
+    // em Linux — o CI roda em Linux).
+    "forceConsistentCasingInFileNames": true,
+
+    // Isola cada arquivo como um módulo independente.
+    // Necessário para o ESBuild processar os arquivos corretamente.
+    "isolatedModules": true,
+
+    // ─── Caminhos ───────────────────────────────────────────
+    // Diretório raiz dos fontes TypeScript.
+    "rootDir": "src",
+
+    // Onde o TypeScript procura arquivos .d.ts de tipos.
+    // Inclui nosso typings/ e o padrão node_modules/@types.
+    // NÃO incluir node_modules/zotero-types aqui — ele tem
+    // subpastas (entries/, scripts/) que o TS confunde com pacotes.
+    "typeRoots": ["typings", "node_modules/@types"]
+  },
+
+  // Quais arquivos incluir na compilação.
+  "include": [
+    "src/**/*.ts",
+    "typings/**/*.d.ts"
+  ],
+
+  // Quais arquivos ignorar.
+  "exclude": [
+    "node_modules",
+    "tests"
+  ]
+}

@@ -1,0 +1,21 @@
+# Dependências
+node_modules/
+.venv/
+
+# Build (artefatos gerados pelo scaffold)
+build/
+addon/content/index.js
+
+# Plugin empacotado
+*.xpi
+
+# Guias PDF da UFC (material de referência local, não versionar)
+# Disponíveis em: https://biblioteca.ufc.br/
+docs/guias/*.pdf
+
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/

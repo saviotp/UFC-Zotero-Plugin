@@ -1,0 +1,47 @@
+{
+  "name": "ufc-zotero-plugin",
+  "version": "0.1.0",
+  "description": "Plugin para Zotero 8 que formata referências bibliográficas conforme o Guia de Normalização da UFC (ABNT-NBR 6023:2018 e ABNT-NBR 10520:2023). Desenvolvido para a Universidade Federal do Ceará, com suporte da Biblioteca Universitária.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node tests/test_csl.mjs",
+    "typecheck": "tsc --noEmit",
+    "build": "zotero-plugin build",
+    "dev": "zotero-plugin dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saviotp/ufc-zotero-plugin.git"
+  },
+  "keywords": [
+    "zotero",
+    "zotero-plugin",
+    "abnt",
+    "ufc",
+    "csl",
+    "bibliography",
+    "citation"
+  ],
+  "author": "Sávio Teixeira Pacheco",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/saviotp/ufc-zotero-plugin/issues"
+  },
+  "homepage": "https://github.com/saviotp/ufc-zotero-plugin#readme",
+  "dependencies": {
+    "citeproc": "^2.4.63",
+    "citeproc-locales": "^1.0.2",
+    "zotero-plugin-toolkit": "^5.1.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "zotero-plugin-scaffold": "^0.8.4",
+    "zotero-types": "^4.1.2"
+  }
+}
