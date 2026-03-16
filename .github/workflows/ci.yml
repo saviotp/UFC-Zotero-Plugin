@@ -1,0 +1,61 @@
+# CI — Integração Contínua do plugin UFC-ABNT para Zotero 8
+#
+# Este workflow roda automaticamente a cada push ou pull request no branch main.
+# Ele garante que:
+#   1. As dependências instalam corretamente em ambiente limpo
+#   2. O plugin compila sem erros (gera o .xpi)
+#   3. Todos os 137 testes CSL passam (cobertura das 138 referências UFC)
+#
+# Roda em duas versões do Node.js:
+#   - 22 (LTS — versão estável que contribuidores provavelmente usam)
+#   - 25 (Current — versão usada no desenvolvimento)
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22, 25]
+
+    steps:
+      # 1. Clona o repositório na máquina do GitHub Actions.
+      #    Sem isso, os passos seguintes não teriam acesso ao código.
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      # 2. Instala a versão do Node.js definida na matriz.
+      #    O cache de npm acelera execuções subsequentes (não baixa
+      #    pacotes já cacheados de runs anteriores).
+      - name: Instalar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      # 3. Instala todas as dependências a partir do package-lock.json.
+      #    `npm ci` (clean install) é preferido em CI porque:
+      #    - Usa o lockfile exato (sem resolver versões novas)
+      #    - Remove node_modules antes de instalar (ambiente limpo)
+      #    - Falha se o lockfile estiver desatualizado
+      - name: Instalar dependências
+        run: npm ci
+
+      # 4. Compila o plugin (TypeScript → JavaScript, gera .xpi).
+      #    Se houver erro de tipo ou de build, falha aqui.
+      - name: Build do plugin
+        run: npm run build
+
+      # 5. Roda os 137 testes CSL com citeproc-js.
+      #    Valida que o CSL + pós-processamento geram as referências
+      #    exatamente como o Guia UFC especifica.
+      - name: Testes CSL
+        run: npm test
