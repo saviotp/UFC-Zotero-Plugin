@@ -23,12 +23,23 @@
 
 import { addon } from "./addon";
 import type { AddonData } from "./addon";
+import { installOrUpdateCSL } from "./modules/csl-manager";
+import * as postProcessor from "./modules/post-processor";
 
 /**
  * Chamada pelo bootstrap.js quando o Zotero carrega o plugin.
  *
  * A lógica aqui roda no contexto privilegiado do Gecko, com acesso
  * completo às APIs do Zotero (Zotero.Styles, Zotero.Notifier, etc).
+ *
+ * Sequência de inicialização:
+ *   1. Salvar metadados → addon.data
+ *   2. Aguardar Zotero inicializar → Zotero.initializationPromise
+ *   3. Instalar/atualizar CSL → csl-manager.installOrUpdateCSL()
+ *   4. Registrar pós-processador → postProcessor.register()
+ *
+ * Cada subsistema é inicializado em seu próprio try/catch para
+ * garantir degradação graciosa: se um falhar, os outros continuam.
  */
 export async function onStartup(data: AddonData): Promise<void> {
   // 1. Armazena os metadados no singleton para uso em todo o plugin.
@@ -40,9 +51,29 @@ export async function onStartup(data: AddonData): Promise<void> {
   //    Sem isso, chamadas a Zotero.Styles podem falhar silenciosamente.
   await Zotero.initializationPromise;
 
-  // 3-5. Os módulos csl-manager, post-processor e preferences
-  //       serão chamados aqui na Fase 4.
-  //       Por enquanto, registramos apenas uma mensagem de debug.
+  // 3. Instala ou atualiza o estilo CSL.
+  //    Precisa vir ANTES do pós-processador porque o monkey-patch
+  //    atua sobre a saída de estilos — se o estilo não existir,
+  //    o pós-processador não teria o que corrigir.
+  try {
+    await installOrUpdateCSL();
+  } catch (error) {
+    Zotero.logError(
+      `[UFC-ABNT] Erro ao instalar/atualizar CSL: ${error}`,
+    );
+  }
+
+  // 4. Registra o pós-processador de referências.
+  //    Faz monkey-patch em Zotero.Cite.makeFormattedBibliographyOrCitationList
+  //    para interceptar o HTML gerado e aplicar correções UFC.
+  try {
+    postProcessor.register();
+  } catch (error) {
+    Zotero.logError(
+      `[UFC-ABNT] Erro ao registrar pós-processador: ${error}`,
+    );
+  }
+
   Zotero.debug("[UFC-ABNT] Plugin inicializado com sucesso.");
 }
 
@@ -52,9 +83,19 @@ export async function onStartup(data: AddonData): Promise<void> {
  * IMPORTANTE: Tudo que foi registrado no startup DEVE ser removido aqui.
  * Se não limparmos, o Zotero pode ter problemas ao atualizar o plugin
  * (listeners duplicados, memória vazando, etc).
+ *
+ * A ordem de limpeza é a INVERSA da inicialização:
+ *   - Primeiro remove o pós-processador (restaura a função original)
+ *   - O CSL NÃO é removido no shutdown (só no uninstall), porque
+ *     o estilo pode ser útil mesmo sem o plugin ativo
  */
 export function onShutdown(data: AddonData): void {
-  Zotero.debug("[UFC-ABNT] Plugin descarregado.");
+  // Remove o monkey-patch, restaurando a função original do Zotero.
+  // Se não fizermos isso, a referência ao código do plugin ficaria
+  // "pendurada" (dangling reference) — o Gecko descarrega o módulo
+  // do plugin, mas a função patcheada ainda tentaria chamá-lo,
+  // causando crashes ou comportamento indefinido.
+  postProcessor.unregister();
 
-  // Limpeza dos módulos será adicionada na Fase 4.
+  Zotero.debug("[UFC-ABNT] Plugin descarregado.");
 }

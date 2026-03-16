@@ -251,7 +251,7 @@ LIMA, C. M. Estudos etnobotânicos na Serra de Maranguape, CE. *In*: CONGRESSO D
 
 BUGARIM, Jonatha Pereira; BARROSO, Simone Pompeu. A compreensão dos assurinis sobre lazer referente aos jogos dos povos indígenas. *In*: CONGRESSO NACIONAL DE EDUCAÇÃO FÍSICA, SAÚDE E CULTURAL CORPORAL, 9., 2018, Recife. **Anais** [...]. Recife: Even3, 2018. p. 1-2. Disponível em: http://abre.ai/aiG9. Acesso em: 17 jun. 2019.
 
-SERRA, Jackson Sousa; PINTO, Virgínia Bentes. Placas indicativas como fontes de informação: a percepção dos usuários de ônibus do Terminal de Integração da Parangaba. *In*: ENCONTRO DE ESTUDOS DE USO E USUÁRIOS DA INFORMAÇÃO, 1., 2017, Fortaleza. **Anais** [...]. 
+SERRA, Jackson Sousa; PINTO, Virgínia Bentes. Placas indicativas como fontes de informação: a percepção dos usuários de ônibus do Terminal de Integração da Parangaba. *In*: ENCONTRO DE ESTUDOS DE USO E USUÁRIOS DA INFORMAÇÃO, 1., 2017, Fortaleza. **Anais** [...]. Fortaleza: UFC, 2017. p. 1-18. Disponível em: http://www.eneu2017.ufc.br/index.php/eneu/1/paper/viewFile/13/37. Acesso em: 10 set. 2020.
 
 
 ## 3.4.2.3 Parte de evento em publicação periódica
@@ -319,7 +319,7 @@ BRASIL. **Lei nº 12.305, de 2 de agosto de 2010**. Institui a Política Naciona
 
 BRASIL. Superior Tribunal de Justiça. Agravo regimental de instrumento n° 612.097 - RS (2004.0074630-2). Agravantes: Adroaldo Lemos Guerreiro e outro. Advogados: César Augusto Bier e outro e Maria Eloísa da Costa. Agravado: Banco do Brasil S/A. Advogados: Magda Montenegro e Rosella Horst e outros. Relator: Ministro Carlos Alberto Menezes Direito. Brasília, DF, 9 de maio de 2006. **Lex**: jurisprudência do STJ e Tribunais Regionais Federais, São Paulo, v. 18, n. 205, p. 23-27, maio 2006.
 
-BRASIL. Supremo Tribunal Federal. Súmula n° 14. *In*: BRASIL. 
+BRASIL. Supremo Tribunal Federal. Súmula n° 14. *In*: BRASIL. Supremo Tribunal Federal. **Súmulas**. São Paulo: Associação dos Advogados do Brasil, 1994. p. 16. 
 
 
 ## 3.6.4 Jurisprudência em meio eletrônico

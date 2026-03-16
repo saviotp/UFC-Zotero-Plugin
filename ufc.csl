@@ -226,6 +226,7 @@
             <name-part name="given"/>
           </name>
           <et-al font-style="italic"/>
+          <label form="short" prefix=" (" suffix=")"/>
         </names>
         <names variable="translator"/>
         <!-- FIX: capítulo sem autor → título em UPPERCASE -->
@@ -269,7 +270,7 @@
           <if variable="accessed">
             <date variable="accessed" prefix=". Acesso em: " suffix=".">
               <date-part name="day" suffix=" "/>
-              <date-part name="month" form="short" suffix=". " text-case="lowercase"/>
+              <date-part name="month" form="short" suffix=" " text-case="lowercase"/>
               <date-part name="year"/>
             </date>
           </if>
@@ -317,7 +318,7 @@
       <else-if type="book thesis" match="any">
         <text variable="title" font-weight="bold"/>
       </else-if>
-      <else-if type="article-newspaper article-magazine article-journal paper-conference" match="any">
+      <else-if type="article-newspaper article-magazine article-journal paper-conference legal_case" match="any">
         <text variable="title"/>
       </else-if>
       <else>
@@ -583,8 +584,16 @@
             <text macro="title" suffix=". "/>
             <text macro="edition" suffix=". "/>
             <text macro="publisher" suffix=". "/>
-            <text variable="genre" suffix=". "/>
-            <text variable="scale" suffix=". "/>
+            <choose>
+              <if variable="medium">
+                <text variable="genre" suffix=", "/>
+                <text variable="medium" suffix=". "/>
+              </if>
+              <else>
+                <text variable="genre" suffix=". "/>
+              </else>
+            </choose>
+            <text variable="scale" prefix="Escala " suffix=". "/>
             <text macro="access"/>
           </group>
         </else-if>
@@ -637,10 +646,43 @@
             <text macro="container-title" suffix=". "/>
             <text variable="collection-title" suffix=". "/>
             <text macro="translator" suffix=". "/>
-            <text macro="edition" suffix=". "/>
-            <text macro="publisher" suffix=". "/>
-            <text macro="locators" suffix=". "/>
-            <text variable="archive" suffix=". " />
+            <choose>
+              <!-- Parte de tese (3.1.2.3/3.1.2.4): genre presente indica container-tese -->
+              <if variable="genre">
+                <choose>
+                  <if variable="original-date">
+                    <date variable="original-date" suffix=". ">
+                      <date-part name="year"/>
+                    </date>
+                  </if>
+                  <else>
+                    <text macro="issued-year" suffix=". "/>
+                  </else>
+                </choose>
+                <choose>
+                  <if variable="note">
+                    <text macro="genre" suffix=" – "/>
+                    <text variable="note" suffix=", "/>
+                  </if>
+                  <else>
+                    <text macro="genre" suffix=", "/>
+                  </else>
+                </choose>
+                <text variable="publisher" suffix=", "/>
+                <text variable="publisher-place" suffix=", "/>
+                <text macro="issued-year" suffix=". "/>
+                <text macro="locators" suffix=". "/>
+              </if>
+              <!-- Capítulo normal -->
+              <else>
+                <text macro="edition" suffix=". "/>
+                <text macro="publisher" suffix=". "/>
+                <text macro="locators" suffix=". "/>
+                <text variable="archive" suffix=". " />
+                <!-- Resenha da obra de: ... via campo Note -->
+                <text variable="note" suffix=". "/>
+              </else>
+            </choose>
             <text macro="access"/>
           </group>
         </else-if>
@@ -700,17 +742,26 @@
               </else>
             </choose>
             <choose>
-              <if variable="note">
-                <text macro="genre" suffix=" – "/>
-                <text variable="note" suffix=", "/>
+              <!-- Tese completa: tem publisher (universidade) e/ou note (faculdade) -->
+              <if variable="publisher publisher-place note" match="any">
+                <choose>
+                  <if variable="note">
+                    <text macro="genre" suffix=" – "/>
+                    <text variable="note" suffix=", "/>
+                  </if>
+                  <else>
+                    <text macro="genre" suffix=", "/>
+                  </else>
+                </choose>
+                <text variable="publisher" suffix=", "/>
+                <text variable="publisher-place" suffix=", "/>
+                <text macro="issued-year" suffix=". "/>
               </if>
+              <!-- Trabalho sem vínculo institucional: genre é autocontido -->
               <else>
-                <text macro="genre" suffix=", "/>
+                <text macro="genre" suffix=". "/>
               </else>
             </choose>
-            <text variable="publisher" suffix=", "/>
-            <text variable="publisher-place" suffix=", "/>
-            <text macro="issued-year" suffix=". "/>
             <text macro="medium-access"/>
           </group>
         </else-if>
@@ -722,6 +773,8 @@
             <!--Título-->
             <text variable="publisher" prefix="Depositante: " suffix=". "/>
             <!--Depositante-->
+            <text variable="note" suffix=". "/>
+            <!--Procurador (opcional)-->
             <text variable="publisher-place" suffix=" "/>
             <!--País-->
             <text variable="number" prefix="n. " suffix=". "/>
@@ -747,11 +800,11 @@
             <!--País (ex: BRASIL)-->
             <text variable="authority" suffix=". "/>
             <!--Tribunal-->
-            <text macro="title" suffix=". "/>
             <!--Tipo e número (ex: Súmula n° 14 / título do processo)-->
             <choose>
               <!-- Súmula em livro: tem publisher -->
               <if variable="publisher">
+                <text macro="title" suffix=". "/>
                 <text term="in" font-style="italic" text-case="capitalize-first" suffix=": "/>
                 <text variable="note" suffix=". "/>
                 <!--Ex: Brasil. Supremo Tribunal Federal.-->
@@ -767,20 +820,47 @@
                 <!--Página-->
                 <text macro="medium-access"/>
               </if>
-              <!-- Jurisprudência em periódico: sem publisher -->
-              <else>
+              <!-- Jurisprudência eletrônica em periódico: título, local, data curta -->
+              <else-if variable="URL">
+                <text macro="title" suffix=", "/>
+                <!--Título com vírgula (formato compacto eletrônico)-->
                 <text variable="publisher-place" suffix=", "/>
-                <!--Local da decisão via Extra: publisher-place-->
+                <!--Local da decisão-->
+                <date variable="issued" suffix=". ">
+                  <date-part name="day" suffix=" "/>
+                  <date-part name="month" form="short" suffix=". "/>
+                  <date-part name="year"/>
+                </date>
+                <!--Data curta: "18 ago. 2015"-->
+                <text variable="container-title" font-weight="bold" suffix=", "/>
+                <!--Nome do periódico em negrito-->
+                <text variable="archive-place" suffix=", "/>
+                <!--Local da publicação-->
+                <group delimiter=", ">
+                  <text variable="volume" prefix="v. "/>
+                  <text variable="issue" prefix="n. "/>
+                  <text variable="page" prefix="p. "/>
+                </group>
+                <text variable="note" prefix=", " suffix=". "/>
+                <!--Mês e ano da publicação-->
+                <text macro="medium-access"/>
+              </else-if>
+              <!-- Jurisprudência impressa em periódico: título. local, data longa -->
+              <else>
+                <text macro="title" suffix=". "/>
+                <!--Título com ponto (formato extenso impresso)-->
+                <text variable="publisher-place" suffix=", "/>
+                <!--Local da decisão-->
                 <date variable="issued" suffix=". ">
                   <date-part name="day" suffix=" de "/>
                   <date-part name="month" form="long" suffix=" de "/>
                   <date-part name="year"/>
                 </date>
-                <!--Data no formato "9 de maio de 2006"-->
+                <!--Data longa: "9 de maio de 2006"-->
                 <text variable="container-title" font-weight="bold" suffix=", "/>
                 <!--Nome do periódico em negrito-->
                 <text variable="archive-place" suffix=", "/>
-                <!--Local da publicação via Extra: archive-place-->
+                <!--Local da publicação-->
                 <group delimiter=", ">
                   <text variable="volume" prefix="v. "/>
                   <text variable="issue" prefix="n. "/>
@@ -911,7 +991,7 @@
                     </else>
                   </choose>
                   <names variable="director producer">
-                    <name delimiter="; " delimiter-precedes-last="always"
+                    <name delimiter=", " delimiter-precedes-last="always"
                           initialize="false" initialize-with=". ">
                       <name-part name="given" suffix=" "/>
                       <name-part name="family"/>
@@ -997,19 +1077,29 @@
         <else-if type="personal_communication">
           <group>
             <text macro="author" suffix=". "/>
-            <text macro="title" suffix=". "/>
+            <group prefix="[" suffix="]. ">
+              <text macro="title"/>
+            </group>
+            <names variable="recipient" prefix="Destinatário: " suffix=". ">
+              <name delimiter="; " delimiter-precedes-last="always" initialize="false" initialize-with=". ">
+                <name-part name="given"/>
+                <name-part name="family"/>
+              </name>
+            </names>
             <choose>
-              <if variable="event-place">
-                <text variable="event-place" suffix=", "/>
+              <if variable="publisher-place">
+                <text variable="publisher-place" suffix=", "/>
               </if>
+              <else-if variable="event-place">
+                <text variable="event-place" suffix=", "/>
+              </else-if>
               <else>
                 <text value="[S. l.]" font-style="italic" suffix=", "/>
               </else>
             </choose>
-            <text variable="note" suffix=". "/>
             <text macro="issued" suffix=". "/>
-            <text variable="genre" suffix=". "/>
-            <text macro="medium-access"/>
+            <text variable="medium" suffix=". "/>
+            <text macro="access"/>
           </group>
         </else-if>
         <else-if type="graphic">
@@ -1040,17 +1130,12 @@
                 </group>
               </if>
             </choose>
-            <text variable="genre" suffix=", "/>
-            <choose>
-              <if variable="dimensions">
-                <text variable="medium" suffix=", "/>
-                <text variable="dimensions" suffix=". "/>
-              </if>
-              <else>
-                <text variable="medium" suffix=". "/>
-              </else>
-            </choose>
-            <text variable="archive" suffix=". "/>
+            <group delimiter=", " suffix=". ">
+              <text variable="genre"/>
+              <text variable="medium"/>
+              <text variable="dimensions"/>
+            </group>
+            <text variable="container-title" suffix=". "/>
             <text macro="access"/>
           </group>
         </else-if>
@@ -1070,7 +1155,7 @@
           <group>
             <text macro="author" suffix=". "/>
             <text macro="title" suffix=". "/>
-            <text variable="version" suffix=". "/>
+            <text variable="version" prefix="Versão " suffix=". "/>
             <choose>
               <if variable="publisher-place">
                 <text variable="publisher-place" suffix=", "/>
@@ -1101,7 +1186,19 @@
           <group>
             <text macro="author" suffix=". "/>
             <text macro="title" suffix=". "/>
-            <text macro="publisher" suffix=". "/>
+            <choose>
+              <if variable="publisher">
+                <text macro="publisher" suffix=". "/>
+              </if>
+              <else>
+                <choose>
+                  <if variable="publisher-place">
+                    <text variable="publisher-place" suffix=", "/>
+                  </if>
+                </choose>
+                <text macro="issued" suffix=". "/>
+              </else>
+            </choose>
             <text macro="access"/>
           </group>
         </else-if>
@@ -1110,12 +1207,7 @@
             <text macro="author" suffix=". "/>
             <text macro="title" suffix=". "/>
             <text macro="genre" suffix=". "/>
-            <choose>
-              <if variable="publisher-place">
-                <text variable="publisher-place" suffix=", "/>
-              </if>
-            </choose>
-            <text macro="issued" suffix=". "/>
+            <text macro="publisher" suffix=". "/>
             <text variable="container-title" suffix=". "/>
             <text macro="access"/>
           </group>
@@ -1161,21 +1253,94 @@
           </group>
         </else-if>
         <else-if type="paper-conference">
-          <text macro="author" suffix=". "/>
-          <text macro="title" suffix=". "/>
-          <text term="in" font-style="italic" text-case="capitalize-first" suffix=": "/>
-          <text macro="container-contributors"/>
-          <text macro="secondary-contributors" suffix=". "/>
-          <text macro="container-title"/>
-          <text variable="collection-title" prefix=": " suffix="."/>
-          <text macro="locators"/>
-          <group delimiter=". ">
-            <text macro="event"/>
+          <group>
+            <text macro="author" suffix=". "/>
+            <text macro="title" suffix=". "/>
+            <!-- *In*: só renderiza quando event-title existe (partes de evento).
+                 Eventos no todo (3.4.1.3/3.4.1.4) não têm event-title — o evento
+                 está no autor literal, então *In*: seria incorreto. -->
+            <choose>
+              <if variable="event-title">
+                <text term="in" font-style="italic" text-case="capitalize-first" suffix=": "/>
+                <text variable="event-title" suffix=". "/>
+              </if>
+            </choose>
+            <text variable="container-title" font-weight="bold" suffix=". "/>
+            <text variable="publisher-place" suffix=": "/>
+            <text variable="publisher" suffix=", "/>
+            <!-- Volume/issue para eventos publicados em periódicos (3.4.1.3/3.4.1.4) -->
+            <choose>
+              <if variable="volume">
+                <text variable="volume" prefix="v. " suffix=", "/>
+                <choose>
+                  <if variable="issue">
+                    <text variable="issue" prefix="n. " suffix=", "/>
+                  </if>
+                </choose>
+              </if>
+            </choose>
+            <text macro="issued" suffix=". "/>
+            <choose>
+              <if is-numeric="page">
+                <text variable="page" prefix="p. " suffix=". "/>
+              </if>
+              <else-if variable="page">
+                <text variable="page" suffix=". "/>
+              </else-if>
+            </choose>
+            <text macro="access"/>
           </group>
-          <text variable="publisher-place" suffix=": "/>
-          <text variable="publisher" suffix=", "/>
-          <text macro="issued" suffix=". "/>
-          <text macro="access"/>
+        </else-if>
+        <else-if type="musical_score">
+          <group>
+            <text macro="author" suffix=". "/>
+            <text macro="title" suffix=". "/>
+            <text variable="medium" suffix=". "/>
+            <text macro="publisher" suffix=". "/>
+            <text variable="genre" suffix=". "/>
+            <text macro="access"/>
+          </group>
+        </else-if>
+        <!--
+          Coleção de publicação periódica e fascículos (3.3.1-6)
+          Formato: TÍTULO. [Container-title.] Local: Editora, note. [URL. Acesso.]
+          O campo note carrega dados variáveis: intervalo de datas, ISSN, volume, etc.
+          Container-title (se presente): periódico bold com sufixo condicional:
+            - Com publisher-place: ". " (ex: **Perspectivas em CI**. Belo Horizonte: ...)
+            - Sem publisher-place: ", " (ex: **O Povo**, ed. 28.918, ...)
+        -->
+        <else-if type="periodical">
+          <group>
+            <text macro="author" suffix=". "/>
+            <text macro="title" suffix=". "/>
+            <choose>
+              <if variable="container-title">
+                <choose>
+                  <if variable="publisher-place">
+                    <text macro="container-title" suffix=". "/>
+                  </if>
+                  <else>
+                    <text macro="container-title" suffix=", "/>
+                  </else>
+                </choose>
+              </if>
+            </choose>
+            <choose>
+              <if variable="publisher-place">
+                <choose>
+                  <if variable="publisher">
+                    <text variable="publisher-place" suffix=": "/>
+                    <text variable="publisher" suffix=", "/>
+                  </if>
+                  <else>
+                    <text variable="publisher-place" suffix=", "/>
+                  </else>
+                </choose>
+              </if>
+            </choose>
+            <text variable="note" suffix=". "/>
+            <text macro="medium-access"/>
+          </group>
         </else-if>
         <else>
           <text macro="author" suffix=". "/>
