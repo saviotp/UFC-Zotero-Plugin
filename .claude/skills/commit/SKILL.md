@@ -1,3 +1,8 @@
+---
+name: commit
+description: Convenção de Commits para o Projeto de Plugin do Zotero 8 - Guia de Referências da UFC. Este documento deve ser consultado ANTES de realizar QUALQUER commit no repoistório do GitHub. Aqui estão presentes todas as tipagens de commits e suas respectivas descrições, para garantir a padronização e clareza das mensagens de commit.
+type: reference
+---
 # Convenção de Commits para o Projeto de Plugin do Zotero 8 - Guia de Referências da UFC
 Este documento deve ser consultado ANTES de realizar QUALQUER commit no repoistório do GitHub. Aqui estão presentes todas as tipagens de commits e suas respectivas descrições, para garantir a padronização e clareza das mensagens de commit. São eles:
 
